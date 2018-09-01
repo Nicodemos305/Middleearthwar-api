@@ -1,0 +1,9 @@
+{
+ "AppName" : "Middleearthwar",
+ "host" : "localhost",
+ "db" : "middleheart",
+ "user" : "user",
+ "password" : "password",
+ "version" : "1.0.0"
+
+}
