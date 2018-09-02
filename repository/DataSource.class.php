@@ -1,6 +1,6 @@
 <?php
 
-public class DataSource{
+ class DataSource{
 
 private $conn;
 private $host;
@@ -11,7 +11,7 @@ private $password;
   function find($sql){
 	   
 		$result = null;
-		$conn = new mysqli($host, $user, $password, $db);
+	$conn =conectDb($host, $user, $password, $db);
 		if ($conn->connect_error) {
 			die("Connection failed: " . $conn->connect_error);
 		} 
@@ -44,7 +44,7 @@ private $password;
 		$conn->close();
    }
 	function insert($sql){
-		$conn =conectDb($host, $user, $password, $db);
+		$conn = $this->conectDb("localhost", "root", "","middleearthwar");
 		if ($conn->query($sql) === TRUE) {
 			return "0";
 		} else {
@@ -78,7 +78,7 @@ private $password;
 	}
 
 	function conectDb($host, $user, $password, $db){
-		$conn =conectDb($host, $user, $password, $db);
+		$conn = new mysqli($host, $user, $password, $db);
 			if ($conn->connect_error) {
 				die("Connection failed: " . $conn->connect_error);
 			} else{
