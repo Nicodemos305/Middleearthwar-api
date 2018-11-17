@@ -2,11 +2,11 @@
 
  class DataSource{
 
-private $conn;
-private $host;
-private $db;
-private $user;
-private $password;
+	private $conn;	
+	private $host;
+	private $db;
+	private $user;
+	private $password;
 
   function find($sql){
 	   
