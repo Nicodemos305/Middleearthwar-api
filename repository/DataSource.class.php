@@ -8,9 +8,9 @@
 	private $user;
 	private $password;
 
-  function find($sql){
+  function findOne($sql){
 	   
-		$result = null;
+	$result = null;
 	$conn =conectDb($host, $user, $password, $db);
 		if ($conn->connect_error) {
 			die("Connection failed: " . $conn->connect_error);
@@ -19,17 +19,17 @@
 
 		if ($result->num_rows > 0) {
 			$row = $result->fetch_assoc();
-			return $row ;
+			return $row;
 		} else {
 			return null;
 		}
 		$conn->close();
    }
 	
-   function consultarAll($sql){
+   function findAll($sql){
 		
 		$resultado = array ();
- 		$conn =conectDb($host, $user, $password, $db);
+ 		$conn = $this->conectDb("localhost", "root", "","middleearthwar");
 		$result = $conn->query($sql);
 
 		if ($result->num_rows > 0) {
@@ -43,6 +43,7 @@
 		}
 		$conn->close();
    }
+
 	function insert($sql){
 		$conn = $this->conectDb("localhost", "root", "","middleearthwar");
 		if ($conn->query($sql) === TRUE) {
@@ -56,7 +57,7 @@
 	
 
 	function delete($sql){			
-	  $conn =conectDb($host, $user, $password, $db);
+	   $conn = $this->conectDb("localhost", "root", "","middleearthwar");
 			if ($conn->query($sql) === TRUE) {
 				echo "Excluído com sucesso";
 			} else {

@@ -1,31 +1,46 @@
 <?php
 	 header('Content-type: application/json');
 	 header('Access-Control-Allow-Origin: *');  
-         include_once('../../entity/Player.class.php');
-         include_once('../../repository/playerDao.class.php');
+     include_once('../../entity/Player.class.php');
+     include_once('../../repository/playerDao.class.php');
+	
 	 $msg = "";
 	 $email = "";
 	 $player = new Player();
-	$playerDao = new PlayerDao();
-        	
-	if(!isset($_GET['login']) || $_GET['login'] == ""){
-	   $msg = $msg."Login nao definido</br>";
+	 $playerDao = new PlayerDao();
+	 $result = "";
+
+	if(!isset($_POST['login']) || $_POST['login'] == ""){
+	   $msg = $msg."Login nao definido";
+	   $result = array('msg'=>$msg);
+	   echo json_encode($result);
+	   echo $msg;
+	   return false;
 	}else{
-	   $player->setLogin($_GET['login']);
+	   $player->setLogin($_POST['login']);
 	}
     
-    if(!isset($_GET['password']) || $_GET['password'] == ""){
-	    $msg = $msg."password nao definido</br>";
+    if(!isset($_POST['password']) || $_POST['password'] == ""){
+	    $msg = $msg."password nao definido";
+	    $result = array('msg'=>$msg);
+	    echo json_encode($result);
+	    echo $msg;
+	   return false;
 	}else{
-	  $player->setPassword($_GET['password']);
+	  $player->setPassword($_POST['password']);
 	}
 
-    if(!isset($_GET['email']) || $_GET['email'] == ""){
-	   $msg = $msg."email nao definido</br>";
+    if(!isset($_POST['email']) || $_POST['email'] == ""){
+	   $msg = $msg."email nao definido";
+	    $result = array('msg'=>$msg);
+	    echo json_encode($result);
+	    echo $msg;
+	   return false;
 	}else{
-	   $player->setEmail($_GET['email']);
+	   $player->setEmail($_POST['email']);
 	}
 
 	$playerDao->insert($player);
 	$result = array ('login'=>$player->getLogin(),'senha'=>$player->getPassword(),'email'=>$player->getEmail());
+
 	echo json_encode($result);
