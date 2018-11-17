@@ -1,6 +1,6 @@
 <?php
 
-public class Hero {
+class Hero {
 
 	private $id; 
 	private $name;
