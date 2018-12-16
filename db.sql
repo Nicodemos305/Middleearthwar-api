@@ -24,3 +24,12 @@ create table hero(
 );
 
 
+create table battle(
+	id int AUTO_INCREMENT,
+	id_hero_one int,
+	id_hero_two int,
+	status_battle varchar(10),
+	win_battle int,
+	PRIMARY KEY(id),
+	FOREIGN KEY (id_hero_one) REFERENCES hero(id)
+)

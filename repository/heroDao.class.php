@@ -26,6 +26,6 @@ class HeroDao {
 	function delete($id){
 		$dataSource = new DataSource();
 		 $sql = "delete from hero where id =".$id;
-		 $dataSource->delete($sql);
+		return $dataSource->delete($sql);
 	}
 }
