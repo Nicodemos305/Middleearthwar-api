@@ -23,7 +23,7 @@
   $hero->setDefense($defense);
   $hero->setAgility($agility);
   $hero->setInteligence($inteligence);
-  $id = 17;
+  $id = 1;
   $heroDao->insert($hero,$id);
 
 

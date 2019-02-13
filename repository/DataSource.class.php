@@ -9,17 +9,13 @@
 	private $password;
 
   function findOne($sql){
-	   
-	$result = null;
-	$conn =conectDb($host, $user, $password, $db);
-		if ($conn->connect_error) {
-			die("Connection failed: " . $conn->connect_error);
-		} 
+ 		$conn = $this->conectDb("localhost", "root", "","middleearthwar");
 		$result = $conn->query($sql);
 
 		if ($result->num_rows > 0) {
-			$row = $result->fetch_assoc();
-			return $row;
+		 while($row = $result->fetch_assoc()) {
+				return  $row;
+			}
 		} else {
 			return null;
 		}
@@ -36,7 +32,7 @@
 			 while($row = $result->fetch_assoc()) {
 				array_push($resultado, $row);
 			}
-			return $resultado ;
+			return $resultado;
 			
 		} else {
 			return null;
