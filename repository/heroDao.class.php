@@ -1,6 +1,6 @@
  <?php
 
-  include_once("../../entity/Hero.class.php");
+  include_once("../entity/Hero.class.php");
   include_once("DataSource.class.php");
 
 class HeroDao {
