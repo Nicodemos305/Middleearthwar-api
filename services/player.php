@@ -1,24 +1,40 @@
 <?php
-	 header('Content-type: application/json');
-	 header('Access-Control-Allow-Origin: *');  
-     include_once('../../entity/Player.class.php');
-     include_once('../../repository/playerDao.class.php');
-	
-	 $msg = "";
-	 $email = "";
+	header('Content-type: application/json');
+	header('Access-Control-Allow-Origin: *');  
+    include_once('../entity/Player.class.php');
+    include_once('../repository/playerDao.class.php');
 
-	 $playerDao = new PlayerDao();
-	 $result = "";
+    $msg = "";
+	$email = "";
 
+	$playerDao = new PlayerDao();
+	$player = new Player();
+	$result = "";
+	$players = "";
+
+  if($_SERVER['REQUEST_METHOD'] == "GET"){
+	 if(isset($_GET['id'])){
+	 	 $player =  $playerDao->findOne($_GET['id']);
+	 	 $result = array ('player'=>$player);
+	  }else{
+	 	$players =  $playerDao->findAll();
+ 		$result = array ('players'=>$players);
+	  }
+  }else if($_SERVER['REQUEST_METHOD'] == "POST"){
 	$player= validate($_POST,$msg);
 	if($player){
 		$playerDao->insert($player);
 		$result = array ('login'=>$player->getLogin(),'senha'=>$player->getPassword(),'email'=>$player->getEmail());
 	}
+  }else if($_SERVER['REQUEST_METHOD'] == "DELETE"){
+      $id = $_GET['id'];
+      $playerDao->delete($id);
+  }
+ 
+ echo json_encode($result);
 
-echo json_encode($result);
 
-function validate($post,$msg){
+ function validate($post,$msg){
 	$player = new Player();
 	if(!isset($post['login']) || $post['login'] == ""){
 	   $msg = $msg."Login nao definido";
