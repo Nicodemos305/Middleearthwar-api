@@ -3,25 +3,17 @@
 include_once("../../entity/Battle.class.php");
 include_once("DataSource.class.php");
 
-class BattleDao{
+class BattleDao extends DataSource{
 
 	function battleBegin(Battle $battle){
-		$dataSource = new DataSource();
   		$sql = "insert into battle values(null,'".$battle->getPlayerOne()->getId()."','".$battle->getPlayerTwo()->getId()."','RUNING',0)";
-	    $dataSource->insert($sql);
+	    parent::insert($sql);
 
 	}
-
 
 	function searchEnemy($idHero){
-		$dataSource = new DataSource();
 		$sql = "select * from hero where id <> ".$idHero;
-		return $dataSource->findOne($sql);
+		return parent::findOne($sql);
 	}
-
-
-
-
-
 
 }

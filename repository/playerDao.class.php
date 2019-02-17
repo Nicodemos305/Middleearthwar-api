@@ -1,30 +1,26 @@
 <?php
-   include_once("../../entity/Player.class.php");
+   include_once("../entity/Player.class.php");
    include_once("DataSource.class.php");
 
-class PlayerDao{
+class PlayerDao extends DataSource {
 
 	function insert(Player $player){
-	     $dataSource = new DataSource();
 	     $sql = "insert into player values(null,'".$player->getLogin()."','".$player->getPassword()."','".$player->getEmail()."')";
-	     $dataSource->insert($sql);
+	     parent::insert($sql);
 	 }
 
 	function findAll(){
-	     $dataSource = new DataSource();
 	     $sql = "select * from player";
-	     return $dataSource->findAll($sql);
+	     return parent::findAll($sql);
 	}
 
 	function findOne($id){
-	     $dataSource = new DataSource();
 	     $sql = "select * from player where id =".$id;
-	     return $dataSource->findAll($sql);
+	     return parent::findAll($sql);
 	}
 
 	function delete($id){
-		$dataSource = new DataSource();
 		 $sql = "delete from player where id =".$id;
-		 $dataSource->delete($sql);
+		 parent::delete($sql);
 	}
 }

@@ -1,4 +1,4 @@
-CREATE DATABASE if not EXISTS middleearthwar; 
+CREATE DATABASE if not EXISTS rpgcloud; 
 
 create table player (
  id int AUTO_INCREMENT,
@@ -32,4 +32,9 @@ create table battle(
 	win_battle int,
 	PRIMARY KEY(id),
 	FOREIGN KEY (id_hero_one) REFERENCES hero(id)
+)
+
+create table world(
+	id int AUTO_INCREMENT,
+	name varchar(200),
 )
