@@ -6,41 +6,48 @@
 	
 	 $msg = "";
 	 $email = "";
-	 $player = new Player();
+
 	 $playerDao = new PlayerDao();
 	 $result = "";
 
-	if(!isset($_POST['login']) || $_POST['login'] == ""){
+	$player= validate($_POST,$msg);
+	if($player){
+		$playerDao->insert($player);
+		$result = array ('login'=>$player->getLogin(),'senha'=>$player->getPassword(),'email'=>$player->getEmail());
+	}
+
+echo json_encode($result);
+
+function validate($post,$msg){
+	$player = new Player();
+	if(!isset($post['login']) || $post['login'] == ""){
 	   $msg = $msg."Login nao definido";
 	   $result = array('msg'=>$msg);
 	   echo json_encode($result);
 	   echo $msg;
 	   return false;
 	}else{
-	   $player->setLogin($_POST['login']);
+	   $player->setLogin($post['login']);
 	}
     
-    if(!isset($_POST['password']) || $_POST['password'] == ""){
+    if(!isset($post['password']) || $post['password'] == ""){
 	    $msg = $msg."password nao definido";
 	    $result = array('msg'=>$msg);
 	    echo json_encode($result);
 	    echo $msg;
 	   return false;
 	}else{
-	  $player->setPassword($_POST['password']);
+	  $player->setPassword($post['password']);
 	}
 
-    if(!isset($_POST['email']) || $_POST['email'] == ""){
+    if(!isset($post['email']) || $post['email'] == ""){
 	   $msg = $msg."email nao definido";
 	    $result = array('msg'=>$msg);
 	    echo json_encode($result);
 	    echo $msg;
 	   return false;
 	}else{
-	   $player->setEmail($_POST['email']);
+	   $player->setEmail($post['email']);
 	}
-
-	$playerDao->insert($player);
-	$result = array ('login'=>$player->getLogin(),'senha'=>$player->getPassword(),'email'=>$player->getEmail());
-
-	echo json_encode($result);
+	return $player;
+}

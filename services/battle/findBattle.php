@@ -25,11 +25,11 @@ while($batalha){
 	$random = rand(0,$enemy['atk']);
 	$hp1 = $hp1 - $random;
 	echo "HP1 ".$hp1;
-	echo "</br> ";
+	echo "<br/>";
 	$random = rand(0,$enemy['atk']);
 	$hp2 = $hp2 - $random;
     echo "HP2".$hp2;
-    echo "</br> ";
+    echo "<br/> ";
 	if($hp1 <= 0 || $hp2 <= 0){
 	  $batalha = false;
 	}

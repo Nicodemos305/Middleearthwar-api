@@ -83,4 +83,14 @@ class Hero {
 	public function setInteligence($inteligence){
 		$this->inteligence = $inteligence;
 	}
+
+	public function newHero(){
+ 		$this->setRace("Humano");
+  		$this->setHp(100);
+ 		$this->setMp(100);
+ 		$this->setAtk(5);
+ 	    $this->setDefense(5);
+ 	    $this->setAgility(5);
+  	    $this->setInteligence(5);
+	}
 }
