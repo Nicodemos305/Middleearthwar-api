@@ -46,7 +46,7 @@
 	function insertEntity($sql){
 		$conn = $this->conectDb("localhost", "root", "","rpgcloud");
 		if ($conn->query($sql) === TRUE) {
-			return "0";
+			return mysqli_insert_id($conn);
 		} else {
 			echo "Error: " . $sql . "<br>" . $conn->error;
 		}
