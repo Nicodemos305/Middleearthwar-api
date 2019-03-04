@@ -5,19 +5,28 @@ include_once('../../repository/battleDao.class.php');
 include_once('../../repository/heroDao.class.php');
 include_once('../../entity/Battle.class.php');
 
+
  $battleDao = new BattleDao();
  $heroDao = new HeroDao();
  $battle1 = new Battle();
  $enemy =  $battleDao->searchEnemy(2);
  $playerOne = $heroDao->findOne(2);
 
-$battle1->setPlayerOne($playerOne[0]);
+
+echo $enemy['name'];
+echo "xxxxx";
+echo $playerOne['name'];
+
+
+$battle1->setPlayerOne($playerOne);
+
+
 $battle1->setPlayerTwo($enemy);
 
  $result = "";
  $result = array('playerOne'=>$battle1->getPlayerOne(),'playerTwo' => $battle1->getPlayerTwo());
 
-$hp1 = $playerOne[0]['hp'];
+$hp1 = $playerOne['hp'];
 $hp2 = $enemy['hp'];
 $batalha = true;
 while($batalha){

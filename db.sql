@@ -34,6 +34,12 @@ create table battle(
 	FOREIGN KEY (id_hero_one) REFERENCES hero(id)
 )
 
+create table phase(
+	id int AUTO_INCREMENT,
+	id_hero_one int,
+	id_battle int,
+)
+
 create table world(
 	id int AUTO_INCREMENT,
 	name varchar(200),

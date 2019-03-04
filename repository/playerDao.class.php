@@ -6,21 +6,21 @@ class PlayerDao extends DataSource {
 
 	function insert(Player $player){
 	     $sql = "insert into player values(null,'".$player->getLogin()."','".$player->getPassword()."','".$player->getEmail()."')";
-	     parent::insert($sql);
+	     parent::insertEntity($sql);
 	 }
 
 	function findAll(){
 	     $sql = "select * from player";
-	     return parent::findAll($sql);
+	     return parent::findAllEntity($sql);
 	}
 
 	function findOne($id){
 	     $sql = "select * from player where id =".$id;
-	     return parent::findAll($sql);
+	     return parent::findOneEntity($sql);
 	}
 
 	function delete($id){
 		 $sql = "delete from player where id =".$id;
-		 parent::delete($sql);
+		 parent::deleteEntity($sql);
 	}
 }

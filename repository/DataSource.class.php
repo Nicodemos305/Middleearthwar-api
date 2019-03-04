@@ -8,21 +8,24 @@
 	private $user;
 	private $password;
 
-  function findOne($sql){
+  function findOneEntity($sql){
+  		$entity = "";
  		$conn = $this->conectDb("localhost", "root", "","middleearthwar");
-		$result = $conn->query($sql);
-
+ 		$result = $conn->query($sql);
+ 	
 		if ($result->num_rows > 0) {
 		 while($row = $result->fetch_assoc()) {
-				return  $row;
+				$entity = $row;
+				break;
 			}
 		} else {
 			return null;
 		}
 		$conn->close();
+		return $entity;
    }
 	
-   function findAll($sql){
+   function findAllEntity($sql){
 		
 		$resultado = array ();
  		$conn = $this->conectDb("localhost", "root", "","middleearthwar");
@@ -40,7 +43,7 @@
 		$conn->close();
    }
 
-	function insert($sql){
+	function insertEntity($sql){
 		$conn = $this->conectDb("localhost", "root", "","middleearthwar");
 		if ($conn->query($sql) === TRUE) {
 			return "0";
@@ -52,7 +55,7 @@
 	}
 	
 
-	function delete($sql){			
+	function deleteEntity($sql){			
 	   $conn = $this->conectDb("localhost", "root", "","middleearthwar");
 			if ($conn->query($sql) === TRUE) {
 				echo "Excluído com sucesso";
