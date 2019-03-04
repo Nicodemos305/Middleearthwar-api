@@ -1,26 +1,17 @@
 <?php
  header('Content-type: application/json');
- header('Access-Control-Allow-Origin: *');  
-include_once('../../repository/battleDao.class.php');
-include_once('../../repository/heroDao.class.php');
-include_once('../../entity/Battle.class.php');
+ header('Access-Control-Allow-Origin: *');
+include_once($_SERVER['DOCUMENT_ROOT']."/Rpgcloud/entity/Battle.class.php");
+include_once($_SERVER['DOCUMENT_ROOT']."/Rpgcloud/repository/battleDao.class.php");
+include_once($_SERVER['DOCUMENT_ROOT']."/Rpgcloud/repository/heroDao.class.php");
 
-
- $battleDao = new BattleDao();
- $heroDao = new HeroDao();
- $battle1 = new Battle();
- $enemy =  $battleDao->searchEnemy(2);
- $playerOne = $heroDao->findOne(2);
-
-
-echo $enemy['name'];
-echo "xxxxx";
-echo $playerOne['name'];
-
+$battleDao = new BattleDao();
+$heroDao = new HeroDao();
+$battle1 = new Battle(); 
+$enemy =  $battleDao->searchEnemy(2);
+$playerOne = $heroDao->findOne(2);
 
 $battle1->setPlayerOne($playerOne);
-
-
 $battle1->setPlayerTwo($enemy);
 
  $result = "";
@@ -29,8 +20,7 @@ $battle1->setPlayerTwo($enemy);
 $hp1 = $playerOne['hp'];
 $hp2 = $enemy['hp'];
 $batalha = true;
-while($batalha){
-	
+while($batalha){	
 	$random = rand(0,$enemy['atk']);
 	$hp1 = $hp1 - $random;
 	echo "HP1 ".$hp1;
@@ -44,13 +34,8 @@ while($batalha){
 	}
 }
 
-
 if($hp1 == 0){
 	echo "Você perdeu";
 }else{
 	echo "Você ganhou";
 }
-
-
-
-

@@ -23,7 +23,6 @@ create table hero(
  FOREIGN KEY (id_player) REFERENCES player(id)
 );
 
-
 create table battle(
 	id int AUTO_INCREMENT,
 	id_hero_one int,
