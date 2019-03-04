@@ -6,8 +6,14 @@ include_once($_SERVER['DOCUMENT_ROOT']."/Rpgcloud/repository/DataSource.class.ph
 class BattleDao extends DataSource{
 
 	function battleBegin(Battle $battle){
-  		$sql = "insert into battle values(null,'".$battle->getPlayerOne()->getId()."','".$battle->getPlayerTwo()->getId()."','RUNING',0)";
+  		$sql = "insert into battle values(null,'".$battle->getPlayerOne()."','".$battle->getPlayerTwo()."','RUNING',0)";
 	    parent::insertEntity($sql);
+
+	}
+
+	function battleEnd($idBattle,$idWinner){
+  		$sql = "update battle set win_battle = ".$idWinner." where id = ".$idBattle;
+	    parent::update($sql);
 
 	}
 

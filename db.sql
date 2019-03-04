@@ -37,9 +37,11 @@ create table phase(
 	id int AUTO_INCREMENT,
 	id_hero_one int,
 	id_battle int,
+	PRIMARY KEY(id)
 )
 
 create table world(
 	id int AUTO_INCREMENT,
 	name varchar(200),
+	PRIMARY KEY(id)
 )

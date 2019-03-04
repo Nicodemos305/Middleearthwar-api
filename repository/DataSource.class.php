@@ -10,7 +10,7 @@
 
   function findOneEntity($sql){
   		$entity = "";
- 		$conn = $this->conectDb("localhost", "root", "","middleearthwar");
+ 		$conn = $this->conectDb("localhost", "root", "","rpgcloud");
  		$result = $conn->query($sql);
  	
 		if ($result->num_rows > 0) {
@@ -28,7 +28,7 @@
    function findAllEntity($sql){
 		
 		$resultado = array ();
- 		$conn = $this->conectDb("localhost", "root", "","middleearthwar");
+ 		$conn = $this->conectDb("localhost", "root", "","rpgcloud");
 		$result = $conn->query($sql);
 
 		if ($result->num_rows > 0) {
@@ -44,7 +44,7 @@
    }
 
 	function insertEntity($sql){
-		$conn = $this->conectDb("localhost", "root", "","middleearthwar");
+		$conn = $this->conectDb("localhost", "root", "","rpgcloud");
 		if ($conn->query($sql) === TRUE) {
 			return "0";
 		} else {
@@ -56,7 +56,7 @@
 	
 
 	function deleteEntity($sql){			
-	   $conn = $this->conectDb("localhost", "root", "","middleearthwar");
+	   $conn = $this->conectDb("localhost", "root", "","rpgcloud");
 			if ($conn->query($sql) === TRUE) {
 				echo "Excluído com sucesso";
 			} else {
@@ -67,7 +67,7 @@
 	}
 
 	function update($sql){
- 		$conn =conectDb($host, $user, $password, $db);
+ 		   $conn = $this->conectDb("localhost", "root", "","rpgcloud");
 			if ($conn->query($sql) === TRUE) {
 				echo "Record updated successfully";
 			} else {

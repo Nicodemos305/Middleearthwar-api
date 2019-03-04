@@ -11,24 +11,25 @@ $battle1 = new Battle();
 $enemy =  $battleDao->searchEnemy(2);
 $playerOne = $heroDao->findOne(2);
 
-$battle1->setPlayerOne($playerOne);
-$battle1->setPlayerTwo($enemy);
+$battle1->setPlayerOne($playerOne['id']);
+$battle1->setPlayerTwo($enemy['id']);
 
  $result = "";
- $result = array('playerOne'=>$battle1->getPlayerOne(),'playerTwo' => $battle1->getPlayerTwo());
 
 $hp1 = $playerOne['hp'];
 $hp2 = $enemy['hp'];
 $batalha = true;
+
+$battleDao->battleBegin($battle1);
+
 while($batalha){	
 	$random = rand(0,$enemy['atk']);
 	$hp1 = $hp1 - $random;
-	echo "HP1 ".$hp1;
-	echo "<br/>";
+
 	$random = rand(0,$enemy['atk']);
 	$hp2 = $hp2 - $random;
-    echo "HP2".$hp2;
-    echo "<br/> ";
+   
+
 	if($hp1 <= 0 || $hp2 <= 0){
 	  $batalha = false;
 	}
@@ -36,6 +37,8 @@ while($batalha){
 
 if($hp1 == 0){
 	echo "Você perdeu";
+	$battleDao->battleEnd(10,$playerOne['id']);
 }else{
 	echo "Você ganhou";
+	$battleDao->battleEnd(10,$enemy['id']);
 }
