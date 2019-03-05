@@ -9,9 +9,3 @@ $result = $rankingDao->rankingWinners();
 
  echo json_encode($result);
 
-
-
-
-
-
-

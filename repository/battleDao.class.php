@@ -8,7 +8,6 @@ class BattleDao extends DataSource{
 	function battleBegin(Battle $battle){
   		$sql = "insert into battle values(null,'".$battle->getPlayerOne()."','".$battle->getPlayerTwo()."','RUNING',0)";
 	    return parent::insertEntity($sql);
-
 	}
 
 	function battleEnd($idBattle,$idWinner){
