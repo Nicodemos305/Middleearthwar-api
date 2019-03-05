@@ -1,5 +1,5 @@
 <?php 
-	public class Phase{
+	 class Phase{
 
 	private $id;
 	private $battle_id;

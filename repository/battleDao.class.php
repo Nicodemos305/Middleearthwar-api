@@ -6,7 +6,7 @@ include_once($_SERVER['DOCUMENT_ROOT']."/Rpgcloud/repository/DataSource.class.ph
 class BattleDao extends DataSource{
 
 	function battleBegin(Battle $battle){
-  		$sql = "insert into battle values(null,'".$battle->getPlayerOne()."','".$battle->getPlayerTwo()."','RUNING',0)";
+  		$sql = "insert into battle values(null,'".$battle->getPlayerOne()."','".$battle->getPlayerTwo()."',".$battle->getHpOne().",".$battle->getHpTwo().",'RUNING',0)";
 	    return parent::insertEntity($sql);
 	}
 
@@ -19,6 +19,22 @@ class BattleDao extends DataSource{
 	function searchEnemy($idHero){
 		$sql = "select * from hero where id <> ".$idHero;
 		return parent::findOneEntity($sql);
+	}
+
+	function battleRunning($id_hero_one,$id_hero_two){
+		$sql = "select * from battle where id_hero_one = $id_hero_one and id_hero_two = $id_hero_two and status_battle = 'RUNING' and win_battle = 0";
+		return parent::findOneEntity($sql);
+	}
+
+	function hpMinusPlayerOne($hp,$id_battle){
+		$sql = "update battle set hp_hero_one = ".$hp." where id = ".$id_battle;
+		parent::update($sql);
+
+	}
+
+	function hpMinusPlayerTwo($hp,$id_battle){
+		$sql = "update battle set hp_hero_two = ".$hp." where id = ".$id_battle;
+		parent::update($sql);
 	}
 
 }

@@ -25,7 +25,7 @@ class PlayerDao extends DataSource {
 	}
 
 	function signIn($login,$password){
-		 $sql = "select login, password, email  from player where login ='$login' and password ='$password'";
+		 $sql = "select login, email  from player where login ='$login' and password ='$password'";
 		 return parent::findOneEntity($sql);
 	}
 }

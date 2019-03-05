@@ -3,7 +3,7 @@ CREATE DATABASE if not EXISTS rpgcloud;
 create table player (
  id int AUTO_INCREMENT,
  login varchar(255),
- password varchar(255),
+ password varchar(800),
  email varchar(255),
  PRIMARY KEY(id)
 );
@@ -27,6 +27,8 @@ create table battle(
 	id int AUTO_INCREMENT,
 	id_hero_one int,
 	id_hero_two int,
+	hp_hero_one int,
+	hp_hero_two int,
 	status_battle varchar(10),
 	win_battle int,
 	PRIMARY KEY(id),
