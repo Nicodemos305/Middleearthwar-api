@@ -43,5 +43,6 @@ create table phase(
 create table world(
 	id int AUTO_INCREMENT,
 	name varchar(200),
+	description varchar(600),
 	PRIMARY KEY(id)
 )

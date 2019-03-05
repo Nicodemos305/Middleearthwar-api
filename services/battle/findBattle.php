@@ -26,7 +26,7 @@ while($batalha){
 	$random = rand(0,$enemy['atk']);
 	$hp1 = $hp1 - $random;
 
-	$random = rand(0,$enemy['atk']);
+	$random = rand(0,$playerOne['atk']);
 	$hp2 = $hp2 - $random;
    
 

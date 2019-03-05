@@ -1,8 +1,9 @@
 <?php 
-	public class World{
+	 class World{
 
 		private $id;
 		private $name;
+		private $description;
 
 		public function getId(){
 			return $this->id;
@@ -18,5 +19,13 @@
 
 		public function setName($name){
 			$this->name = $name;
+		}
+
+		public function getDescription(){
+			return $this->description;
+		}
+
+		public function setDescription($description){
+			$this->description = $description;
 		}
 	}
