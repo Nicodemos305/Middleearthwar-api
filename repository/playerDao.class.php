@@ -23,4 +23,9 @@ class PlayerDao extends DataSource {
 		 $sql = "delete from player where id =".$id;
 		 parent::deleteEntity($sql);
 	}
+
+	function signIn($login,$password){
+		 $sql = "select login, password, email  from player where login ='$login' and password ='$password'";
+		 return parent::findOneEntity($sql);
+	}
 }
