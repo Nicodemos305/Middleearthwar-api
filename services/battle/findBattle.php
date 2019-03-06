@@ -6,13 +6,14 @@ include_once($_SERVER['DOCUMENT_ROOT']."/Rpgcloud/entity/Phase.class.php");
 include_once($_SERVER['DOCUMENT_ROOT']."/Rpgcloud/repository/battleDao.class.php");
 include_once($_SERVER['DOCUMENT_ROOT']."/Rpgcloud/repository/heroDao.class.php");
 include_once($_SERVER['DOCUMENT_ROOT']."/Rpgcloud/repository/phaseDao.class.php");
+include_once($_SERVER['DOCUMENT_ROOT']."/Rpgcloud/services/battle/battleCore.class.php");
 
 $battleDao = new BattleDao();
 $heroDao = new HeroDao();
 $phaseDao = new PhaseDao();
 $battle1 = new Battle(); 
 $phase = new Phase(); 
-
+$battleCore = new BattleCore();
 $enemy =  $battleDao->searchEnemy(2);
 $playerOne = $heroDao->findOne(2);
 
@@ -26,42 +27,36 @@ $hp1 = $playerOne['hp'];
 $hp2 = $enemy['hp'];
 $batalha = true;
 
-$battle = $battleDao->battleRunning($playerOne['id'],$enemy['id']);
+$battle = $battleCore->battleBegin($battle1);
 
-if($battle == null){
-    $id_battle = $battleDao->battleBegin($battle1);
-  }else{
-  	$id_battle = $battle ['id'];
-  }
-
-
-$recentPhase = $phaseDao->findPhase($id_battle);
+$recentPhase = $phaseDao->findPhase($battle['id']);
 
 if($recentPhase == null){
-	$phase->setBattle_id($id_battle);
+	$phase->setBattle_id($battle['id']);
 	$phase->setPlayer_id($playerOne['id']);
 	$phaseDao->insert($phase);
 }else if($recentPhase['id_hero_one'] == $playerOne['id']){
 	$random = rand(1,$enemy['atk']);
 	$hp1 = $battle['hp_hero_one'] - $random;
 
-	$battleDao->hpMinusPlayerOne($hp1,$id_battle);
+	$battleDao->hpMinusPlayerOne($hp1,$battle['id']);
 
-	$phase->setBattle_id($id_battle);
+	$phase->setBattle_id($battle['id']);
 	$phase->setPlayer_id($enemy['id']);
 	$phaseDao->insert($phase);
 }else if($recentPhase['id_hero_one'] == $enemy['id']){
 	$random = rand(1,$playerOne['atk']);
 	$hp1 = $battle['hp_hero_two'] - $random;
 
-	$battleDao->hpMinusPlayerTwo($hp1,$id_battle);
+	$battleDao->hpMinusPlayerTwo($hp1,$battle['id']);
 
-	$phase->setBattle_id($id_battle);
+	$phase->setBattle_id($battle['id']);
 	$phase->setPlayer_id($playerOne['id']);
 	$phaseDao->insert($phase);
 }
 
-$phase_all = $phaseDao->findAllPhases($id_battle);
+
+$phase_all = $phaseDao->findAllPhases($battle['id']);
 
 $result = array ('battle'=>$battle,'phases'=>$phase_all);
 
@@ -70,8 +65,8 @@ echo json_encode($result);
 
 if($battle['hp_hero_one']  <= 0 && $battle['hp_hero_one'] != null){
 	echo "Você perdeu";
-	$battleDao->battleEnd($id_battle,$playerOne['id']);
+	$battleDao->battleEnd($battle['id'],$playerOne['id']);
 }else if($battle['hp_hero_two']  <= 0 && $battle['hp_hero_two'] != null){
 	echo "Você ganhou";
-	$battleDao->battleEnd($id_battle,$enemy['id']);
+	$battleDao->battleEnd($battle['id'],$enemy['id']);
 }
