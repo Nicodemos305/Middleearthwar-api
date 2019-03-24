@@ -36,5 +36,4 @@ class BattleDao extends DataSource{
 		$sql = "update battle set hp_hero_two = ".$hp." where id = ".$id_battle;
 		parent::update($sql);
 	}
-
 }

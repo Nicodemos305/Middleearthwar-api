@@ -19,10 +19,4 @@ class PhaseDao extends DataSource {
 	     $sql = "select * from phase where id_battle =".$id_battle." ORDER BY id DESC limit 1";
 	     return parent::findOneEntity($sql);
 	}
-
 }
-
-
-
-
-

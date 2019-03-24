@@ -58,7 +58,7 @@
 	function deleteEntity($sql){			
 	   $conn = $this->conectDb("localhost", "root", "","rpgcloud");
 			if ($conn->query($sql) === TRUE) {
-				echo "Excluído com sucesso";
+				//echo "Excluído com sucesso";
 			} else {
 				echo "Erro: " . $conn->error;
 			}
@@ -69,7 +69,7 @@
 	function update($sql){
  		   $conn = $this->conectDb("localhost", "root", "","rpgcloud");
 			if ($conn->query($sql) === TRUE) {
-				echo "Record updated successfully";
+				//echo "Record updated successfully";
 			} else {
 				echo "Error updating record: " . $conn->error;
 			}

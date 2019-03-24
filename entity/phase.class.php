@@ -28,6 +28,4 @@
 	public function setPlayer_id($player_id){
 		$this->player_id = $player_id;
 	}
-
-
-	}
+}

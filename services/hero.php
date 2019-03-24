@@ -19,9 +19,10 @@
 	  }
   }else if($_SERVER['REQUEST_METHOD'] == "POST"){
   	$name= $_POST['name'];
- 	$hero = new Hero();
+    $race= $_POST['race'];
+ 	  $hero = new Hero();
     $hero->setName($name);
-    $hero->newHero();
+    $hero->newHero($race);
     $id = 1;
     $heroDao->insert($hero,$id);
   }else if($_SERVER['REQUEST_METHOD'] == "DELETE"){
