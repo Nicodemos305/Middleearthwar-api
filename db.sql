@@ -29,6 +29,20 @@ create table hero(
  FOREIGN KEY (id_player) REFERENCES player(id)
 );
 
+
+create table race(
+ id int AUTO_INCREMENT,
+ name varchar(255),
+ hp int,
+ mp int,
+ atk int,
+ defense int,
+ agility int,
+ inteligence int,
+ id_world int,
+ PRIMARY KEY(id)
+);
+
 create table battle(
 	id int AUTO_INCREMENT,
 	id_hero_one int,
