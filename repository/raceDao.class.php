@@ -20,6 +20,12 @@ class RaceDao extends DataSource {
 	     return parent::findOneEntity($sql);
 	}
 
+	function findByName($name){
+	     $sql = "select * from race where name ='".$name."'";
+
+	     return parent::findOneEntity($sql);
+	}
+
 	function delete($id){
 		 $sql = "delete from race where id =".$id;
 		return parent::deleteEntity($sql);

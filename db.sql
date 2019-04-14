@@ -8,8 +8,6 @@ create table player (
  PRIMARY KEY(id)
 );
 
-
-
 create table quest(
 )
 
