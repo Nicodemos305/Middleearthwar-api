@@ -6,7 +6,7 @@ class PhaseDao extends DataSource {
 
 
 	function insert(Phase $phase){
-	     $sql = "insert into phase values(null,".$phase->getPlayer_id().",".$phase->getBattle_id().")";
+	     $sql = "insert into phase values(null,".$phase->getPlayer_id().",".$phase->getBattle_id().",'".$phase->getDescription()."')";
 	     parent::insertEntity($sql);
 	 }
 

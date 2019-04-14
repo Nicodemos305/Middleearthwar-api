@@ -4,6 +4,7 @@
 	private $id;
 	private $battle_id;
 	private $player_id;
+	private $description;
 
 	public function getId(){
 		return $this->id;
@@ -27,5 +28,14 @@
 
 	public function setPlayer_id($player_id){
 		$this->player_id = $player_id;
+	}
+
+
+	public function getDescription(){
+		return $this->description;
+	}
+
+	public function setDescription($description){
+		$this->description = $description;
 	}
 }

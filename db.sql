@@ -8,6 +8,11 @@ create table player (
  PRIMARY KEY(id)
 );
 
+
+
+create table quest(
+)
+
 create table hero(
  id int AUTO_INCREMENT,
  name varchar(255),
@@ -19,6 +24,7 @@ create table hero(
  agility int,
  inteligence int,
  id_player int,
+ id_world int,
  PRIMARY KEY(id),
  FOREIGN KEY (id_player) REFERENCES player(id)
 );
@@ -39,6 +45,7 @@ create table phase(
 	id int AUTO_INCREMENT,
 	id_hero_one int,
 	id_battle int,
+	description varchar(400),
 	PRIMARY KEY(id)
 )
 

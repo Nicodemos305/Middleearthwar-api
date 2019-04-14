@@ -31,7 +31,7 @@ $batalha = true;
 $battle = $battleCore->battleBegin($battle1);
 
 if($battle['hp_hero_one']  > 0 || $battle['hp_hero_two'] > 0){
-	$battleCore->routePhase($battle,$recentPhase,$phase,$enemy,$playerOne,$phaseDao,$battleDao);
+	$battleCore->routePhaseWithCpu($battle,$recentPhase,$phase,$enemy,$playerOne,$phaseDao,$battleDao);
 }
 
 if($battle['hp_hero_one']  <= 0 && $battle['hp_hero_one'] != null){
