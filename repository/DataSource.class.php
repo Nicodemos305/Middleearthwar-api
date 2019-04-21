@@ -2,12 +2,6 @@
 
  class DataSource{
 
-	private $conn;	
-	private $host;
-	private $db;
-	private $user;
-	private $password;
-
   function findOneEntity($sql){
   		$entity = "";
  		$conn = $this->conectDb("localhost", "root", "","rpgcloud");

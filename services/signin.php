@@ -3,11 +3,12 @@
 	header('Access-Control-Allow-Origin: *');
     include_once($_SERVER['DOCUMENT_ROOT']."/Rpgcloud/repository/playerDao.class.php");
 	$playerDao = new PlayerDao();
-	
+	$json = file_get_contents('php://input');
+	$post = json_decode($json);
 
-	if(validate($_POST)){
-		$login = $_POST['login'];
-		$password = $_POST['password'];
+	if(validate($post)){
+		$login = $post->login;
+		$password = $post->password;
 	    $player = $playerDao->signIn($login,$password);
  	    echo json_encode($player);
 	}
@@ -15,7 +16,7 @@
 
  function validate($post){
 	$player = new Player();
-	if(!isset($post['login']) || $post['login'] == ""){
+	if(!isset($post->login) || $post->login == ""){
 	   $msg = $msg."Login nao definido";
 	   $result = array('msg'=>$msg);
 	   echo json_encode($result);
@@ -23,7 +24,7 @@
 	   return false;
 	}
     
-    if(!isset($post['password']) || $post['password'] == ""){
+    if(!isset($post->password) || $post->password == ""){
 	    $msg = $msg."password nao definido";
 	    $result = array('msg'=>$msg);
 	    echo json_encode($result);
