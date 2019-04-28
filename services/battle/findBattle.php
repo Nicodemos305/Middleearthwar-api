@@ -23,7 +23,7 @@ $battle1->setHpOne($playerOne['hp']);
 $battle1->setHpTwo($enemy['hp']);
 $result = "";
 $recentPhase = 0;
-$phase_all = "";
+$phase_all = [];
 $hp1 = $playerOne['hp'];
 $hp2 = $enemy['hp'];
 $batalha = true;

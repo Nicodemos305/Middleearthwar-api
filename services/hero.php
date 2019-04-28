@@ -3,6 +3,8 @@
   header('Access-Control-Allow-Origin: *');  
   include_once($_SERVER['DOCUMENT_ROOT']."/Rpgcloud/repository/heroDao.class.php");
   include_once($_SERVER['DOCUMENT_ROOT']."/Rpgcloud/repository/raceDao.class.php");
+  $json = file_get_contents('php://input');
+  $post = json_decode($json);
 
   $msg = "";
   $result = "";
@@ -20,8 +22,8 @@
 	  	 $result = array ('heroes'=>$heroes);
 	  }
   }else if($_SERVER['REQUEST_METHOD'] == "POST"){
-  	$name= $_POST['name'];
-    $race= $_POST['race'];
+  	$name= $post->name;
+    $race= $post->race;
  	  $hero = new Hero();
     $hero->setName($name);
     $raceInstance = $raceDao->findByName($race);

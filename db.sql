@@ -11,6 +11,23 @@ create table player (
 create table quest(
 )
 
+
+create table test(
+id int AUTO_INCREMENT,
+name varchar(255),
+goal varchar(10),
+result int,
+test int,
+PRIMARY KEY(id)
+)
+
+
+create table adventure(
+id int AUTO_INCREMENT,
+name varchar(255),
+PRIMARY KEY(id)
+)
+
 create table hero(
  id int AUTO_INCREMENT,
  name varchar(255),
