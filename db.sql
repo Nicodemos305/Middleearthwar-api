@@ -1,86 +1,11 @@
-CREATE DATABASE if NOT EXISTS rpgcloud; 
+CREATE DATABASE IF NOT EXISTS RPGCLOUD2;
 
-create table player (
- id int AUTO_INCREMENT,
- login varchar(255),
- password varchar(800),
- email varchar(255),
- PRIMARY KEY(id)
-);
-
-create table quest(
-)
-
-
-create table test(
-id int AUTO_INCREMENT,
-name varchar(255),
-goal varchar(10),
-result int,
-test int,
-PRIMARY KEY(id)
-)
-
-
-create table adventure(
-id int AUTO_INCREMENT,
-name varchar(255),
-PRIMARY KEY(id)
-)
-
-create table hero(
- id int AUTO_INCREMENT,
- name varchar(255),
- race varchar(255),
- hp int,
- mp int,
- atk int,
- defense int,
- agility int,
- inteligence int,
- id_player int,
- id_world int,
- PRIMARY KEY(id),
- FOREIGN KEY (id_player) REFERENCES player(id)
-);
-
-
-create table race(
- id int AUTO_INCREMENT,
- name varchar(255),
- hp int,
- mp int,
- atk int,
- defense int,
- agility int,
- inteligence int,
- id_world int,
- PRIMARY KEY(id)
-);
-
-create table battle(
-	id int AUTO_INCREMENT,
-	id_hero_one int,
-	id_hero_two int,
-	hp_hero_one int,
-	hp_hero_two int,
-	status_battle varchar(10),
-	win_battle int,
-	PRIMARY KEY(id),
-	FOREIGN KEY (id_hero_one) REFERENCES hero(id)
-)
-
-create table phase(
-	id int AUTO_INCREMENT,
-	id_hero_one int,
-	id_battle int,
-	description varchar(400),
-	PRIMARY KEY(id)
-)
-
-create table world(
-	id int AUTO_INCREMENT,
-	name varchar(200),
-	description varchar(600),
-	PRIMARY KEY(id)
-)
+CREATE TABLE PLAYER ( ID INT AUTO_INCREMENT, LOGIN VARCHAR(255), PASSWORD VARCHAR(800), EMAIL VARCHAR(255), PRIMARY KEY(ID) );
+CREATE TABLE QUEST( ) 
+CREATE TABLE TEST( ID INT AUTO_INCREMENT, NAME VARCHAR(255), GOAL VARCHAR(10), RESULT INT, TEST INT, PRIMARY KEY(ID) ) 
+CREATE TABLE ADVENTURE( ID INT AUTO_INCREMENT, NAME VARCHAR(255), PRIMARY KEY(ID) ) 
+CREATE TABLE HERO( ID INT AUTO_INCREMENT, NAME VARCHAR(255), RACE VARCHAR(255), HP INT, MP INT, ATK INT, DEFENSE INT, AGILITY INT, INTELIGENCE INT, ID_PLAYER INT, ID_WORLD INT, PRIMARY KEY(ID), FOREIGN KEY (ID_PLAYER) REFERENCES PLAYER(ID) );
+CREATE TABLE RACE( ID INT AUTO_INCREMENT, NAME VARCHAR(255), HP INT, MP INT, ATK INT, DEFENSE INT, AGILITY INT, INTELIGENCE INT, ID_WORLD INT, PRIMARY KEY(ID) );
+CREATE TABLE BATTLE( ID INT AUTO_INCREMENT, ID_HERO_ONE INT, ID_HERO_TWO INT, HP_HERO_ONE INT, HP_HERO_TWO INT, STATUS_BATTLE VARCHAR(10), WIN_BATTLE INT, PRIMARY KEY(ID), FOREIGN KEY (ID_HERO_ONE) REFERENCES HERO(ID) )
+ CREATE TABLE PHASE( ID INT AUTO_INCREMENT, ID_HERO_ONE INT, ID_BATTLE INT, DESCRIPTION VARCHAR(400), PRIMARY KEY(ID) ) 
+ CREATE TABLE WORLD( ID INT AUTO_INCREMENT, NAME VARCHAR(200), DESCRIPTION VARCHAR(600), PRIMARY KEY(ID) )
