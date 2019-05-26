@@ -1,5 +1,5 @@
 <?php
-include_once($_SERVER['DOCUMENT_ROOT']."/Rpgcloud/repository/DataSource.class.php");
+include_once("DataSource.class.php");
 
 class RankingDao extends DataSource{
 

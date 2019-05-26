@@ -1,7 +1,7 @@
  <?php
 
-  include_once($_SERVER['DOCUMENT_ROOT']."/Rpgcloud/repository/DataSource.class.php");
-  include_once($_SERVER['DOCUMENT_ROOT']."/Rpgcloud/entity/Hero.class.php");
+  include_once("DataSource.class.php");
+  include_once("../entity/Hero.class.php");
 
 class HeroDao extends DataSource {
 

@@ -1,7 +1,7 @@
 <?php
 
-  include_once($_SERVER['DOCUMENT_ROOT']."/Rpgcloud/repository/DataSource.class.php");
-  include_once($_SERVER['DOCUMENT_ROOT']."/Rpgcloud/entity/Adventure.class.php");
+  include_once("DataSource.class.php");
+  include_once("../entity/Adventure.class.php");
 
 class AdventureDao extends DataSource {
 
