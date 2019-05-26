@@ -46,4 +46,12 @@ class Battle{
 		$this->hpTwo = $hpTwo;
 	}
 
+	public function getWhoWin(){
+		return $this->whoWin;
+	}
+
+	public function setWhoWin($whoWin){
+		$this->whoWin = $whoWin;
+	}
+
 }
