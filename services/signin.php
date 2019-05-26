@@ -15,7 +15,6 @@
 
 
  function validate($post){
-	$player = new Player();
 	if(!isset($post->login) || $post->login == ""){
 	   $msg = $msg."Login nao definido";
 	   $result = array('msg'=>$msg);

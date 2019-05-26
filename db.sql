@@ -1,4 +1,4 @@
-CREATE DATABASE if not EXISTS rpgcloud; 
+CREATE DATABASE if NOT EXISTS rpgcloud; 
 
 create table player (
  id int AUTO_INCREMENT,
