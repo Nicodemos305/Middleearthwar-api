@@ -1,7 +1,7 @@
 <?php
   header('Content-type: application/json');
   header('Access-Control-Allow-Origin: *');  
-  include_once($_SERVER['DOCUMENT_ROOT']."/Rpgcloud/repository/worldDao.class.php");
+  include_once(esc_url_raw($_SERVER['DOCUMENT_ROOT'])."/Rpgcloud/repository/worldDao.class.php");
 
   $msg = "";
   $result = "";
