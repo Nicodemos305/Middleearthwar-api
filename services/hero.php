@@ -1,8 +1,13 @@
 <?php 
   header('Content-type: application/json');
   header('Access-Control-Allow-Origin: *');  
-  include_once($_SERVER['DOCUMENT_ROOT']."/Rpgcloud/repository/heroDao.class.php");
-  include_once($_SERVER['DOCUMENT_ROOT']."/Rpgcloud/repository/raceDao.class.php");
+
+ function getDocumentRoot(){
+    return $_SERVER['DOCUMENT_ROOT'];
+ }
+
+  include_once(getDocumentRoot()."/Rpgcloud/repository/heroDao.class.php");
+  include_once(getDocumentRoot()."/Rpgcloud/repository/raceDao.class.php");
   $json = file_get_contents('php://input');
   $post = json_decode($json);
 
@@ -40,3 +45,5 @@
 
  
  echo json_encode($result);
+
+
