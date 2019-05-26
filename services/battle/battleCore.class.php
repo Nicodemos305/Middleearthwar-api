@@ -1,6 +1,6 @@
 <?php
-	include_once($_SERVER['DOCUMENT_ROOT']."/Rpgcloud/entity/Battle.class.php");
-    include_once($_SERVER['DOCUMENT_ROOT']."/Rpgcloud/repository/battleDao.class.php");
+	include_once($_SERVER['DOCUMENT_ROOT']."../../entity/Battle.class.php");
+    include_once($_SERVER['DOCUMENT_ROOT']."../../repository/battleDao.class.php");
 
 	class BattleCore{
 

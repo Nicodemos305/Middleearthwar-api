@@ -1,12 +1,12 @@
 <?php
  header('Content-type: application/json');
  header('Access-Control-Allow-Origin: *');
-include_once($_SERVER['DOCUMENT_ROOT']."/Rpgcloud/entity/Battle.class.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/Rpgcloud/entity/Phase.class.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/Rpgcloud/repository/battleDao.class.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/Rpgcloud/repository/heroDao.class.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/Rpgcloud/repository/phaseDao.class.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/Rpgcloud/services/battle/battleCore.class.php");
+include_once("../../entity/Battle.class.php");
+include_once("../../entity/Phase.class.php");
+include_once("../../repository/battleDao.class.php");
+include_once("../../repository/heroDao.class.php");
+include_once("../../repository/phaseDao.class.php");
+include_once("../../services/battle/battleCore.class.php");
 
 $battleDao = new BattleDao();
 $heroDao = new HeroDao();
