@@ -2,9 +2,10 @@
   header('Content-type: application/json');
   header('Access-Control-Allow-Origin: *');
 
-  $document_root =  $_SERVER['DOCUMENT_ROOT']; 
-  include_once($document_root."/Rpgcloud/repository/raceDao.class.php");
-  include_once($document_root."/Rpgcloud/entity/Race.class.php");
+
+  include_once("../repository/raceDao.class.php");
+  include_once("../entity/Race.class.php");
+  
   $msg = "";
   $result = "";
   $race = "";
