@@ -1,6 +1,6 @@
 <?php
 
-include_once("../entity/Battle.class.php");
+include_once("../../entity/Battle.class.php");
 include_once("DataSource.class.php");
 
 class BattleDao extends DataSource{

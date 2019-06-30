@@ -1,6 +1,6 @@
 <?php
   include_once("DataSource.class.php");
-  include_once("../entity/Phase.class.php");
+  include_once("../../entity/Phase.class.php");
 
 class PhaseDao extends DataSource {
 
