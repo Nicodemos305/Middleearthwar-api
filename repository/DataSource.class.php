@@ -4,7 +4,7 @@
 
   function findOneEntity($sql){
   		$entity = "";
- 		$conn = $this->conectDb("localhost", "root", "","rpgcloud");
+ 		$conn = $this->conectDb("localhost","rpgcloud");
  		$result = $conn->query($sql);
  	
 		if ($result->num_rows > 0) {
@@ -22,7 +22,7 @@
    function findAllEntity($sql){
 		
 		$resultado = array ();
- 		$conn = $this->conectDb("localhost", "root", "","rpgcloud");
+ 		$conn = $this->conectDb("localhost","rpgcloud");
 		$result = $conn->query($sql);
 
 		if ($result->num_rows > 0) {
@@ -38,7 +38,7 @@
    }
 
 	function insertEntity($sql){
-		$conn = $this->conectDb("localhost", "root", "","rpgcloud");
+		$conn = $this->conectDb("localhost","rpgcloud");
 		if ($conn->query($sql) === TRUE) {
 			return mysqli_insert_id($conn);
 		} else {
@@ -50,7 +50,7 @@
 	
 
 	function deleteEntity($sql){			
-	   $conn = $this->conectDb("localhost", "root", "","rpgcloud");
+	   $conn = $this->conectDb("localhost","rpgcloud");
 			if ($conn->query($sql) === TRUE) {
 				//echo "Excluído com sucesso";
 			} else {
@@ -61,7 +61,7 @@
 	}
 
 	function update($sql){
- 		   $conn = $this->conectDb("localhost", "root", "","rpgcloud");
+ 		   $conn = $this->conectDb("localhost","rpgcloud");
 			if ($conn->query($sql) === TRUE) {
 				//echo "Record updated successfully";
 			} else {
@@ -71,8 +71,10 @@
 			$conn->close();
 	}
 
-	function conectDb($host, $user, $password, $db){
-		$conn = new mysqli($host, $user, $password, $db);
+	function conectDb($host, $db){
+		$dbuser = $_ENV['MYSQL_USER'];
+		$dbpass = $_ENV['MYSQL_PASS'];
+		$conn = new mysqli("mysql", $dbuser, $dbpass, $db);
 			if ($conn->connect_error) {
 				die("Connection failed: " . $conn->connect_error);
 			} else{
