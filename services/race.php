@@ -6,6 +6,8 @@
   include_once("../repository/raceDao.class.php");
   include_once("../entity/Race.class.php");
   
+  $json = file_get_contents('php://input');
+  $post = json_decode($json);
   $msg = "";
   $result = "";
   $race = "";
@@ -20,13 +22,13 @@
 	  	 $result = array ('race'=>$race);
 	  }
   }else if($_SERVER['REQUEST_METHOD'] == "POST"){
-  	$name= $_POST['name'];
-    $hp = $_POST['hp'];
-    $mp = $_POST['mp'];
-    $atk = $_POST['atk'];
-    $defense = $_POST['defense'];
-    $agility = $_POST['agility'];
-    $inteligence = $_POST['inteligence'];
+  	$name= $post->name;
+    $hp = $post->hp;
+    $mp = $post->mp;
+    $atk = $post->atk;
+    $defense = $post->defense;
+    $agility = $post->agility;
+    $inteligence = $post->inteligence;
 
  	  $raceInstance = new Race();
     $raceInstance->setName($name);
