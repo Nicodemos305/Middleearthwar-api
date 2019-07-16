@@ -47,5 +47,4 @@ class Test{
 	public function setTest($test){
 		$this->test = $test;
 	}
-
 }

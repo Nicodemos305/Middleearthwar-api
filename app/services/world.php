@@ -20,7 +20,7 @@
   }else if($_SERVER['REQUEST_METHOD'] == "POST"){
   	$name= $_POST['name'];
   	$description= $_POST['description'];
- 	$world = new World();
+ 	  $world = new World();
     $world->setName($name);
     $world->setDescription($description);
     $worldDao->insert($world);
@@ -30,4 +30,4 @@
      $result = array ('msg'=>$msg);
   }
  
- echo json_encode($result);
+  echo json_encode($result);

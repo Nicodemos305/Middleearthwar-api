@@ -74,6 +74,4 @@ class Race {
 	public function setInteligence($inteligence){
 		$this->inteligence = $inteligence;
 	}
-
-
 }

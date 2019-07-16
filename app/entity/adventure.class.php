@@ -29,5 +29,4 @@ class Adventure {
 	public function setQuests($quests){
 		$this->quests = $quests;
 	}
-
 }

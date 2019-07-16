@@ -20,7 +20,6 @@
    }
 	
    function findAllEntity($sql){
-		
 		$resultado = array ();
  		$conn = $this->conectDb();
 		$result = $conn->query($sql);
@@ -30,7 +29,6 @@
 				array_push($resultado, $row);
 			}
 			return $resultado;
-			
 		} else {
 			return null;
 		}
@@ -51,24 +49,24 @@
 
 	function deleteEntity($sql){			
 	   $conn = $this->conectDb();
-			if ($conn->query($sql) === TRUE) {
-				//echo "Excluído com sucesso";
-			} else {
-				echo "Erro: " . $conn->error;
-			}
+		if ($conn->query($sql) === TRUE) {
+			//echo "Excluído com sucesso";
+		} else {
+			echo "Erro: " . $conn->error;
+		}
 
-			$conn->close();
+		$conn->close();
 	}
 
 	function update($sql){
- 		   $conn = $this->conectDb();
-			if ($conn->query($sql) === TRUE) {
-				//echo "Record updated successfully";
-			} else {
-				echo "Error updating record: " . $conn->error;
-			}
+ 		$conn = $this->conectDb();
+		if ($conn->query($sql) === TRUE) {
+			//echo "Record updated successfully";
+		} else {
+			echo "Error updating record: " . $conn->error;
+		}
 
-			$conn->close();
+		$conn->close();
 	}
 
 	function conectDb(){

@@ -1,8 +1,9 @@
 <?php
-	include_once("../../entity/Battle.class.php");
-    include_once("../../repository/battleDao.class.php");
+	
+include_once("../../entity/Battle.class.php");
+include_once("../../repository/battleDao.class.php");
 
-	class BattleCore{
+class BattleCore{
 
 	function battleBegin($battleAux){
 	    $battleDao = new BattleDao();
@@ -35,7 +36,7 @@
 			//dano critico
 			$critical = rand(1,6);
 			//dano critico
-		//esquiva
+			//esquiva
 			$esquiva = rand(0,$playerOne['agility']);
 			if($esquiva != $playerOne['agility']){
 				$phase->setDescription("O Herói ".$playerOne['name']." esquivou.");
@@ -50,7 +51,7 @@
 				$phase->setDescription("O Herói ".$playerOne['name']." recebeu ".$random." de dano.");
 			}
 			}
-		//esquiva
+			//esquiva
 			//$hp1 = $hp1+$playerOne['defense'];
 			$battleDao->hpMinusPlayerOne($hp1,$battleAux['id']);
 

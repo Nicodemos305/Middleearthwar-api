@@ -1,9 +1,9 @@
 <?php
-  include_once("DataSource.class.php");
-  include_once("../../entity/Phase.class.php");
+
+include_once("DataSource.class.php");
+include_once("../../entity/Phase.class.php");
 
 class PhaseDao extends DataSource {
-
 
 	function insert(Phase $phase){
 	     $sql = "insert into phase values(null,".$phase->getPlayer_id().",".$phase->getBattle_id().",'".$phase->getDescription()."')";

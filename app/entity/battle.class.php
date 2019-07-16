@@ -9,7 +9,6 @@ class Battle{
 	private $hpOne;
 	private $hpTwo;
 
-
 	public function getPlayerOne(){
 		return $this->playerOne;
 	}

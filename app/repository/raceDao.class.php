@@ -1,7 +1,7 @@
  <?php
 
-  include_once("DataSource.class.php");
-  include_once("../entity/Race.class.php");
+include_once("DataSource.class.php");
+include_once("../entity/Race.class.php");
 
 class RaceDao extends DataSource {
 
