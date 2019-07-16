@@ -13,7 +13,7 @@ services:
     build:
       context: ./php
     volumes:
-      - ".:/var/www/html"
+      - "./app:/var/www/html"
     ports:
       - "9000:9000"
     depends_on:
