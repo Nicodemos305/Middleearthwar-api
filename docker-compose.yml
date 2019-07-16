@@ -21,6 +21,8 @@ services:
     environment:
       - MYSQL_USER=root
       - MYSQL_PASS=123.456
+      - DATA_BASE=rpgcloud
+      - DATA_BASE_ENDPOINT=mysql
   mysql:
     image: mysql:5.7.20
     volumes:

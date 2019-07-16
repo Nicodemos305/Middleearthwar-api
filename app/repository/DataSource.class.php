@@ -74,8 +74,9 @@
 	function conectDb(){
 		$dbuser = $_ENV['MYSQL_USER'];
 		$dbpass = $_ENV['MYSQL_PASS'];
-		$db = "rpgcloud";
-		$conn = new mysqli("mysql", $dbuser, $dbpass, $db);
+		$endpoint = $_ENV['DATA_BASE_ENDPOINT'];
+		$db = $_ENV['DATA_BASE'];
+		$conn = new mysqli($endpoint, $dbuser, $dbpass, $db);
 			if ($conn->connect_error) {
 				die("Connection failed: " . $conn->connect_error);
 			} else{
