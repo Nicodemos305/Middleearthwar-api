@@ -20,7 +20,7 @@
 	  	 $result = array ('worlds'=>$worlds);
 	  }
   }else if($_SERVER['REQUEST_METHOD'] == "POST"){
-  	$name= $post->name
+  	$name= $post->name;
   	$description= $post->description;
  	  $world = new World();
     $world->setName($name);
