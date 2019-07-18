@@ -4,7 +4,6 @@
   include_once("../repository/adventureDao.class.php");
   include_once("../entity/Adventure.class.php");
 
-
   $msg = "";
   $result = "";
   $adventures = [];
@@ -13,22 +12,25 @@
   $json = file_get_contents('php://input');
   $post = json_decode($json);
 
-  if($_SERVER['REQUEST_METHOD'] == "GET"){
-	 if(isset($_GET['id'])){
-	 	$adventures = $adventureDao->findOne($_GET['id']);
-	 	$result = array ('adventures'=>$adventures);
-	  }else{
-	  	 $adventures = $adventureDao->findAll();
-	  	 $result = array ('adventures'=>$adventures);
-	  }
-  }else if($_SERVER['REQUEST_METHOD'] == "POST"){
-  	$adventure->setName($post->name);
-  	$adventureDao->insert($adventure);
-  }else if($_SERVER['REQUEST_METHOD'] == "DELETE"){
-	 $id = $_GET['id'];
-     $msg =  $adventureDao->delete($id);
-     $result = array ('msg'=>$msg);
-  }
- 
- echo json_encode($result);
+  switch ($_SERVER['REQUEST_METHOD']) {
+    case "GET":
+        if(isset($_GET['id'])){
+          $adventures = $adventureDao->findOne($_GET['id']);
+          $result = array ('adventures'=>$adventures);
+        }else{
+            $adventures = $adventureDao->findAll();
+            $result = array ('adventures'=>$adventures);
+        }
+        break;
+    case "POST":
+        $adventure->setName($post->name);
+        $adventureDao->insert($adventure);
+        break;
+    case "DELETE":
+        $id = $_GET['id'];
+        $msg =  $adventureDao->delete($id);
+        $result = array ('msg'=>$msg);
+        break;
+}
 
+echo json_encode($result);

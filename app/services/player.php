@@ -9,33 +9,35 @@ $post = json_decode($json);
 
     $msg = "";
 	$email = "";
-
 	$playerDao = new PlayerDao();
 	$player = new Player();
 	$result = "";
 	$players = "";
 
-  if($_SERVER['REQUEST_METHOD'] == "GET"){
-	 if(isset($_GET['id'])){
-	 	 $player =  $playerDao->findOne($_GET['id']);
-	 	 $result = array ('player'=>$player);
-	  }else{
-	 	$players =  $playerDao->findAll();
- 		$result = array ('players'=>$players);
-	  }
-  }else if($_SERVER['REQUEST_METHOD'] == "POST"){
-	$player= validate($post,$msg);
-	if($player){
-		$playerDao->insert($player);
-		$result = array ('login'=>$player->getLogin(),'senha'=>$player->getPassword(),'email'=>$player->getEmail());
-	}
-  }else if($_SERVER['REQUEST_METHOD'] == "DELETE"){
-      $id = $_GET['id'];
-      $playerDao->delete($id);
-  }
- 
- echo json_encode($result);
+  switch ($_SERVER['REQUEST_METHOD']) {
+    case "GET":
+		if(isset($_GET['id'])){
+			$player =  $playerDao->findOne($_GET['id']);
+			$result = array ('player'=>$player);
+		}else{
+		$players =  $playerDao->findAll();
+		$result = array ('players'=>$players);
+		}
+        break;
+    case "POST":
+		$player= validate($post,$msg);
+		if($player){
+			$playerDao->insert($player);
+			$result = array ('login'=>$player->getLogin(),'senha'=>$player->getPassword(),'email'=>$player->getEmail());
+		}
+        break;
+    case "DELETE":
+		$id = $_GET['id'];
+		$playerDao->delete($id);
+        break;
+}
 
+echo json_encode($result);
 
  function validate($post,$msg){
 	$player = new Player();

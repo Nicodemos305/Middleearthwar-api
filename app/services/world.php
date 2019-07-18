@@ -11,25 +11,29 @@
   $world = "";
   $worldDao = new WorldDao();
 
-  if($_SERVER['REQUEST_METHOD'] == "GET"){
-	 if(isset($_GET['id'])){
-	 	$world = $worldDao->findOne($_GET['id']);
-	 	$result = array ('world'=>$world);
-	  }else{
-	  	 $worlds = $worldDao->findAll();
-	  	 $result = array ('worlds'=>$worlds);
-	  }
-  }else if($_SERVER['REQUEST_METHOD'] == "POST"){
-  	$name= $post->name;
-  	$description= $post->description;
- 	  $world = new World();
-    $world->setName($name);
-    $world->setDescription($description);
-    $worldDao->insert($world);
-  }else if($_SERVER['REQUEST_METHOD'] == "DELETE"){
-	 $id = $_GET['id'];
-     $msg =  $worldDao->delete($id);
-     $result = array ('msg'=>$msg);
-  }
+  switch ($_SERVER['REQUEST_METHOD']) {
+    case "GET":
+        if(isset($_GET['id'])){
+          $world = $worldDao->findOne($_GET['id']);
+          $result = array ('world'=>$world);
+        }else{
+            $worlds = $worldDao->findAll();
+            $result = array ('worlds'=>$worlds);
+        }
+        break;
+    case "POST":
+        $name= $post->name;
+        $description= $post->description;
+        $world = new World();
+        $world->setName($name);
+        $world->setDescription($description);
+        $worldDao->insert($world);
+        break;
+    case "DELETE":
+        $id = $_GET['id'];
+        $msg =  $worldDao->delete($id);
+        $result = array ('msg'=>$msg);
+        break;
+}
  
-  echo json_encode($result);
+echo json_encode($result);
