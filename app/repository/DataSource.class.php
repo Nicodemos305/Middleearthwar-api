@@ -3,70 +3,68 @@
  class DataSource{
 
   function findOneEntity($sql){
-  		$entity = "";
- 		$conn = $this->conectDb();
- 		$result = $conn->query($sql);
- 	
-		if ($result->num_rows > 0) {
-		 while($row = $result->fetch_assoc()) {
+  		$entity = null;
+		try {
+			$conn = $this->conectDb();
+			$stmt = $conn->query($sql);
+			while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 				$entity = $row;
 				break;
 			}
-		} else {
-			return null;
+		}catch(PDOException $e) {
+			echo $e->getMessage();
 		}
-		$conn->close();
+		$conn = null;
 		return $entity;
    }
 	
    function findAllEntity($sql){
 		$resultado = array ();
- 		$conn = $this->conectDb();
-		$result = $conn->query($sql);
-
-		if ($result->num_rows > 0) {
-			 while($row = $result->fetch_assoc()) {
+		 try {
+			$conn = $this->conectDb();
+			$stmt = $conn->query($sql);
+			while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 				array_push($resultado, $row);
 			}
-			return $resultado;
-		} else {
-			return null;
 		}
-		$conn->close();
+		catch(PDOException $e) {
+			echo $e->getMessage();
+		}
+		$conn = null;
+		return $resultado;
    }
 
 	function insertEntity($sql){
-		$conn = $this->conectDb();
-		if ($conn->query($sql) === TRUE) {
-			return mysqli_insert_id($conn);
-		} else {
-			echo "Error: " . $sql . "<br>" . $conn->error;
+		try {
+			$conn = $this->conectDb();
+			$conn->exec($sql);
+		}catch(PDOException $e){
+			echo $e->getMessage();
 		}
-
-		$conn->close();
+		$conn = null;
 	}
 	
 
-	function deleteEntity($sql){			
-	   $conn = $this->conectDb();
-		if ($conn->query($sql) === TRUE) {
-			//echo "Excluído com sucesso";
-		} else {
-			echo "Erro: " . $conn->error;
+	function deleteEntity($sql){
+		try {
+			$conn = $this->conectDb();			
+			$conn->exec($sql);
+		}catch(PDOException $e){
+			echo $e->getMessage();
 		}
-
-		$conn->close();
+		$conn = null;
 	}
 
 	function update($sql){
- 		$conn = $this->conectDb();
-		if ($conn->query($sql) === TRUE) {
-			//echo "Record updated successfully";
-		} else {
-			echo "Error updating record: " . $conn->error;
+		try {
+			$conn = $this->conectDb();
+			$stmt = $conn->prepare($sql);
+			$stmt->execute();		
+			echo $stmt->rowCount() . " records UPDATED successfully";
+		}catch(PDOException $e){
+			echo $e->getMessage();
 		}
-
-		$conn->close();
+		$conn = null;
 	}
 
 	function conectDb(){
@@ -74,11 +72,13 @@
 		$dbpass = $_ENV['MYSQL_PASS'];
 		$endpoint = $_ENV['DATA_BASE_ENDPOINT'];
 		$db = $_ENV['DATA_BASE'];
-		$conn = new mysqli($endpoint, $dbuser, $dbpass, $db);
-			if ($conn->connect_error) {
-				die("Connection failed: " . $conn->connect_error);
-			} else{
-				return $conn;
-			}
+		$conn = null;
+		try {
+			$conn = new PDO("mysql:host=$endpoint;dbname=$db", $dbuser, $dbpass);
+			$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		}catch(PDOException $e){
+			echo "Connection failed: " . $e->getMessage();
+		}
+		return $conn;
 	}
 }
