@@ -3,17 +3,16 @@
  class DataSource{
 
   function findOneEntity($sql){
-  		$entity = "";
+  		$entity = null;
 		try {
 			$conn = $this->conectDb();
-			foreach ($conn->query($sql) as $row) {
+			$stmt = $conn->query($sql);
+			while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 				$entity = $row;
 				break;
 			}
-			return $entity;
-		}
-		catch(PDOException $e) {
-			echo "Error: " . $e->getMessage();
+		}catch(PDOException $e) {
+			echo $e->getMessage();
 		}
 		$conn = null;
 		return $entity;
@@ -24,12 +23,12 @@
 		 try {
 			$conn = $this->conectDb();
 			$stmt = $conn->query($sql);
-			while ($row = $stmt->fetch()) {
+			while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 				array_push($resultado, $row);
 			}
 		}
 		catch(PDOException $e) {
-			echo "Error: " . $e->getMessage();
+			echo $e->getMessage();
 		}
 		$conn = null;
 		return $resultado;
@@ -39,36 +38,31 @@
 		try {
 			$conn = $this->conectDb();
 			$conn->exec($sql);
-			echo "New record created successfully";
 		}catch(PDOException $e){
-			echo $sql . "<br>" . $e->getMessage();
+			echo $e->getMessage();
 		}
 		$conn = null;
 	}
 	
 
-	function deleteEntity($sql){		
+	function deleteEntity($sql){
 		try {
 			$conn = $this->conectDb();			
 			$conn->exec($sql);
-			echo "Record deleted successfully";
-			}
-		catch(PDOException $e)
-			{
-			echo $sql . "<br>" . $e->getMessage();
-			}
-
+		}catch(PDOException $e){
+			echo $e->getMessage();
+		}
 		$conn = null;
 	}
 
 	function update($sql){
-		 try {
+		try {
 			$conn = $this->conectDb();
 			$stmt = $conn->prepare($sql);
 			$stmt->execute();		
 			echo $stmt->rowCount() . " records UPDATED successfully";
 		}catch(PDOException $e){
-			echo $sql . "<br>" . $e->getMessage();
+			echo $e->getMessage();
 		}
 		$conn = null;
 	}
@@ -82,11 +76,9 @@
 		try {
 			$conn = new PDO("mysql:host=$endpoint;dbname=$db", $dbuser, $dbpass);
 			$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-			}
-		catch(PDOException $e)
-			{
+		}catch(PDOException $e){
 			echo "Connection failed: " . $e->getMessage();
-			}
+		}
 		return $conn;
 	}
 }
