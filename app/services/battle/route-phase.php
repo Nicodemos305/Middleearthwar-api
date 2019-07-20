@@ -16,19 +16,10 @@ $phase = new Phase();
 $battleCore = new BattleCore();
 $enemy =  $battleDao->searchEnemy(2);
 $playerOne = $heroDao->findOne(2);
-
-$battle1->setPlayerOne($playerOne['id']);
-$battle1->setPlayerTwo($enemy['id']);
-$battle1->setHpOne($playerOne['hp']);
-$battle1->setHpTwo($enemy['hp']);
 $result = "";
 $recentPhase = 0;
-$phase_all = [];
-$hp1 = $playerOne['hp'];
-$hp2 = $enemy['hp'];
-$batalha = true;
 
-$battle = $battleCore->battleBegin($battle1);
+$battle =$battleDao->battleRunning($playerOne['id'],$enemy['id']);
 
 if($battle['hp_hero_one']  > 0 || $battle['hp_hero_two'] > 0){
 	$battleCore->routePhaseWithCpu($battle,$recentPhase,$phase,$enemy,$playerOne,$phaseDao,$battleDao);
@@ -40,10 +31,7 @@ if($battle['hp_hero_one']  <= 0 && $battle['hp_hero_one'] != null){
 	$battleDao->battleEnd($battle['id'],$playerOne['id']);
 }
 
-if(is_array($battle)){
-	$phase_all = $phaseDao->findAllPhases($battle['id']);
-}
 
-$result = array ('battle'=>$battle,'phases'=>$phase_all);
+$result = array ('battle'=>$battle);
 
 echo json_encode($result);

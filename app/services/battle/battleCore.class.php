@@ -5,20 +5,9 @@ include_once("../../repository/battleDao.class.php");
 
 class BattleCore{
 
-	function battleBegin($battleAux){
-	    $battleDao = new BattleDao();
-  		$battle = $battleDao->battleRunning($battleAux->getPlayerOne(),$battleAux->getPlayerTwo());
-		if($battle == null){
-    		$battle  = $battleDao->battleBegin($battleAux);
-  		}
-  		return $battle;
-	}
-
 	function routePhaseWithCpu($battleAux,$recentPhase,$phase,$enemy,$playerOne,$phaseDao,$battleDao){
-
-
 		if (is_array($battleAux)){
-			$recentPhase = $phaseDao->findPhase($battleAux['id']);	
+			$recentPhase = $phaseDao->findPhase($battleAux['id']);
 		}else{
 			$recentPhase = $phaseDao->findPhase($battleAux);	
 		}
@@ -38,7 +27,7 @@ class BattleCore{
 			//dano critico
 			//esquiva
 			$esquiva = rand(0,$playerOne['agility']);
-			if($esquiva != $playerOne['agility']){
+			if($esquiva > $playerOne['agility']){
 				$phase->setDescription("O Herói ".$playerOne['name']." esquivou.");
 			}else{
 
@@ -51,8 +40,7 @@ class BattleCore{
 				$phase->setDescription("O Herói ".$playerOne['name']." recebeu ".$random." de dano.");
 			}
 			}
-			//esquiva
-			//$hp1 = $hp1+$playerOne['defense'];
+		
 			$battleDao->hpMinusPlayerOne($hp1,$battleAux['id']);
 
 			$phase->setBattle_id($battleAux['id']);
@@ -67,9 +55,9 @@ class BattleCore{
 				$critical = rand(1,6);
 				//dano critico
 				
-				//esquiva
+			//esquiva
 				$esquiva = rand(0,$enemy['agility']);
-				if($esquiva != $enemy['agility']){
+				if($esquiva > $enemy['agility']){
 					$phase->setDescription("O Herói ".$enemy['name']." esquivou.");
 				}else{
 
@@ -92,4 +80,6 @@ class BattleCore{
 			$phaseDao->insert($phase);
 		}
 	}
+
+
 }

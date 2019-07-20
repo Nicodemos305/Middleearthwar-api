@@ -26,6 +26,11 @@ class BattleDao extends DataSource{
 		return parent::findOneEntity($sql);
 	}
 
+	function myBattleRunning($id_hero){
+		$sql = "select * from battle where id_hero_one = $id_hero and status_battle = 'RUNING' and win_battle = 0";
+		return parent::findOneEntity($sql);
+	}
+
 	function hpMinusPlayerOne($hp,$id_battle){
 		$sql = "update battle set hp_hero_one = ".$hp." where id = ".$id_battle;
 		parent::update($sql);

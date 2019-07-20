@@ -59,8 +59,7 @@
 		try {
 			$conn = $this->conectDb();
 			$stmt = $conn->prepare($sql);
-			$stmt->execute();		
-			echo $stmt->rowCount() . " records UPDATED successfully";
+			$stmt->execute();
 		}catch(PDOException $e){
 			echo $e->getMessage();
 		}
