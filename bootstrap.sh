@@ -1,4 +1,5 @@
 #!/bin/bash
+
 curl -d '{"login" : "admin", "password" : "123456", "email" : "admin@rpgcloud.com"}' http://localhost/services/player.php
 
 curl -d '{"name" : "world", "description" : "World one"}' http://localhost/services/world.php
