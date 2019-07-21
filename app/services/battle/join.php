@@ -1,11 +1,12 @@
 <?php
  header('Content-type: application/json');
  header('Access-Control-Allow-Origin: *');
-include_once("../../entity/Battle.class.php");
-include_once("../../entity/Phase.class.php");
-include_once("../../repository/battleDao.class.php");
-include_once("../../repository/heroDao.class.php");
-include_once("../../services/battle/battleCore.class.php");
+ $path = $_SERVER['DOCUMENT_ROOT'];
+require_once $path."/entity/Battle.class.php";
+require_once $path."/entity/Phase.class.php";
+require_once $path."/repository/battleDao.class.php";
+require_once $path."/repository/heroDao.class.php";
+require_once $path."/services/battle/battleCore.class.php";
 
 $battleDao = new BattleDao();
 $heroDao = new HeroDao();

@@ -1,7 +1,7 @@
 <?php
-	
-require_once "../../entity/Battle.class.php";
-require_once "../../repository/battleDao.class.php";
+ $path = $_SERVER['DOCUMENT_ROOT'];
+require_once  $path."/entity/Battle.class.php";
+require_once  $path."/repository/battleDao.class.php";
 
 class BattleCore{
 
@@ -22,7 +22,7 @@ class BattleCore{
 			$this->passPhase($phase, $battleAux, $battleAux['id_hero_one'], $phaseDao);
 			return;
 		} 
-		
+
 		if($isHeroOne){
 			$random = $this->rollD6($enemy['atk']);
 			$phase = $this->damage($battleAux, $phase, $random, $playerOne, $battleDao);

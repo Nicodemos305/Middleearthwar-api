@@ -1,7 +1,7 @@
  <?php
-
-include_once "DataSource.class.php";
-include_once "../entity/Hero.class.php";
+ $path = $_SERVER['DOCUMENT_ROOT'];
+include_once  $path."/repository/DataSource.class.php";
+include_once  $path."/entity/Hero.class.php";
 
 class HeroDao extends DataSource {
 
