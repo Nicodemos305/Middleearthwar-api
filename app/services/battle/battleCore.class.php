@@ -1,7 +1,7 @@
 <?php
 	
-include_once("../../entity/Battle.class.php");
-include_once("../../repository/battleDao.class.php");
+include_once "../../entity/Battle.class.php";
+include_once "../../repository/battleDao.class.php";
 
 class BattleCore{
 
