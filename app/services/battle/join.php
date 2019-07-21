@@ -1,15 +1,7 @@
 <?php
  header('Content-type: application/json');
  header('Access-Control-Allow-Origin: *');
-function getPath(){
-	$path = null;
-	if( $_SERVER['DOCUMENT_ROOT'] != null){
-		$path = $_SERVER['DOCUMENT_ROOT'];
-		return $path;
-	}
-}
-
-$path = getPath();
+$path = "/var/www/html";
 require_once $path."/entity/Battle.class.php";
 require_once $path."/entity/Phase.class.php";
 require_once $path."/repository/battleDao.class.php";

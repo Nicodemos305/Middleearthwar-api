@@ -1,13 +1,5 @@
  <?php
-function getPath(){
-	$path = null;
-	if( $_SERVER['DOCUMENT_ROOT'] != null){
-		$path = $_SERVER['DOCUMENT_ROOT'];
-		return $path;
-	}
-}
-
-$path = getPath();
+$path = "/var/www/html";
 include_once  $path."/repository/DataSource.class.php";
 include_once  $path."/entity/Hero.class.php";
 
