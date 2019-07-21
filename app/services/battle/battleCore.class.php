@@ -6,8 +6,7 @@ require_once "../../repository/battleDao.class.php";
 class BattleCore{
 
 	function routePhaseWithCpu($battleAux,$recentPhase,$phase,$enemy,$playerOne,$phaseDao,$battleDao){
-		$hp1 = 0;
-	
+
 		if (is_array($battleAux)){
 			$recentPhase = $phaseDao->findPhase($battleAux['id']);
 		}else{
@@ -16,14 +15,14 @@ class BattleCore{
 
 		$isHeroOne = $recentPhase['id_hero_one'] == $battleAux['id_hero_one'];
 		$isHeroTwo = $recentPhase['id_hero_one'] == $battleAux['id_hero_two'];
+		$isFirstPhase = $recentPhase == null && is_array($battleAux);
 
-		if($recentPhase == null && is_array($battleAux)){
-			$phase->setBattle_id($battleAux['id']);
-			$phase->setPlayer_id($battleAux['id_hero_one']);
+		if($isFirstPhase){
 			$phase->setDescription("Iniciou o combate entre o heroi ".$playerOne['name']." e o Heroi ".$enemy['name']);
-			$phaseDao->insert($phase);
+			$this->passPhase($phase, $battleAux, $battleAux['id_hero_one'], $phaseDao);
 			return;
 		} 
+		
 		if($isHeroOne){
 			$random = $this->rollD6($enemy['atk']);
 			$phase = $this->damage($battleAux, $phase, $random, $playerOne, $battleDao);
@@ -40,9 +39,7 @@ class BattleCore{
 	}
 
 	function rollD6($atk){
-		$d6 = rand(1,6);
-		$random = rand(1,$atk) + $d6;
-		return $random;
+		return rand(1,$atk) + rand(1,6);
 	}
 
 	function passPhase($phase, $battle, $player, $phaseDao){
@@ -60,13 +57,13 @@ class BattleCore{
 		}
 		$damage = $this->critical($random);
 		if($hero['id'] == $battle['id_hero_one']){
-			$hp1 = $battle['hp_hero_one'] - $damage;
-			$battleDao->hpMinusPlayerOne($hp1,$battle['id']);
+			$healthPoints = $battle['hp_hero_one'] - $damage;
+			$battleDao->hpMinusPlayerOne($healthPoints,$battle['id']);
 		}
 
 		if($hero['id'] == $battle['id_hero_two']){
-			$hp1 = $battle['hp_hero_two'] - $damage;
-			$battleDao->hpMinusPlayerTwo($hp1,$battle['id']);
+			$healthPoints = $battle['hp_hero_two'] - $damage;
+			$battleDao->hpMinusPlayerTwo($healthPoints,$battle['id']);
 		}
 		$phase->setDescription("O Herói ".$hero['name']." recebeu ".$damage." de dano crítico.");
 		
