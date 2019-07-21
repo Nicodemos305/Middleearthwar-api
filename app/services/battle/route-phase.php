@@ -1,7 +1,15 @@
 <?php
  header('Content-type: application/json');
  header('Access-Control-Allow-Origin: *');
- $path = $_SERVER['DOCUMENT_ROOT'];
+
+function getPath(){
+	if( != null){
+		return $_SERVER['DOCUMENT_ROOT'];
+	}
+}
+
+$path = getPath();
+
 include_once "$path/entity/Battle.class.php";
 include_once "$path/entity/Phase.class.php";
 include_once "$path/repository/battleDao.class.php";

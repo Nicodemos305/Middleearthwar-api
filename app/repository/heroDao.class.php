@@ -1,5 +1,11 @@
  <?php
- $path = $_SERVER['DOCUMENT_ROOT'];
+function getPath(){
+	if( != null){
+		return $_SERVER['DOCUMENT_ROOT'];
+	}
+}
+
+$path = getPath();
 include_once  $path."/repository/DataSource.class.php";
 include_once  $path."/entity/Hero.class.php";
 

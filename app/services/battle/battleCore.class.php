@@ -1,5 +1,11 @@
 <?php
- $path = $_SERVER['DOCUMENT_ROOT'];
+function getPath(){
+	if( != null){
+		return $_SERVER['DOCUMENT_ROOT'];
+	}
+}
+
+$path = getPath();
 require_once  $path."/entity/Battle.class.php";
 require_once  $path."/repository/battleDao.class.php";
 
