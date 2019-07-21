@@ -31,7 +31,6 @@ if($battle['hp_hero_one']  <= 0 && $battle['hp_hero_one'] != null){
 	$battleDao->battleEnd($battle['id'],$playerOne['id']);
 }
 
-
 $result = array ('battle'=>$battle);
 
 echo json_encode($result);
