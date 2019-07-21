@@ -2,8 +2,10 @@
  header('Content-type: application/json');
  header('Access-Control-Allow-Origin: *');
 function getPath(){
-	if( != null){
-		return $_SERVER['DOCUMENT_ROOT'];
+	$path = null;
+	if( $_SERVER['DOCUMENT_ROOT'] != null){
+		$path = $_SERVER['DOCUMENT_ROOT'];
+		return $path;
 	}
 }
 
