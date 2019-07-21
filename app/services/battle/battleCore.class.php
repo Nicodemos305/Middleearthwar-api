@@ -23,8 +23,7 @@ class BattleCore{
 			$d6 = rand(1,6);
 			$random = rand(1,$enemy['atk'])+$d6;
 			$phase = $this->damage($battleAux, $phase, $random, $playerOne, $battleDao);
-			$id = $battleAux['id_hero_two'];
-			$this->passPhase($phase, $battleAux, $id, $phaseDao);
+			$this->passPhase($phase, $battleAux, $battleAux['id_hero_two'], $phaseDao);
 		}else if($recentPhase['id_hero_one'] == $battleAux['id_hero_two']){
 			$hp1 = $battleAux['hp_hero_two'];
 			$d6 = rand(1,6);
