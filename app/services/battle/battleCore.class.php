@@ -22,14 +22,20 @@ class BattleCore{
 			$phase->setPlayer_id($battleAux['id_hero_one']);
 			$phase->setDescription("Iniciou o combate entre o heroi ".$playerOne['name']." e o Heroi ".$enemy['name']);
 			$phaseDao->insert($phase);
-		}else if($isHeroOne){
+			return;
+		} 
+		if($isHeroOne){
 			$random = $this->rollD6($enemy['atk']);
 			$phase = $this->damage($battleAux, $phase, $random, $playerOne, $battleDao);
 			$this->passPhase($phase, $battleAux, $battleAux['id_hero_two'], $phaseDao);
-		}else if($isHeroTwo){
+			return;
+		}
+
+		if($isHeroTwo){
 			$random = $this->rollD6($playerOne['atk']);
 			$phase = $this->damage($battleAux, $phase, $random, $enemy, $battleDao);
 			$this->passPhase($phase, $battleAux, $playerOne['id'], $phaseDao);
+			return;
 		}
 	}
 
