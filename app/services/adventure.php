@@ -1,8 +1,8 @@
 <?php
   header('Content-type: application/json');
   header('Access-Control-Allow-Origin: *');  
-  include_once("../repository/adventureDao.class.php");
-  include_once("../entity/Adventure.class.php");
+  include_once("/var/www/html/repository/adventureDao.class.php");
+  include_once("/var/www/html/entity/Adventure.class.php");
 
   $msg = "";
   $result = "";

@@ -1,7 +1,6 @@
 <?php
-$path = "/var/www/html";
-require_once  $path."/entity/Battle.class.php";
-require_once  $path."/repository/battleDao.class.php";
+require_once  "/var/www/html/entity/Battle.class.php";
+require_once  "/var/www/html/repository/battleDao.class.php";
 
 class BattleCore{
 

@@ -1,7 +1,7 @@
 <?php
   header('Content-type: application/json');
   header('Access-Control-Allow-Origin: *');  
-  include_once("../repository/worldDao.class.php");
+  include_once("/var/www/html/repository/worldDao.class.php");
 
   $json = file_get_contents('php://input');
   $post = json_decode($json);

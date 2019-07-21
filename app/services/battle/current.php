@@ -1,8 +1,8 @@
 <?php
  header('Content-type: application/json');
  header('Access-Control-Allow-Origin: *');
-include_once("../../repository/battleDao.class.php");
-include_once("../../repository/phaseDao.class.php");
+include_once("/var/www/html/repository/battleDao.class.php");
+include_once("/var/www/html/repository/phaseDao.class.php");
 
 $battleDao = new BattleDao();
 $phaseDao = new PhaseDao();
