@@ -56,19 +56,20 @@ class BattleCore{
 
 		if($esquivou){
 			$phase->setDescription("O Herói ".$hero['name']." esquivou.");
-		}else{
-			$damage = $this->critical($random);
-			if($hero['id'] == $battle['id_hero_one']){
-				$hp1 = $battle['hp_hero_one'] - $damage;
-				$battleDao->hpMinusPlayerOne($hp1,$battle['id']);
-			}
-
-			if($hero['id'] == $battle['id_hero_two']){
-				$hp1 = $battle['hp_hero_two'] - $damage;
-				$battleDao->hpMinusPlayerTwo($hp1,$battle['id']);
-			}
-			$phase->setDescription("O Herói ".$hero['name']." recebeu ".$damage." de dano crítico.");
+			return $phase;
 		}
+		$damage = $this->critical($random);
+		if($hero['id'] == $battle['id_hero_one']){
+			$hp1 = $battle['hp_hero_one'] - $damage;
+			$battleDao->hpMinusPlayerOne($hp1,$battle['id']);
+		}
+
+		if($hero['id'] == $battle['id_hero_two']){
+			$hp1 = $battle['hp_hero_two'] - $damage;
+			$battleDao->hpMinusPlayerTwo($hp1,$battle['id']);
+		}
+		$phase->setDescription("O Herói ".$hero['name']." recebeu ".$damage." de dano crítico.");
+		
 		return $phase;
 	}
 
