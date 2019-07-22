@@ -1,5 +1,4 @@
 <?php
-
  class DataSource{
 
   function findOneEntity($sql){
@@ -11,8 +10,8 @@
 				$entity = $row;
 				break;
 			}
-		}catch(PDOException $e) {
-			echo $e->getMessage();
+		}catch(PDOException $exception) {
+			echo $exception->getMessage();
 		}
 		$conn = null;
 		return $entity;
@@ -27,8 +26,8 @@
 				array_push($resultado, $row);
 			}
 		}
-		catch(PDOException $e) {
-			echo $e->getMessage();
+		catch(PDOException $exception) {
+			echo $exception->getMessage();
 		}
 		$conn = null;
 		return $resultado;
@@ -38,7 +37,7 @@
 		try {
 			$conn = $this->conectDb();
 			$conn->exec($sql);
-		}catch(PDOException $e){
+		}catch(PDOException $exception){
 			echo $e->getMessage();
 		}
 		$conn = null;
@@ -49,8 +48,8 @@
 		try {
 			$conn = $this->conectDb();			
 			$conn->exec($sql);
-		}catch(PDOException $e){
-			echo $e->getMessage();
+		}catch(PDOException $exception){
+			echo $exception->getMessage();
 		}
 		$conn = null;
 	}
@@ -59,25 +58,24 @@
 		try {
 			$conn = $this->conectDb();
 			$stmt = $conn->prepare($sql);
-			$stmt->execute();		
-			echo $stmt->rowCount() . " records UPDATED successfully";
-		}catch(PDOException $e){
-			echo $e->getMessage();
+			$stmt->execute();
+		}catch(PDOException $exception){
+			echo $exception->getMessage();
 		}
 		$conn = null;
 	}
 
 	function conectDb(){
-		$dbuser = $_ENV['MYSQL_USER'];
-		$dbpass = $_ENV['MYSQL_PASS'];
-		$endpoint = $_ENV['DATA_BASE_ENDPOINT'];
-		$db = $_ENV['DATA_BASE'];
+		$dbuser = isset($_ENV['MYSQL_USER']) ? $_ENV['MYSQL_USER'] : "root";
+		$dbpass = isset($_ENV['MYSQL_PASS']) ? $_ENV['MYSQL_PASS'] : "";
+		$endpoint = isset($_ENV['DATA_BASE_ENDPOINT']) ? $_ENV['DATA_BASE_ENDPOINT'] : "localhost";
+		$database = isset($_ENV['DATA_BASE']) ? $_ENV['DATA_BASE'] : "rpgcloud";
 		$conn = null;
 		try {
-			$conn = new PDO("mysql:host=$endpoint;dbname=$db", $dbuser, $dbpass);
+			$conn = new PDO("mysql:host=$endpoint;dbname=$database", $dbuser, $dbpass);
 			$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		}catch(PDOException $e){
-			echo "Connection failed: " . $e->getMessage();
+		}catch(PDOException $exception){
+			echo "Connection failed: " . $exception->getMessage();
 		}
 		return $conn;
 	}

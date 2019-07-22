@@ -2,19 +2,18 @@
   header('Content-type: application/json');
   header('Access-Control-Allow-Origin: *');
 
-  include_once("../repository/raceDao.class.php");
-  include_once("../entity/Race.class.php");
+  include_once "/var/www/html/repository/raceDao.class.php";
+  include_once "/var/www/html/entity/Race.class.php";
   
   $json = file_get_contents('php://input');
   $post = json_decode($json);
-  $msg = "";
   $result = "";
-  $race = "";
   $raceDao = new RaceDao(); 
+  $id = $_GET['id'];
   switch ($_SERVER['REQUEST_METHOD']) {
     case "GET":
-        if(isset($_GET['id'])){
-          $race = $raceDao->findOne($_GET['id']);
+        if(isset($id)){
+          $race = $raceDao->findOne($id);
           $result = array ('race'=>$race);
         }else{
             $race = $raceDao->findAll();
@@ -22,29 +21,21 @@
         }
         break;
     case "POST":
-        $name= $post->name;
-        $hp = $post->hp;
-        $mp = $post->mp;
-        $atk = $post->atk;
-        $defense = $post->defense;
-        $agility = $post->agility;
-        $inteligence = $post->inteligence;
-
         $raceInstance = new Race();
-        $raceInstance->setName($name);
-        $raceInstance->setHp($hp);
-        $raceInstance->setMp($mp);
-        $raceInstance->setAtk($atk);
-        $raceInstance->setDefense($defense);
-        $raceInstance->setAgility($agility);
-        $raceInstance->setInteligence($inteligence);
+        $raceInstance->setName($post->name);
+        $raceInstance->setHp($post->hp);
+        $raceInstance->setMp($post->mp);
+        $raceInstance->setAtk($post->atk);
+        $raceInstance->setDefense($post->defense);
+        $raceInstance->setAgility($post->agility);
+        $raceInstance->setInteligence($post->inteligence);
         $raceDao->insert($raceInstance);
         break;
     case "DELETE":
-        $id = $_GET['id'];
-        $msg =  $raceDao->delete($id);
-        $result = array ('msg'=>$msg);
+        if(isset($id) &&  $id != null){
+          $msg =  $raceDao->delete($id);
+          $result = array ('msg'=>$msg);
+        }
         break;
 }
-
 echo json_encode($result);

@@ -1,7 +1,6 @@
 <?php
-
-include_once("../../entity/Battle.class.php");
-include_once("DataSource.class.php");
+include_once "/var/www/html/entity/Battle.class.php";
+include_once "DataSource.class.php";
 
 class BattleDao extends DataSource{
 
@@ -23,6 +22,11 @@ class BattleDao extends DataSource{
 
 	function battleRunning($id_hero_one,$id_hero_two){
 		$sql = "select * from battle where id_hero_one = $id_hero_one and id_hero_two = $id_hero_two and status_battle = 'RUNING' and win_battle = 0";
+		return parent::findOneEntity($sql);
+	}
+
+	function myBattleRunning($id_hero){
+		$sql = "select * from battle where id_hero_one = $id_hero and status_battle = 'RUNING' and win_battle = 0";
 		return parent::findOneEntity($sql);
 	}
 

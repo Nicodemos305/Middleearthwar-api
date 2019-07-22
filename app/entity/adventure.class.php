@@ -2,16 +2,16 @@
 
 class Adventure {
 
-	private $id; 
+	private $uid; 
 	private $name;
 	private $quests;
 
-	public function getId(){
-		return $this->id;
+	public function getUid(){
+		return $this->uid;
 	}
 
-	public function setId($id){
-		$this->id = $id;
+	public function setUid($uid){
+		$this->uid = $uid;
 	}
 
 	public function getName(){

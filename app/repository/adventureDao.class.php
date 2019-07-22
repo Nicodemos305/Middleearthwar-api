@@ -1,7 +1,6 @@
 <?php
-
-include_once("DataSource.class.php");
-include_once("../entity/Adventure.class.php");
+include_once "DataSource.class.php";
+include_once "/var/www/html/entity/Adventure.class.php";
 
 class AdventureDao extends DataSource {
 
@@ -15,13 +14,13 @@ class AdventureDao extends DataSource {
 	     return parent::findAllEntity($sql);
 	}
 
-	function findOne($id){
-	     $sql = "select * from adventure where id =".$id;
+	function findOne($uid){
+	     $sql = "select * from adventure where id =".$uid;
 	     return parent::findOneEntity($sql);
 	}
 
-	function delete($id){
-		 $sql = "delete from adventure where id =".$id;
+	function delete($uid){
+		 $sql = "delete from adventure where id =".$uid;
 		return parent::deleteEntity($sql);
 	}
 

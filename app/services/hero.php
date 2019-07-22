@@ -1,23 +1,21 @@
 <?php 
   header('Content-type: application/json');
   header('Access-Control-Allow-Origin: *');  
-  include_once("../repository/heroDao.class.php");
-  include_once("../repository/raceDao.class.php");
+  include_once "/var/www/html/repository/heroDao.class.php";
+  include_once "/var/www/html/repository/raceDao.class.php";
 
   $json = file_get_contents('php://input');
   $post = json_decode($json);
 
-  $msg = "";
   $result = "";
   $heroes = "";
-  $hero = "";
   $heroDao = new HeroDao();
   $raceDao = new RaceDao();
-
+  $id = $_GET['id'];
     switch ($_SERVER['REQUEST_METHOD']) {
       case "GET":
-        if(isset($_GET['id'])){
-          $hero = $heroDao->findOne($_GET['id']);
+        if(isset($id) && $id != null){
+          $hero = $heroDao->findOne($id);
           $result = array ('hero'=>$hero);
           }else{
             $heroes = $heroDao->findAll();
@@ -35,9 +33,10 @@
           $heroDao->insert($hero,$id);
           break;
       case "DELETE":
-          $id = $_GET['id'];
-          $msg =  $heroDao->delete($id);
-          $result = array ('msg'=>$msg);
+          if(isset($id) && $id != null){
+            $msg =  $heroDao->delete($id);
+            $result = array ('msg'=>$msg);
+          }
           break;
   }
 

@@ -1,6 +1,5 @@
 <?php
-
-include_once("DataSource.class.php");
+include_once "DataSource.class.php";
 
 class RankingDao extends DataSource{
 
