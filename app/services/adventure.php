@@ -26,10 +26,10 @@
         $adventureDao->insert($adventure);
         break;
     case "PATCH":
-        echo "PATCH";
+
     break;
     case "PUT":
-        echo "PUT";
+
     break;
     case "DELETE":
         if(isset($id) && $id != null){

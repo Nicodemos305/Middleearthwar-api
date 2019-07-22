@@ -33,10 +33,10 @@
           $heroDao->insert($hero,$id);
           break;
       case "PATCH":
-          echo "PATCH";
+
       break;
       case "PUT":
-          echo "PUT";
+
       break;
       case "DELETE":
           if(isset($id) && $id != null){
