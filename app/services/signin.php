@@ -7,9 +7,7 @@
 	$post = json_decode($json);
 
 	if(validate($post)){
-		$login = $post->login;
-		$password = $post->password;
-	    $player = $playerDao->signIn($login,$password);
+	    $player = $playerDao->signIn($post->login, $post->password);
  	    echo json_encode($player);
 	}
 
