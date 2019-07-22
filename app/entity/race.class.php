@@ -2,7 +2,7 @@
 
 class Race {
 
-	private $id; 
+	private $uid; 
 	private $name;
 	private $hp;
 	private $mp;
@@ -12,11 +12,11 @@ class Race {
 	private $inteligence;
   
    public function getId(){
-		return $this->id;
+		return $this->uid;
 	}
 
-	public function setId($id){
-		$this->id = $id;
+	public function setUid($uid){
+		$this->uid = $uid;
 	}
 
 	public function getName(){

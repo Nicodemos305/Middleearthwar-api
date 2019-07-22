@@ -2,22 +2,22 @@
 
 class Hero {
 
-	private $id; 
+	private $uid; 
 	private $name;
 	private $race;
-	private $hp;
-	private $mp;
+	private $healthPoint;
+	private $magicPoint;
 	private $atk;
 	private $defense;
 	private $agility;
 	private $inteligence;
 
 
-	public function __construct($name, $race, $hp, $mp, $atk, $defense, $agility, $inteligence) {
+	public function __construct($name, $race, $healthPoint, $magicPoint, $atk, $defense, $agility, $inteligence) {
         $this->name = $name;
         $this->race = $race;
-        $this->hp = $hp;
-        $this->mp = $mp;
+        $this->healthPoint = $healthPoint;
+        $this->magicPoint = $magicPoint;
         $this->atk = $atk;
         $this->defense = $defense;
         $this->agility = $agility;
@@ -25,11 +25,11 @@ class Hero {
     }
   
    public function getId(){
-		return $this->id;
+		return $this->uid;
 	}
 
-	public function setId($id){
-		$this->id = $id;
+	public function setUid($uid){
+		$this->uid = $uid;
 	}
 
 	public function getName(){
@@ -48,20 +48,20 @@ class Hero {
 		$this->race = $race;
 	}
 
-	public function getHp(){
-		return $this->hp;
+	public function getHealthpoint(){
+		return $this->healthPoint;
 	}
 
-	public function setHp($hp){
-		$this->hp = $hp;
+	public function setHealthpoint($healthPoint){
+		$this->healthPoint = $healthPoint;
 	}
 
-	public function getMp(){
-		return $this->mp;
+	public function getMagicPoint(){
+		return $this->magicPoint;
 	}
 
-	public function setMp($mp){
-		$this->mp = $mp;
+	public function setMagicPoint($magicPoint){
+		$this->magicPoint = $magicPoint;
 	}
 
 	public function getAtk(){
