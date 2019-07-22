@@ -13,14 +13,15 @@ $post = json_decode($json);
 	$result = "";
 	$players = "";
 	$request = null;
+	$id = $_GET['id'];
 	if(isset($_SERVER['REQUEST_METHOD'])){
 		$request = $_SERVER['REQUEST_METHOD'];
 	}
 
   switch ($request) {
     case "GET":
-		if(isset($_GET['id'])){
-			$player =  $playerDao->findOne($_GET['id']);
+		if(isset($id)){
+			$player =  $playerDao->findOne($id);
 			$result = array ('player'=>$player);
 		}else{
 		$players =  $playerDao->findAll();
@@ -35,8 +36,7 @@ $post = json_decode($json);
 		}
         break;
     case "DELETE":
-          if(isset($_GET['id']) && $_GET['id'] != null){
-			$id = $_GET['id'];
+          if(isset($id) && $id != null){
 			$playerDao->delete($id);
 		}
         break;

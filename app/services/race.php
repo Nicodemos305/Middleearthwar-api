@@ -9,10 +9,11 @@
   $post = json_decode($json);
   $result = "";
   $raceDao = new RaceDao(); 
+  $id = $_GET['id'];
   switch ($_SERVER['REQUEST_METHOD']) {
     case "GET":
-        if(isset($_GET['id'])){
-          $race = $raceDao->findOne($_GET['id']);
+        if(isset($id)){
+          $race = $raceDao->findOne($id);
           $result = array ('race'=>$race);
         }else{
             $race = $raceDao->findAll();
@@ -31,8 +32,7 @@
         $raceDao->insert($raceInstance);
         break;
     case "DELETE":
-        if(isset($_GET['id']) && $_GET['id'] != null){
-          $id = $_GET['id'];
+        if(isset($id) &&  $id != null){
           $msg =  $raceDao->delete($id);
           $result = array ('msg'=>$msg);
         }
