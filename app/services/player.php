@@ -14,7 +14,7 @@ $post = json_decode($json);
 	$result = "";
 	$players = "";
 	$request = null;
-	if(isset($_SERVER['REQUEST_METHOD']){
+	if(isset($_SERVER['REQUEST_METHOD'])){
 		$request = $_SERVER['REQUEST_METHOD'];
 	}
 
