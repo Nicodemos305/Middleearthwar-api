@@ -32,6 +32,12 @@
           $id = 1;
           $heroDao->insert($hero,$id);
           break;
+      case "PATCH":
+          echo "PATCH";
+      break;
+      case "PUT":
+          echo "PUT";
+      break;
       case "DELETE":
           if(isset($id) && $id != null){
             $msg =  $heroDao->delete($id);

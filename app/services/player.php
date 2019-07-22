@@ -30,11 +30,23 @@ $post = json_decode($json);
         break;
     case "POST":
 		$player= validate($post,$msg);
-		if($player){
+		if($player != null){
 			$playerDao->insert($player);
 			$result = array ('login'=>$player->getLogin(),'senha'=>$player->getPassword(),'email'=>$player->getEmail());
 		}
-        break;
+		break;
+	case "PATCH":
+		$player= validate($post,$msg);
+		if($player != null){
+			$playerDao->update($player);
+		}
+	break;
+	case "PUT":
+		$player= validate($post,$msg);
+		if($player != null){
+			$playerDao->update($player);
+		}
+	break;
     case "DELETE":
           if(isset($id) && $id != null){
 			$playerDao->delete($id);

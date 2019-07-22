@@ -1,7 +1,6 @@
 <?php
 
 class Hero {
-
 	private $uid; 
 	private $name;
 	private $race;
@@ -11,7 +10,6 @@ class Hero {
 	private $defense;
 	private $agility;
 	private $inteligence;
-
 
 	public function __construct($name, $race, $healthPoint, $magicPoint, $atk, $defense, $agility, $inteligence) {
         $this->name = $name;

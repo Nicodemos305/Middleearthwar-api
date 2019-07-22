@@ -13,7 +13,7 @@
   $id = $_GET['id'];
   switch ($_SERVER['REQUEST_METHOD']) {
     case "GET":
-        if(isset($id) && $id] != null){
+        if(isset($id) && $id != null){
           $adventures = $adventureDao->findOne($id);
           $result = array ('adventures'=>$adventures);
         }else{
@@ -25,6 +25,12 @@
         $adventure->setName($post->name);
         $adventureDao->insert($adventure);
         break;
+    case "PATCH":
+        echo "PATCH";
+    break;
+    case "PUT":
+        echo "PUT";
+    break;
     case "DELETE":
         if(isset($id) && $id != null){
           $msg =  $adventureDao->delete($id);

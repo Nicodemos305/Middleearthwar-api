@@ -29,6 +29,12 @@
         $world->setDescription($description);
         $worldDao->insert($world);
         break;
+    case "PATCH":
+        echo "PATCH";
+    break;
+    case "PUT":
+      echo "PUT";
+    break;
     case "DELETE":
       if(isset($id) &&  $id != null){
           $msg =  $worldDao->delete($id);

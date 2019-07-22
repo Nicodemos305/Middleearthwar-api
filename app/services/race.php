@@ -21,16 +21,15 @@
         }
         break;
     case "POST":
-        $raceInstance = new Race();
-        $raceInstance->setName($post->name);
-        $raceInstance->setHp($post->hp);
-        $raceInstance->setMp($post->mp);
-        $raceInstance->setAtk($post->atk);
-        $raceInstance->setDefense($post->defense);
-        $raceInstance->setAgility($post->agility);
-        $raceInstance->setInteligence($post->inteligence);
+        $raceInstance = new Race($post->name, $post->hp, $post->mp, $post->atk, $post->defense, $post->agility, $post->inteligence);
         $raceDao->insert($raceInstance);
         break;
+    case "PATCH":
+        echo "PATCH";
+    break;
+    case "PUT":
+        echo "PUT";
+    break;
     case "DELETE":
         if(isset($id) &&  $id != null){
           $msg =  $raceDao->delete($id);

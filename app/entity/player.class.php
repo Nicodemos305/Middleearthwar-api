@@ -6,6 +6,10 @@ class Player{
 	private $password;
  	private $email;
 
+
+ public function __construct() {
+
+}
  public function __construct($login, $password, $email) {
         $this->login = $login;
         $this->password = $password;

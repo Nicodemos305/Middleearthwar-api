@@ -9,6 +9,11 @@ class PlayerDao extends DataSource {
 	     parent::insertEntity($sql);
 	 }
 
+	 function update(Player $player){
+		$sql = "update player set values(null,'".$player->getLogin()."','".$player->getPassword()."','".$player->getEmail()."')";
+		parent::insertEntity($sql);
+	}
+
 	function findAll(){
 	     $sql = "select * from player";
 	     return parent::findAllEntity($sql);
