@@ -13,8 +13,8 @@ $post = json_decode($json);
 	$player = new Player();
 	$result = "";
 	$players = "";
-
-  switch ($_SERVER['REQUEST_METHOD']) {
+	$request = $_SERVER['REQUEST_METHOD'];
+  switch ($request) {
     case "GET":
 		if(isset($_GET['id'])){
 			$player =  $playerDao->findOne($_GET['id']);
@@ -41,30 +41,18 @@ echo json_encode($result);
 
  function validate($post,$msg){
 	$player = new Player();
-	
-	if(!isset($post->login) || $post->login == ""){
-	   $msg = $msg."Login nao definido";
+	$loginIsNull = !isset($post->login) || $post->login == "";
+	$passwordIsNull = !isset($post->password) || $post->password == "";
+	$emailIsNull = !isset($post->email) || $post->email == "";
+
+	if($loginIsNull || 	$passwordIsNull || $emailIsNull){
+	   $msg = $msg."Verifique se os campos login, password e email estao definidos";
 	   $result = array('msg'=>$msg);
 	   echo json_encode($result);
 	   echo $msg;
 	   return false;
 	}
 
-    if(!isset($post->password) || $post->password == ""){
-	    $msg = $msg."password nao definido";
-	    $result = array('msg'=>$msg);
-	    echo json_encode($result);
-	    echo $msg;
-	   return false;
-	}
-
-    if(!isset($post->email) || $post->email == ""){
-	   $msg = $msg."email nao definido";
-	   $result = array('msg'=>$msg);
-	    echo json_encode($result);
-	    echo $msg;
-	   return false;
-	}
 	$player->setPassword($post->password);
 	$player->setLogin($post->login);
 	$player->setEmail($post->email);
