@@ -11,6 +11,18 @@ class Hero {
 	private $defense;
 	private $agility;
 	private $inteligence;
+
+
+	public function __construct($name, $race, $hp, $mp, $atk, $defense, $agility, $inteligence) {
+        $this->name = $name;
+        $this->race = $race;
+        $this->hp = $hp;
+        $this->mp = $mp;
+        $this->atk = $atk;
+        $this->defense = $defense;
+        $this->agility = $agility;
+        $this->inteligence = $inteligence;
+    }
   
    public function getId(){
 		return $this->id;
