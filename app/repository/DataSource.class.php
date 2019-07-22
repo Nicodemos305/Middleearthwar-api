@@ -10,8 +10,8 @@
 				$entity = $row;
 				break;
 			}
-		}catch(PDOException $e) {
-			echo $e->getMessage();
+		}catch(PDOException $exception) {
+			echo $exception->getMessage();
 		}
 		$conn = null;
 		return $entity;
@@ -26,8 +26,8 @@
 				array_push($resultado, $row);
 			}
 		}
-		catch(PDOException $e) {
-			echo $e->getMessage();
+		catch(PDOException $exception) {
+			echo $exception->getMessage();
 		}
 		$conn = null;
 		return $resultado;
@@ -37,7 +37,7 @@
 		try {
 			$conn = $this->conectDb();
 			$conn->exec($sql);
-		}catch(PDOException $e){
+		}catch(PDOException $exception){
 			echo $e->getMessage();
 		}
 		$conn = null;
@@ -48,8 +48,8 @@
 		try {
 			$conn = $this->conectDb();			
 			$conn->exec($sql);
-		}catch(PDOException $e){
-			echo $e->getMessage();
+		}catch(PDOException $exception){
+			echo $exception->getMessage();
 		}
 		$conn = null;
 	}
@@ -59,8 +59,8 @@
 			$conn = $this->conectDb();
 			$stmt = $conn->prepare($sql);
 			$stmt->execute();
-		}catch(PDOException $e){
-			echo $e->getMessage();
+		}catch(PDOException $exception){
+			echo $exception->getMessage();
 		}
 		$conn = null;
 	}
@@ -74,8 +74,8 @@
 		try {
 			$conn = new PDO("mysql:host=$endpoint;dbname=$database", $dbuser, $dbpass);
 			$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		}catch(PDOException $e){
-			echo "Connection failed: " . $e->getMessage();
+		}catch(PDOException $exception){
+			echo "Connection failed: " . $exception->getMessage();
 		}
 		return $conn;
 	}
