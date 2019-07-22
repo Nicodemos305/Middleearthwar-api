@@ -7,10 +7,8 @@
   $json = file_get_contents('php://input');
   $post = json_decode($json);
 
-  $msg = "";
   $result = "";
   $heroes = "";
-  $hero = "";
   $heroDao = new HeroDao();
   $raceDao = new RaceDao();
 

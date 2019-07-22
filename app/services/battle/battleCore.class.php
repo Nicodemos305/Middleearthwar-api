@@ -4,7 +4,7 @@ require_once  "/var/www/html/repository/battleDao.class.php";
 
 class BattleCore{
 
-	function routePhaseWithCpu($battleAux,$recentPhase,$phase,$enemy,$playerOne,$phaseDao,$battleDao){
+	function routePhaseWithCpu($battleAux,$phase,$enemy,$playerOne,$phaseDao,$battleDao){
 		$recentPhase = is_array($battleAux) ? $phaseDao->findPhase($battleAux['id']) : $phaseDao->findPhase($battleAux);
 
 		$isHeroOne = $recentPhase['id_hero_one'] == $battleAux['id_hero_one'];

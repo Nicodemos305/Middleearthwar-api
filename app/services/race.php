@@ -7,9 +7,7 @@
   
   $json = file_get_contents('php://input');
   $post = json_decode($json);
-  $msg = "";
   $result = "";
-  $race = "";
   $raceDao = new RaceDao(); 
   switch ($_SERVER['REQUEST_METHOD']) {
     case "GET":
@@ -38,5 +36,4 @@
         $result = array ('msg'=>$msg);
         break;
 }
-
 echo json_encode($result);
