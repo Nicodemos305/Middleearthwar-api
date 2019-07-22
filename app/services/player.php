@@ -10,7 +10,6 @@ $post = json_decode($json);
     $msg = "";
 	$email = "";
 	$playerDao = new PlayerDao();
-	$player = new Player();
 	$result = "";
 	$players = "";
 	$request = null;
@@ -44,7 +43,6 @@ $post = json_decode($json);
 echo json_encode($result);
 
  function validate($post,$msg){
-	$player = new Player();
 	$loginIsNull = !isset($post->login) || $post->login == "";
 	$passwordIsNull = !isset($post->password) || $post->password == "";
 	$emailIsNull = !isset($post->email) || $post->email == "";
@@ -56,10 +54,6 @@ echo json_encode($result);
 	   echo $msg;
 	   return false;
 	}
-
-	$player->setPassword($post->password);
-	$player->setLogin($post->login);
-	$player->setEmail($post->email);
-	
+	$player = new Player($post->login, $post->password, $post->email);
 	return $player;
 }
