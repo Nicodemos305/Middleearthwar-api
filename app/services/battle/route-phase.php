@@ -8,7 +8,6 @@ include_once "/var/www/html/repository/heroDao.class.php";
 include_once "/var/www/html/repository/phaseDao.class.php";
 include_once "/var/www/html/services/battle/battleCore.class.php";
 
-
 $battleDao = new BattleDao();
 $heroDao = new HeroDao();
 $phaseDao = new PhaseDao();

@@ -66,9 +66,7 @@ class BattleCore{
 
 	function critical($damage){
 		$critical = rand(1,6);
-		if($critical == 6){
-			$damage = $damage * 2;
-		}
+		$damage = $critical == 6 ? $damage * 2 : $damage;
 		return $damage;
 	}
 }

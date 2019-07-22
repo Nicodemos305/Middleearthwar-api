@@ -1,5 +1,4 @@
 <?php
-
  class DataSource{
 
   function findOneEntity($sql){
@@ -70,10 +69,10 @@
 		$dbuser = $_ENV['MYSQL_USER'];
 		$dbpass = $_ENV['MYSQL_PASS'];
 		$endpoint = $_ENV['DATA_BASE_ENDPOINT'];
-		$db = $_ENV['DATA_BASE'];
+		$database = $_ENV['DATA_BASE'];
 		$conn = null;
 		try {
-			$conn = new PDO("mysql:host=$endpoint;dbname=$db", $dbuser, $dbpass);
+			$conn = new PDO("mysql:host=$endpoint;dbname=$database", $dbuser, $dbpass);
 			$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		}catch(PDOException $e){
 			echo "Connection failed: " . $e->getMessage();

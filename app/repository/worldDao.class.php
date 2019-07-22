@@ -1,7 +1,6 @@
 <?php
-
-include_once("DataSource.class.php");
-include_once("/var/www/html/entity/World.class.php");
+include_once "DataSource.class.php";
+include_once "/var/www/html/entity/World.class.php";
 
 class WorldDao extends DataSource {
 

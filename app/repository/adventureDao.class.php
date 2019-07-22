@@ -1,7 +1,6 @@
 <?php
-
-include_once("DataSource.class.php");
-include_once("/var/www/html/entity/Adventure.class.php");
+include_once "DataSource.class.php";
+include_once "/var/www/html/entity/Adventure.class.php";
 
 class AdventureDao extends DataSource {
 
