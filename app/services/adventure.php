@@ -13,7 +13,7 @@
 
   switch ($_SERVER['REQUEST_METHOD']) {
     case "GET":
-        if(isset($_GET['id'])){
+        if(isset($_GET['id']) && $_GET['id'] != null){
           $adventures = $adventureDao->findOne($_GET['id']);
           $result = array ('adventures'=>$adventures);
         }else{
@@ -26,9 +26,11 @@
         $adventureDao->insert($adventure);
         break;
     case "DELETE":
-        $id = $_GET['id'];
-        $msg =  $adventureDao->delete($id);
-        $result = array ('msg'=>$msg);
+        if(isset($_GET['id']) && $_GET['id'] != null){
+          $id = $_GET['id'];
+          $msg =  $adventureDao->delete($id);
+          $result = array ('msg'=>$msg);
+        }
         break;
 }
 

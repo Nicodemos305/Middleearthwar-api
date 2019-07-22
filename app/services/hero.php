@@ -14,7 +14,7 @@
 
     switch ($_SERVER['REQUEST_METHOD']) {
       case "GET":
-        if(isset($_GET['id'])){
+        if(isset($_GET['id']) && $_GET['id'] != null){
           $hero = $heroDao->findOne($_GET['id']);
           $result = array ('hero'=>$hero);
           }else{
@@ -33,9 +33,11 @@
           $heroDao->insert($hero,$id);
           break;
       case "DELETE":
-          $id = $_GET['id'];
-          $msg =  $heroDao->delete($id);
-          $result = array ('msg'=>$msg);
+          if(isset($_GET['id']) && $_GET['id'] != null){
+            $id = $_GET['id'];
+            $msg =  $heroDao->delete($id);
+            $result = array ('msg'=>$msg);
+          }
           break;
   }
 

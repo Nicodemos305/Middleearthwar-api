@@ -35,8 +35,10 @@ $post = json_decode($json);
 		}
         break;
     case "DELETE":
-		$id = $_GET['id'];
-		$playerDao->delete($id);
+          if(isset($_GET['id']) && $_GET['id'] != null){
+			$id = $_GET['id'];
+			$playerDao->delete($id);
+		}
         break;
 }
 

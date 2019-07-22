@@ -30,9 +30,11 @@
         $worldDao->insert($world);
         break;
     case "DELETE":
-        $id = $_GET['id'];
-        $msg =  $worldDao->delete($id);
-        $result = array ('msg'=>$msg);
+      if(isset($_GET['id']) && $_GET['id'] != null){
+          $id = $_GET['id'];
+          $msg =  $worldDao->delete($id);
+          $result = array ('msg'=>$msg);
+        }
         break;
 }
  

@@ -31,9 +31,11 @@
         $raceDao->insert($raceInstance);
         break;
     case "DELETE":
-        $id = $_GET['id'];
-        $msg =  $raceDao->delete($id);
-        $result = array ('msg'=>$msg);
+        if(isset($_GET['id']) && $_GET['id'] != null){
+          $id = $_GET['id'];
+          $msg =  $raceDao->delete($id);
+          $result = array ('msg'=>$msg);
+        }
         break;
 }
 echo json_encode($result);
