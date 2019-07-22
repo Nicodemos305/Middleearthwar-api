@@ -48,28 +48,26 @@ echo json_encode($result);
 	   echo json_encode($result);
 	   echo $msg;
 	   return false;
-	}else{
-	   $player->setLogin($post->login);
 	}
-    
+
     if(!isset($post->password) || $post->password == ""){
 	    $msg = $msg."password nao definido";
 	    $result = array('msg'=>$msg);
 	    echo json_encode($result);
 	    echo $msg;
 	   return false;
-	}else{
-	  $player->setPassword($post->password);
 	}
 
     if(!isset($post->email) || $post->email == ""){
 	   $msg = $msg."email nao definido";
-	    $result = array('msg'=>$msg);
+	   $result = array('msg'=>$msg);
 	    echo json_encode($result);
 	    echo $msg;
 	   return false;
-	}else{
-	   $player->setEmail($post->email);
 	}
+	$player->setPassword($post->password);
+	$player->setLogin($post->login);
+	$player->setEmail($post->email);
+	
 	return $player;
 }
