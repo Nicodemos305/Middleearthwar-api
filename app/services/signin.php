@@ -13,23 +13,14 @@
  	    echo json_encode($player);
 	}
 
-
  function validate($post){
-	if(!isset($post->login) || $post->login == ""){
+	 $loginIsNull = (!isset($post->login) || $post->login == "");
+	 $passwordIsNull = (!isset($post->password) || $post->password == "");
+	if($loginIsNull || $passwordIsNull){
 	   $msg = $msg."Login nao definido";
 	   $result = array('msg'=>$msg);
 	   echo json_encode($result);
-	   echo $msg;
 	   return false;
 	}
-    
-    if(!isset($post->password) || $post->password == ""){
-	    $msg = $msg."password nao definido";
-	    $result = array('msg'=>$msg);
-	    echo json_encode($result);
-	    echo $msg;
-	   return false;
-	}
-
 	return true;
 }
