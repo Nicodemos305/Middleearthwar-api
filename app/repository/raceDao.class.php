@@ -14,8 +14,8 @@ class RaceDao extends DataSource {
 	     return parent::findAllEntity($sql);
 	}
 
-	function findOne($id){
-	     $sql = "select * from race where id =".$id;
+	function findOne($uid){
+	     $sql = "select * from race where id =".$uid;
 	     return parent::findOneEntity($sql);
 	}
 
@@ -25,8 +25,8 @@ class RaceDao extends DataSource {
 	     return parent::findOneEntity($sql);
 	}
 
-	function delete($id){
-		 $sql = "delete from race where id =".$id;
+	function delete($uid){
+		 $sql = "delete from race where id =".$uid;
 		return parent::deleteEntity($sql);
 	}
 }

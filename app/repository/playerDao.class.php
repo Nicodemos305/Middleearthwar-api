@@ -14,13 +14,13 @@ class PlayerDao extends DataSource {
 	     return parent::findAllEntity($sql);
 	}
 
-	function findOne($id){
-	     $sql = "select * from player where id =".$id;
+	function findOne($uid){
+	     $sql = "select * from player where id =".$uid;
 	     return parent::findOneEntity($sql);
 	}
 
-	function delete($id){
-		 $sql = "delete from player where id =".$id;
+	function delete($uid){
+		 $sql = "delete from player where id =".$uid;
 		 parent::deleteEntity($sql);
 	}
 
