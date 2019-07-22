@@ -4,8 +4,8 @@ class Race {
 
 	private $uid; 
 	private $name;
-	private $hp;
-	private $mp;
+	private $healthPoint;
+	private $magicPoint;
 	private $atk;
 	private $defense;
 	private $agility;
@@ -27,22 +27,21 @@ class Race {
 		$this->name = $name;
 	}
 
-	public function getHp(){
-		return $this->hp;
+	public function getHealthpoint(){
+		return $this->healthPoint;
 	}
 
-	public function setHp($hp){
-		$this->hp = $hp;
+	public function setHealthpoint($healthPoint){
+		$this->healthPoint = $healthPoint;
 	}
 
-	public function getMp(){
-		return $this->mp;
+	public function getMagicPoint(){
+		return $this->magicPoint;
 	}
 
-	public function setMp($mp){
-		$this->mp = $mp;
+	public function setMagicPoint($magicPoint){
+		$this->magicPoint = $magicPoint;
 	}
-
 	public function getAtk(){
 		return $this->atk;
 	}

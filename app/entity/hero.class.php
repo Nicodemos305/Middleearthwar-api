@@ -98,8 +98,8 @@ class Hero {
 
 	public function newHero($race){
 	 		$this->setRace($race['name']);
-	  		$this->setHp($race['hp']);
-	 		$this->setMp($race['mp']);
+	  		$this->setHealthpoint($race['hp']);
+	 		$this->setMagicPoint($race['mp']);
 	 		$this->setAtk($race['atk']);
 	 	    $this->setDefense($race['defense']);
 	 	    $this->setAgility($race['agility']);

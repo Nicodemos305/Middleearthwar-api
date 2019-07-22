@@ -10,7 +10,7 @@ class Adventure {
 		return $this->uid;
 	}
 
-	public function setUid($id){
+	public function setUid($uid){
 		$this->uid = $uid;
 	}
 
