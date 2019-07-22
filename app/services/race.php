@@ -22,22 +22,14 @@
         }
         break;
     case "POST":
-        $name= $post->name;
-        $hp = $post->hp;
-        $mp = $post->mp;
-        $atk = $post->atk;
-        $defense = $post->defense;
-        $agility = $post->agility;
-        $inteligence = $post->inteligence;
-
         $raceInstance = new Race();
-        $raceInstance->setName($name);
-        $raceInstance->setHp($hp);
-        $raceInstance->setMp($mp);
-        $raceInstance->setAtk($atk);
-        $raceInstance->setDefense($defense);
-        $raceInstance->setAgility($agility);
-        $raceInstance->setInteligence($inteligence);
+        $raceInstance->setName($post->name);
+        $raceInstance->setHp($post->hp);
+        $raceInstance->setMp($post->mp);
+        $raceInstance->setAtk($post->atk);
+        $raceInstance->setDefense($post->defense);
+        $raceInstance->setAgility($post->agility);
+        $raceInstance->setInteligence($post->inteligence);
         $raceDao->insert($raceInstance);
         break;
     case "DELETE":
