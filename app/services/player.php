@@ -13,7 +13,11 @@ $post = json_decode($json);
 	$player = new Player();
 	$result = "";
 	$players = "";
-	$request = $_SERVER['REQUEST_METHOD'];
+	$request = null;
+	if(isset($_SERVER['REQUEST_METHOD']){
+		$request = $_SERVER['REQUEST_METHOD'];
+	}
+
   switch ($request) {
     case "GET":
 		if(isset($_GET['id'])){
