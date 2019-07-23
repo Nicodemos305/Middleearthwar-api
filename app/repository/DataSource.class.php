@@ -64,10 +64,10 @@
 	}
 
 	function conectDb(){
-		$dbuser = getenv('MYSQL_USER') != null ? getenv('MYSQL_USER') : "root";
-		$dbpass = getenv('MYSQL_PASS') != null ? getenv('MYSQL_PASS') : "";
-		$endpoint = getenv('DATA_BASE_ENDPOINT') != null ? getenv('DATA_BASE_ENDPOINT') : "localhost";
-		$database = getenv('DATA_BASE') != null ? getenv('DATA_BASE') : "rpgcloud";
+		$dbuser = getenv('MYSQL_USER', "root");
+		$dbpass = getenv('MYSQL_PASS', "");
+		$endpoint = getenv('DATA_BASE_ENDPOINT',"localhost");
+		$database = getenv('DATA_BASE', "rpgcloud");
 		$conn = null;
 		try {
 			$conn = new PDO("mysql:host=$endpoint;dbname=$database", $dbuser, $dbpass);
