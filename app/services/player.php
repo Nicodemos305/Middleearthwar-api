@@ -6,10 +6,8 @@
 
 	$post = json_decode(file_get_contents('php://input'));
     $msg = "";
-	$email = "";
 	$playerDao = new PlayerDao();
 	$result = "";
-	$players = "";
 	$request = null;
 	$id = $_GET['id'];
 	if(isset($_SERVER['REQUEST_METHOD'])){

@@ -9,6 +9,10 @@ class RaceDao extends DataSource {
 	     parent::insertEntity($sql);
 	 }
 
+	function update(Race $race){
+		$sql = "update  race set values(null,'".$race->getName()."','".$race->getHp()."','".$race->getMp()."','".$race->getAtk()."','".$race->getDefense()."','".$race->getAgility()."','".$race->getInteligence()."',0)";
+		parent::updateEntity($sql);
+	}
 	function findAll(){
 	     $sql = "select * from race";
 	     return parent::findAllEntity($sql);

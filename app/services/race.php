@@ -5,8 +5,7 @@
   include_once "/var/www/html/repository/raceDao.class.php";
   include_once "/var/www/html/entity/Race.class.php";
   
-  $json = file_get_contents('php://input');
-  $post = json_decode($json);
+  $post = json_decode(file_get_contents('php://input'));
   $result = "";
   $raceDao = new RaceDao(); 
   $id = $_GET['id'];
@@ -25,10 +24,12 @@
         $raceDao->insert($raceInstance);
         break;
     case "PATCH":
-
+        $raceInstance = new Race($post->name, $post->hp, $post->mp, $post->atk, $post->defense, $post->agility, $post->inteligence);
+        $raceDao->update($raceInstance);
     break;
     case "PUT":
-
+        $raceInstance = new Race($post->name, $post->hp, $post->mp, $post->atk, $post->defense, $post->agility, $post->inteligence);
+        $raceDao->update($raceInstance);
     break;
     case "DELETE":
         if(isset($id) &&  $id != null){
