@@ -43,7 +43,6 @@
 		$conn = null;
 	}
 	
-
 	function deleteEntity($sql){
 		try {
 			$conn = $this->conectDb();			
@@ -54,11 +53,10 @@
 		$conn = null;
 	}
 
-	function update($sql){
+	function updateEntity($sql){
 		try {
 			$conn = $this->conectDb();
-			$stmt = $conn->prepare($sql);
-			$stmt->execute();
+			$conn->exec($sql);
 		}catch(PDOException $exception){
 			throw new Exception($exception->getMessage());
 		}

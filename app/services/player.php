@@ -4,9 +4,7 @@
     include_once "/var/www/html/entity/Player.class.php";
     include_once "/var/www/html/repository/playerDao.class.php";
 
-$json = file_get_contents('php://input');
-$post = json_decode($json);
-
+	$post = json_decode(file_get_contents('php://input'));
     $msg = "";
 	$email = "";
 	$playerDao = new PlayerDao();
@@ -29,20 +27,20 @@ $post = json_decode($json);
 		}
         break;
     case "POST":
-		$player= validate($post,$msg);
+		$player= validate($post,$msg, $id);
 		if($player != null){
 			$playerDao->insert($player);
 			$result = array ('login'=>$player->getLogin(),'senha'=>$player->getPassword(),'email'=>$player->getEmail());
 		}
 		break;
 	case "PATCH":
-		$player= validate($post,$msg);
+		$player= validate($post,$msg, $id);
 		if($player != null){
 			$playerDao->update($player);
 		}
 	break;
 	case "PUT":
-		$player= validate($post,$msg);
+		$player= validate($post,$msg, $id);
 		if($player != null){
 			$playerDao->update($player);
 		}
@@ -56,7 +54,7 @@ $post = json_decode($json);
 
 echo json_encode($result);
 
- function validate($post,$msg){
+ function validate($post,$msg, $id){
 	$loginIsNull = !isset($post->login) || $post->login == "";
 	$passwordIsNull = !isset($post->password) || $post->password == "";
 	$emailIsNull = !isset($post->email) || $post->email == "";
@@ -68,6 +66,6 @@ echo json_encode($result);
 	   echo $msg;
 	   return false;
 	}
-	$player = new Player($post->login, $post->password, $post->email);
+	$player = new Player($id, $post->login, $post->password, $post->email);
 	return $player;
 }
