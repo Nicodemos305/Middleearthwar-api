@@ -1,6 +1,7 @@
 <?php
+
 include_once "/var/www/html/entity/Player.class.php";
-include_once "DataSource.class.php";
+include_once "/var/www/html/repository/DataSource.class.php";
 
 class PlayerDao extends DataSource {
 
