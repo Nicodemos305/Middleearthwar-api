@@ -1,13 +1,9 @@
 <?php
-	include_once "/var/www/html/util/header.php";
-    include_once "/var/www/html/entity/Player.class.php";
-    include_once "/var/www/html/repository/playerDao.class.php";
+include_once "/var/www/html/util/header.php";
+include_once "/var/www/html/entity/Player.class.php";
+include_once "/var/www/html/repository/playerDao.class.php";
 
-	$playerDao = new PlayerDao();
-	$request = null;
-	if(isset($_SERVER['REQUEST_METHOD'])){
-		$request = $_SERVER['REQUEST_METHOD'];
-	}
+$playerDao = new PlayerDao();
 
   switch ($request) {
     case "GET":

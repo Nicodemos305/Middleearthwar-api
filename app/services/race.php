@@ -4,7 +4,7 @@
   include_once "/var/www/html/entity/Race.class.php";
 
   $raceDao = new RaceDao(); 
-  switch ($_SERVER['REQUEST_METHOD']) {
+  switch ($request) {
     case "GET":
         if(isset($uuid)){
           $race = $raceDao->findOne($uuid);

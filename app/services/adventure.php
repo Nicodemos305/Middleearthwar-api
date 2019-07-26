@@ -6,7 +6,7 @@
   $adventures = [];
   $adventureDao = new AdventureDao();
   $adventure = new Adventure();
-  switch ($_SERVER['REQUEST_METHOD']) {
+  switch ($request) {
     case "GET":
         if(isset($uuid) && $uuid != null){
           $adventures = $adventureDao->findOne($uuid);

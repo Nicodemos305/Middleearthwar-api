@@ -7,7 +7,7 @@
   $heroes = "";
   $heroDao = new HeroDao();
   $raceDao = new RaceDao();
-    switch ($_SERVER['REQUEST_METHOD']) {
+    switch ($request) {
       case "GET":
         if(isset($uuid) && $uuid != null){
           $hero = $heroDao->findOne($uuid);

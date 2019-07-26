@@ -5,7 +5,7 @@
   $worlds = "";
   $world = "";
   $worldDao = new WorldDao();
-  switch ($_SERVER['REQUEST_METHOD']) {
+  switch ($request) {
     case "GET":
         if(isset($uuid)){
           $world = $worldDao->findOne($uuid);
