@@ -2,7 +2,7 @@
   include_once "/var/www/html/util/header.php";
   include_once "/var/www/html/repository/raceDao.class.php";
   include_once "/var/www/html/entity/Race.class.php";
-  $result = "";
+
   $raceDao = new RaceDao(); 
   $uuid = $_GET['uuid'];
   switch ($_SERVER['REQUEST_METHOD']) {

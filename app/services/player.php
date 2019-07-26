@@ -2,9 +2,8 @@
 	include_once "/var/www/html/util/header.php";
     include_once "/var/www/html/entity/Player.class.php";
     include_once "/var/www/html/repository/playerDao.class.php";
-    $msg = "";
+
 	$playerDao = new PlayerDao();
-	$result = "";
 	$request = null;
 	$uuid = $_GET['uuid'];
 	if(isset($_SERVER['REQUEST_METHOD'])){

@@ -4,7 +4,6 @@
   include_once "/var/www/html/repository/heroDao.class.php";
   include_once "/var/www/html/repository/raceDao.class.php";
 
-  $result = "";
   $heroes = "";
   $heroDao = new HeroDao();
   $raceDao = new RaceDao();
