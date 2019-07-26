@@ -18,7 +18,7 @@
   switch ($request) {
     case "GET":
 		if(isset($uuid)){
-			$player =  $playerDao->findOne($id);
+			$player =  $playerDao->findOne($uuid);
 			$result = array ('player'=>$player);
 		}else{
 		$players =  $playerDao->findAll();
@@ -26,7 +26,7 @@
 		}
         break;
     case "POST":
-		$player= validate($post,$msg, $id);
+		$player= validate($post,$msg, $uuid);
 		if($player != null){
 			$playerDao->insert($player);
 			$result = array ('login'=>$player->getLogin(),'senha'=>$player->getPassword(),'email'=>$player->getEmail());
@@ -45,7 +45,7 @@
 		}
 	break;
     case "DELETE":
-          if(isset($id) && $uuid != null){
+          if(isset($uuid) && $uuid != null){
 			$playerDao->delete($uuid);
 		}
         break;
@@ -53,7 +53,7 @@
 
 echo json_encode($result);
 
- function validate($post,$msg, $id){
+ function validate($post,$msg, $uuid){
 	$loginIsNull = !isset($post->login) || $post->login == "";
 	$passwordIsNull = !isset($post->password) || $post->password == "";
 	$emailIsNull = !isset($post->email) || $post->email == "";

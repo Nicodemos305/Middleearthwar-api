@@ -8,14 +8,14 @@ CREATE TABLE player
      login    VARCHAR(255), 
      password VARCHAR(800), 
      email    VARCHAR(255), 
-     PRIMARY KEY(id) 
+     PRIMARY KEY(uuid) 
   ); 
 
 CREATE TABLE quest 
   ( 
      uuid     VARCHAR(255), 
      name VARCHAR(800), 
-     PRIMARY KEY(id) 
+     PRIMARY KEY(uuid) 
   ); 
 
 CREATE TABLE test 
@@ -25,14 +25,14 @@ CREATE TABLE test
      goal   VARCHAR(10), 
      result INT, 
      test   INT, 
-     PRIMARY KEY(id) 
+     PRIMARY KEY(uuid) 
   ); 
 
 CREATE TABLE adventure 
   ( 
-     id   INT auto_increment, 
+     uuid     VARCHAR(255), 
      name VARCHAR(255), 
-     PRIMARY KEY(id) 
+     PRIMARY KEY(uuid) 
   ); 
 
 CREATE TABLE hero 
@@ -49,7 +49,7 @@ CREATE TABLE hero
      id_player   INT, 
      id_world    INT, 
      PRIMARY KEY(id), 
-     FOREIGN KEY (id_player) REFERENCES player(id) 
+     FOREIGN KEY (id_player) REFERENCES player(uuid) 
   ); 
 
 CREATE TABLE race 
@@ -63,7 +63,7 @@ CREATE TABLE race
      agility     INT, 
      inteligence INT, 
      id_world    INT, 
-     PRIMARY KEY(id) 
+     PRIMARY KEY(uuid) 
   ); 
 
 CREATE TABLE battle 
@@ -75,8 +75,8 @@ CREATE TABLE battle
      hp_hero_two   INT, 
      status_battle VARCHAR(10), 
      win_battle    INT, 
-     PRIMARY KEY(id), 
-     FOREIGN KEY (id_hero_one) REFERENCES hero(id) 
+     PRIMARY KEY(uuid), 
+     FOREIGN KEY (id_hero_one) REFERENCES hero(uuid) 
   ); 
 
 CREATE TABLE phase 
@@ -85,7 +85,7 @@ CREATE TABLE phase
      id_hero_one INT, 
      id_battle   INT, 
      description VARCHAR(400), 
-     PRIMARY KEY(id) 
+     PRIMARY KEY(uuid) 
   ); 
 
 CREATE TABLE world 
@@ -93,5 +93,5 @@ CREATE TABLE world
      uuid     VARCHAR(255), 
      name        VARCHAR(200), 
      description VARCHAR(600), 
-     PRIMARY KEY(id) 
+     PRIMARY KEY(uuid) 
   ); 
