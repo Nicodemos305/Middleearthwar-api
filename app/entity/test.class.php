@@ -1,5 +1,5 @@
 <?php
-
+namespace entity;
 class Test{
 
 	private $uuid;

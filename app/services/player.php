@@ -1,6 +1,7 @@
 <?php
 require "/var/www/html/util/header.php";
-require "/var/www/html/entity/Player.class.php";
+include_once "/var/www/html/autoload.php";
+use entity\Player;
 require "/var/www/html/repository/playerDao.class.php";
 
 $playerDao = new PlayerDao();

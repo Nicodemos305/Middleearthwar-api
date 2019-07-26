@@ -3,7 +3,8 @@
   header('Access-Control-Allow-Origin: *');  
   include_once "/var/www/html/repository/heroDao.class.php";
   include_once "/var/www/html/repository/raceDao.class.php";
-
+  include_once "/var/www/html/autoload.php";
+  use entity\Hero;
   $heroes = "";
   $heroDao = new HeroDao();
   $raceDao = new RaceDao();

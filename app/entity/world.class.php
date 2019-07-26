@@ -1,4 +1,5 @@
 <?php 
+namespace entity;
 	 class World{
 
 		private $uuid;

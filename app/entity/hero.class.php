@@ -1,4 +1,5 @@
 <?php
+namespace entity;
 include_once "/var/www/html/entity/Race.class.php";
 class Hero extends Race{
 

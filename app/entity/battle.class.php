@@ -1,5 +1,5 @@
 <?php
-
+namespace entity;
 class Battle{
 
 	private  $playerOne;

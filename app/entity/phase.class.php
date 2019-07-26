@@ -1,5 +1,5 @@
 <?php 
-
+namespace entity;
 	class Phase{
 
 	private $uuid;
