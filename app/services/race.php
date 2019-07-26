@@ -1,8 +1,8 @@
 <?php 
   include_once "/var/www/html/util/header.php";
-  include_once "/var/www/html/repository/raceDao.class.php";
   include_once "/var/www/html/autoload.php";
   use entity\Race;
+  use repository\RaceDao;
   $raceDao = new RaceDao(); 
   switch ($request) {
     case "GET":

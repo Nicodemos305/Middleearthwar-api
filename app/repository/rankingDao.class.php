@@ -1,4 +1,5 @@
 <?php
+namespace repository;
 include_once "DataSource.class.php";
 
 class RankingDao extends DataSource{

@@ -1,5 +1,5 @@
 <?php
-
+namespace repository;
 include_once "/var/www/html/entity/Player.class.php";
 include_once "/var/www/html/repository/DataSource.class.php";
 

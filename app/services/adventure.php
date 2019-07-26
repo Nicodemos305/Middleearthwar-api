@@ -1,8 +1,8 @@
 <?php
   include_once "/var/www/html/util/header.php";
-  include_once "/var/www/html/repository/adventureDao.class.php";
   include_once "/var/www/html/autoload.php";
   use entity\Adventure;
+  use repository\AdventureDao;
   $adventureDao = new AdventureDao();
   $adventure = new Adventure();
   switch ($request) {

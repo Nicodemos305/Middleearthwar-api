@@ -1,7 +1,7 @@
 <?php
   include_once "/var/www/html/util/header.php";
-  include_once "/var/www/html/repository/worldDao.class.php";
-  
+  include_once "/var/www/html/autoload.php";
+  use repository\WorldDao;
   $worldDao = new WorldDao();
   switch ($request) {
     case "GET":

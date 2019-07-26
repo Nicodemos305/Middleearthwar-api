@@ -1,4 +1,5 @@
 <?php
+namespace repository;
 include_once "DataSource.class.php";
 include_once "/var/www/html/entity/Adventure.class.php";
 
