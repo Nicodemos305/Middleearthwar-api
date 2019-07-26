@@ -1,6 +1,5 @@
 <?php
- header('Content-type: application/json');
- header('Access-Control-Allow-Origin: *');
+ include_once "/var/www/html/util/header.php";
 require_once "/var/www/html/entity/Battle.class.php";
 require_once "/var/www/html/entity/Phase.class.php";
 require_once "/var/www/html/repository/battleDao.class.php";

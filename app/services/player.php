@@ -1,11 +1,7 @@
 <?php
-	header('Content-type: application/json');
-	header('Access-Control-Allow-Origin: *');
+	include_once "/var/www/html/util/header.php";
     include_once "/var/www/html/entity/Player.class.php";
     include_once "/var/www/html/repository/playerDao.class.php";
-
-
-	$post = json_decode(file_get_contents('php://input'));
     $msg = "";
 	$playerDao = new PlayerDao();
 	$result = "";

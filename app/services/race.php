@@ -1,11 +1,7 @@
 <?php 
-  header('Content-type: application/json');
-  header('Access-Control-Allow-Origin: *');
-
+  include_once "/var/www/html/util/header.php";
   include_once "/var/www/html/repository/raceDao.class.php";
   include_once "/var/www/html/entity/Race.class.php";
-  
-  $post = json_decode(file_get_contents('php://input'));
   $result = "";
   $raceDao = new RaceDao(); 
   $uuid = $_GET['uuid'];
