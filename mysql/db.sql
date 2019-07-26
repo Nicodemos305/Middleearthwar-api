@@ -4,7 +4,7 @@ USE rpgcloud;
 
 CREATE TABLE player 
   ( 
-     id       INT auto_increment, 
+     uuid     VARCHAR(255), 
      login    VARCHAR(255), 
      password VARCHAR(800), 
      email    VARCHAR(255), 
@@ -13,14 +13,14 @@ CREATE TABLE player
 
 CREATE TABLE quest 
   ( 
-     id   INT auto_increment, 
+     uuid     VARCHAR(255), 
      name VARCHAR(800), 
      PRIMARY KEY(id) 
   ); 
 
 CREATE TABLE test 
   ( 
-     id     INT auto_increment, 
+     uuid     VARCHAR(255), 
      name   VARCHAR(255), 
      goal   VARCHAR(10), 
      result INT, 
@@ -37,7 +37,7 @@ CREATE TABLE adventure
 
 CREATE TABLE hero 
   ( 
-     id          INT auto_increment, 
+     uuid     VARCHAR(255), 
      name        VARCHAR(255), 
      race        VARCHAR(255), 
      hp          INT, 
@@ -54,7 +54,7 @@ CREATE TABLE hero
 
 CREATE TABLE race 
   ( 
-     id          INT auto_increment, 
+     uuid     VARCHAR(255), 
      name        VARCHAR(255), 
      hp          INT, 
      mp          INT, 
@@ -68,7 +68,7 @@ CREATE TABLE race
 
 CREATE TABLE battle 
   ( 
-     id            INT auto_increment, 
+      uuid     VARCHAR(255), 
      id_hero_one   INT, 
      id_hero_two   INT, 
      hp_hero_one   INT, 
@@ -81,7 +81,7 @@ CREATE TABLE battle
 
 CREATE TABLE phase 
   ( 
-     id          INT auto_increment, 
+     uuid     VARCHAR(255), 
      id_hero_one INT, 
      id_battle   INT, 
      description VARCHAR(400), 
@@ -90,7 +90,7 @@ CREATE TABLE phase
 
 CREATE TABLE world 
   ( 
-     id          INT auto_increment, 
+     uuid     VARCHAR(255), 
      name        VARCHAR(200), 
      description VARCHAR(600), 
      PRIMARY KEY(id) 

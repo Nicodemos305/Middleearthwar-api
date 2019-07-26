@@ -10,11 +10,11 @@
   $adventure = new Adventure();
   $json = file_get_contents('php://input');
   $post = json_decode($json);
-  $id = $_GET['id'];
+  $uuid = $_GET['uuid'];
   switch ($_SERVER['REQUEST_METHOD']) {
     case "GET":
-        if(isset($id) && $id != null){
-          $adventures = $adventureDao->findOne($id);
+        if(isset($uuid) && $uuid != null){
+          $adventures = $adventureDao->findOne($uuid);
           $result = array ('adventures'=>$adventures);
         }else{
             $adventures = $adventureDao->findAll();
@@ -32,8 +32,8 @@
 
     break;
     case "DELETE":
-        if(isset($id) && $id != null){
-          $msg =  $adventureDao->delete($id);
+        if(isset($uuid) && $uuid != null){
+          $msg =  $adventureDao->delete($uuid);
           $result = array ('msg'=>$msg);
         }
         break;

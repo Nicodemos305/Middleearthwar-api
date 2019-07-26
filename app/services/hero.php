@@ -11,11 +11,11 @@
   $heroes = "";
   $heroDao = new HeroDao();
   $raceDao = new RaceDao();
-  $id = $_GET['id'];
+  $uuid = $_GET['uuid'];
     switch ($_SERVER['REQUEST_METHOD']) {
       case "GET":
-        if(isset($id) && $id != null){
-          $hero = $heroDao->findOne($id);
+        if(isset($uuid) && $uuid != null){
+          $hero = $heroDao->findOne($uuid);
           $result = array ('hero'=>$hero);
           }else{
             $heroes = $heroDao->findAll();
@@ -29,8 +29,8 @@
           $hero->setName($name);
           $raceInstance = $raceDao->findByName($race);
           $hero->newHero($raceInstance);
-          $id = 1;
-          $heroDao->insert($hero,$id);
+          $uuid = 1;
+          $heroDao->insert($hero,$uuid);
           break;
       case "PATCH":
 
@@ -39,8 +39,8 @@
 
       break;
       case "DELETE":
-          if(isset($id) && $id != null){
-            $msg =  $heroDao->delete($id);
+          if(isset($uuid) && $uuid != null){
+            $msg =  $heroDao->delete($uuid);
             $result = array ('msg'=>$msg);
           }
           break;

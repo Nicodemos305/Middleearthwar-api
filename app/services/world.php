@@ -10,11 +10,11 @@
   $worlds = "";
   $world = "";
   $worldDao = new WorldDao();
-  $id = $_GET['id'];
+  $uuid = $_GET['uuid'];
   switch ($_SERVER['REQUEST_METHOD']) {
     case "GET":
-        if(isset($id)){
-          $world = $worldDao->findOne($id);
+        if(isset($uuid)){
+          $world = $worldDao->findOne($uuid);
           $result = array ('world'=>$world);
         }else{
             $worlds = $worldDao->findAll();
@@ -36,8 +36,8 @@
 
     break;
     case "DELETE":
-      if(isset($id) &&  $id != null){
-          $msg =  $worldDao->delete($id);
+      if(isset($uuid) &&  $uuid != null){
+          $msg =  $worldDao->delete($uuid);
           $result = array ('msg'=>$msg);
         }
         break;

@@ -4,19 +4,20 @@
     include_once "/var/www/html/entity/Player.class.php";
     include_once "/var/www/html/repository/playerDao.class.php";
 
+
 	$post = json_decode(file_get_contents('php://input'));
     $msg = "";
 	$playerDao = new PlayerDao();
 	$result = "";
 	$request = null;
-	$id = $_GET['id'];
+	$uuid = $_GET['uuid'];
 	if(isset($_SERVER['REQUEST_METHOD'])){
 		$request = $_SERVER['REQUEST_METHOD'];
 	}
 
   switch ($request) {
     case "GET":
-		if(isset($id)){
+		if(isset($uuid)){
 			$player =  $playerDao->findOne($id);
 			$result = array ('player'=>$player);
 		}else{
@@ -32,20 +33,20 @@
 		}
 		break;
 	case "PATCH":
-		$player= validate($post,$msg, $id);
+		$player= validate($post,$msg, $uuid);
 		if($player != null){
 			$playerDao->update($player);
 		}
 	break;
 	case "PUT":
-		$player= validate($post,$msg, $id);
+		$player= validate($post,$msg, $uuid);
 		if($player != null){
 			$playerDao->update($player);
 		}
 	break;
     case "DELETE":
-          if(isset($id) && $id != null){
-			$playerDao->delete($id);
+          if(isset($id) && $uuid != null){
+			$playerDao->delete($uuid);
 		}
         break;
 }
@@ -64,6 +65,6 @@ echo json_encode($result);
 	   echo $msg;
 	   return false;
 	}
-	$player = new Player($id, $post->login, $post->password, $post->email);
+	$player = new Player($uuid, $post->login, $post->password, $post->email);
 	return $player;
 }

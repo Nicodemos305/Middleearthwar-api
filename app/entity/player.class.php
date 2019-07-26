@@ -2,24 +2,24 @@
 
 class Player{
 
-	private $id;
+	private $uuid;
  	private $login;
 	private $password;
  	private $email;
 
- public function __construct($id, $login, $password, $email) {
+ public function __construct($uuid, $login, $password, $email) {
         $this->login = $login;
         $this->password = $password;
 		$this->email = $email;
-		$this->id = $id;
+		$this->uuid = $uuid;
 	}
 	
-	public function getId(){
-		return $this->id;
+	public function getUuid(){
+		return $this->uuid;
 	}
 
-	public function setId($id){
-		$this->id = $id;
+	public function setUuid($uuid){
+		$this->uuid = $uuid;
 	}
 
 	public function getLogin(){

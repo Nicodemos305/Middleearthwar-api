@@ -2,18 +2,18 @@
 
 class Test{
 
-	private $uid;
+	private $uuid;
 	private $name;
 	private $goal;
 	private $result;
 	private $test;
 
-	public function getId(){
-		return $this->uid;
+	public function getUuid(){
+		return $this->uuid;
 	}
 
-	public function setUid($uid){
-		$this->uid = $uid;
+	public function setUuid($uuid){
+		$this->uuid = $uuid;
 	}
 
 	public function getName(){

@@ -2,17 +2,17 @@
 
 	class Phase{
 
-	private $uid;
+	private $uuid;
 	private $battle_id;
 	private $player_id;
 	private $description;
 
-	public function getUid(){
-		return $this->uid;
+	public function getUuid(){
+		return $this->uuid;
 	}
 
-	public function setUid($uid){
-		$this->uid = $uid;
+	public function setUuid($uuid){
+		$this->uuid = $uuid;
 	}
 
 	public function getBattle_id(){

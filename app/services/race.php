@@ -8,11 +8,11 @@
   $post = json_decode(file_get_contents('php://input'));
   $result = "";
   $raceDao = new RaceDao(); 
-  $id = $_GET['id'];
+  $uuid = $_GET['uuid'];
   switch ($_SERVER['REQUEST_METHOD']) {
     case "GET":
-        if(isset($id)){
-          $race = $raceDao->findOne($id);
+        if(isset($uuid)){
+          $race = $raceDao->findOne($uuid);
           $result = array ('race'=>$race);
         }else{
             $race = $raceDao->findAll();
@@ -32,8 +32,8 @@
         $raceDao->update($raceInstance);
     break;
     case "DELETE":
-        if(isset($id) &&  $id != null){
-          $msg =  $raceDao->delete($id);
+        if(isset($uuid) &&  $uuid != null){
+          $msg =  $raceDao->delete($uuid);
           $result = array ('msg'=>$msg);
         }
         break;
