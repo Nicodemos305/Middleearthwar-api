@@ -5,6 +5,12 @@
 		private $name;
 		private $description;
 
+		public function __construct($uuid, $name, $description) {
+			$this->uuid = $uuid;
+			$this->name = $name;
+			$this->description = $description;
+		}
+
 		public function getUuid(){
 			return $this->uuid;
 		}

@@ -2,8 +2,6 @@
   include_once "/var/www/html/util/header.php";
   include_once "/var/www/html/repository/worldDao.class.php";
   
-  $worlds = "";
-  $world = "";
   $worldDao = new WorldDao();
   switch ($request) {
     case "GET":
@@ -16,18 +14,16 @@
         }
         break;
     case "POST":
-        $name= $post->name;
-        $description= $post->description;
-        $world = new World();
-        $world->setName($name);
-        $world->setDescription($description);
+        $world = validate($post,$msg, $uuid);
         $worldDao->insert($world);
         break;
     case "PATCH":
-
+        $world = validate($post,$msg, $uuid);
+        $worldDao->update($world,$uuid);
     break;
     case "PUT":
-
+        $world = validate($post,$msg, $uuid);
+        $worldDao->update($world,$uuid);
     break;
     case "DELETE":
       if(isset($uuid) &&  $uuid != null){
@@ -38,3 +34,17 @@
 }
  
 echo json_encode($result);
+
+function validate($post,$msg, $uuid){
+	$nameIsNull = !isset($post->name) || $post->name == "";
+	$descriptionIsNull = !isset($post->description) || $post->description == "";
+
+	if($nameIsNull || 	$descriptionIsNull){
+	   $msg = $msg."Os campos name, description são obrigatórios";
+	   $result = array('msg'=>$msg);
+	   echo json_encode($result);
+	   return false;
+	}
+  $world = new World($uuid, $post->name, $post->description);
+	return $player;
+}
