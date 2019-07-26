@@ -64,6 +64,8 @@
 	}
 
 	function conectDb(){
+
+
 		$dbuser = getenv('MYSQL_USER', "root");
 		$dbpass = getenv('MYSQL_PASS', "");
 		$endpoint = getenv('DATA_BASE_ENDPOINT',"mysql");

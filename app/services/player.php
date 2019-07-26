@@ -1,7 +1,7 @@
 <?php
-include_once "/var/www/html/util/header.php";
-include_once "/var/www/html/entity/Player.class.php";
-include_once "/var/www/html/repository/playerDao.class.php";
+require "/var/www/html/util/header.php";
+require "/var/www/html/entity/Player.class.php";
+require "/var/www/html/repository/playerDao.class.php";
 
 $playerDao = new PlayerDao();
 
