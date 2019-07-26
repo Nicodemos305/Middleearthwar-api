@@ -28,10 +28,24 @@
           $heroDao->insert($hero,$uuid);
           break;
       case "PATCH":
-
+          $name= $post->name;
+          $race= $post->race;
+          $hero = new Hero();
+          $hero->setName($name);
+          $raceInstance = $raceDao->findByName($race);
+          $hero->newHero($raceInstance);
+          $uuid = 1;
+          $heroDao->update($hero,$uuid);
       break;
       case "PUT":
-
+          $name= $post->name;
+          $race= $post->race;
+          $hero = new Hero();
+          $hero->setName($name);
+          $raceInstance = $raceDao->findByName($race);
+          $hero->newHero($raceInstance);
+          $uuid = 1;
+          $heroDao->update($hero,$uuid);
       break;
       case "DELETE":
           if(isset($uuid) && $uuid != null){
@@ -40,5 +54,4 @@
           }
           break;
   }
-
  echo json_encode($result);

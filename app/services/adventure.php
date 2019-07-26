@@ -20,10 +20,12 @@
         $adventureDao->insert($adventure);
         break;
     case "PATCH":
-
+        $adventure->setName($post->name);
+        $adventureDao->update($adventure);
     break;
     case "PUT":
-
+        $adventure->setName($post->name, $uuid);
+        $adventureDao->update($adventure, $uuid);
     break;
     case "DELETE":
         if(isset($uuid) && $uuid != null){
