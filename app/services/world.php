@@ -46,5 +46,5 @@ function validate($post,$msg, $uuid){
 	   return false;
 	}
   $world = new World($uuid, $post->name, $post->description);
-	return $player;
+	return $world;
 }
