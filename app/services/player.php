@@ -5,7 +5,6 @@
 
 	$playerDao = new PlayerDao();
 	$request = null;
-	$uuid = $_GET['uuid'];
 	if(isset($_SERVER['REQUEST_METHOD'])){
 		$request = $_SERVER['REQUEST_METHOD'];
 	}

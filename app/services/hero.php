@@ -7,7 +7,6 @@
   $heroes = "";
   $heroDao = new HeroDao();
   $raceDao = new RaceDao();
-  $uuid = $_GET['uuid'];
     switch ($_SERVER['REQUEST_METHOD']) {
       case "GET":
         if(isset($uuid) && $uuid != null){

@@ -5,7 +5,6 @@ include_once("/var/www/html/repository/phaseDao.class.php");
 
 $battleDao = new BattleDao();
 $phaseDao = new PhaseDao();
-$id = $_GET['id'];
 $battle = $battleDao->myBattleRunning($id);
 
 if(is_array($battle)){

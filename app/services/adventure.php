@@ -6,7 +6,6 @@
   $adventures = [];
   $adventureDao = new AdventureDao();
   $adventure = new Adventure();
-  $uuid = $_GET['uuid'];
   switch ($_SERVER['REQUEST_METHOD']) {
     case "GET":
         if(isset($uuid) && $uuid != null){

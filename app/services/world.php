@@ -5,7 +5,6 @@
   $worlds = "";
   $world = "";
   $worldDao = new WorldDao();
-  $uuid = $_GET['uuid'];
   switch ($_SERVER['REQUEST_METHOD']) {
     case "GET":
         if(isset($uuid)){
