@@ -1,5 +1,7 @@
 <?php
 namespace repository;
+use PDO;
+
  class DataSource{
 
   function findOneEntity($sql){

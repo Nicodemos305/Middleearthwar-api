@@ -1,7 +1,8 @@
 <?php
 namespace repository;
-include_once "/var/www/html/entity/Player.class.php";
-include_once "/var/www/html/repository/DataSource.class.php";
+use entity\Player;
+use repository\DataSource;
+
 
 class PlayerDao extends DataSource {
 
@@ -21,7 +22,7 @@ class PlayerDao extends DataSource {
 	}
 
 	function findOne($uid){
-	     $sql = "select * from player where id =".$uid;
+	     $sql = "select * from player where uuid ='".$uid."'";
 	     return parent::findOneEntity($sql);
 	}
 
