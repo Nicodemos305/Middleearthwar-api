@@ -12,8 +12,9 @@ class Race
     private $agility;
     private $inteligence;
     
-    public function __construct($name, $healthPoint, $magicPoint, $atk, $defense, $agility, $inteligence)
-    {
+    public function __construct($uuid, $name, $healthPoint, $magicPoint, $atk, $defense, $agility, $inteligence)
+    {   
+        $this->uuid        = $uuid;
         $this->name        = $name;
         $this->healthPoint = $healthPoint;
         $this->magicPoint  = $magicPoint;

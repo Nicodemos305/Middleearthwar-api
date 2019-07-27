@@ -11,9 +11,10 @@ class RaceDao extends DataSource {
 	 }
 
 	function update(Race $race){
-		$sql = "update  race set name = '".$race->getName()."',' hp = ".$race->getHealthpoint()."',' mp =".$race->getMagicPoint()."',' atk = ".$race->getAtk()."',' defense = ".$race->getDefense()."','".$race->getAgility()."','".$race->getInteligence()."',0)";
+		$sql = "update race set name ='".$race->getName()."', hp ='".$race->getHealthpoint()."', mp = '".$race->getMagicPoint()."' , atk = '".$race->getAtk()."' , defense = '".$race->getDefense()."' , agility = '".$race->getAgility()."' , inteligence = '".$race->getInteligence()."' WHERE uuid ='".$race->getUuid()."'";
 		parent::updateEntity($sql);
 	}
+
 	function findAll(){
 	     $sql = "select * from race";
 	     return parent::findAllEntity($sql);
@@ -31,7 +32,7 @@ class RaceDao extends DataSource {
 	}
 
 	function delete($uid){
-		 $sql = "delete from race where id =".$uid;
+		$sql = "delete from race where uuid ='$uid'";
 		return parent::deleteEntity($sql);
 	}
 }

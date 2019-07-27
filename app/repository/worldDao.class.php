@@ -6,9 +6,14 @@ use repository\DataSource;
 class WorldDao extends DataSource {
 
 	function insert(World $world){
-	     $sql = "insert into world values(null,'".$world->getName()."','".$world->getDescription()."')";
+	     $sql = "insert into world values(uuid(),'".$world->getName()."','".$world->getDescription()."')";
 	     parent::insertEntity($sql);
 	 }
+
+	function update(World $world){
+		$sql = "update world set name ='".$world->getName()."', description ='".$world->getDescription()."' WHERE uuid ='".$world->getUuid()."'";
+		parent::updateEntity($sql);
+	}
 
 	function findAll(){
 	     $sql = "select * from world";
@@ -21,7 +26,7 @@ class WorldDao extends DataSource {
 	}
 
 	function delete($uid){
-		 $sql = "delete from world where uid =".$uid;
+		$sql = "delete from world where uuid ='$uid'";
 		return parent::deleteEntity($sql);
 	}
 }
