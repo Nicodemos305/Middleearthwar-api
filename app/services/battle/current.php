@@ -1,7 +1,9 @@
 <?php
- include_once "/var/www/html/util/header.php";
-include_once("/var/www/html/repository/battleDao.class.php");
-include_once("/var/www/html/repository/phaseDao.class.php");
+include_once "/var/www/html/util/header.php";
+include_once "/var/www/html/autoload.php";
+use entity\Battle;
+use entity\BattleDao;
+use entity\PhaseDao;
 
 $battleDao = new BattleDao();
 $phaseDao = new PhaseDao();

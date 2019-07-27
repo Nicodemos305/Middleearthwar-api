@@ -1,6 +1,9 @@
 <?php
-require_once  "/var/www/html/entity/Battle.class.php";
-require_once  "/var/www/html/repository/battleDao.class.php";
+include_once "/var/www/html/util/header.php";
+include_once "/var/www/html/autoload.php";
+use entity\Battle;
+use entity\BattleDao;
+
 
 class BattleCore{
 
