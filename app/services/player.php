@@ -50,7 +50,7 @@ switch ($request) {
         break;
 }
 
-echo json_encode($result);
+print json_encode($result);
 
 function validate($post, $msg, $uuid)
 {
@@ -63,8 +63,7 @@ function validate($post, $msg, $uuid)
         $result = array(
             'msg' => $msg
         );
-        echo json_encode($result);
-        echo $msg;
+        print json_encode($result);
         return false;
     }
     $player = new Player($uuid, $post->login, $post->password, $post->email);

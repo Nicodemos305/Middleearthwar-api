@@ -39,4 +39,4 @@ switch ($request) {
         }
         break;
 }
-echo json_encode($result);
+print json_encode($result);

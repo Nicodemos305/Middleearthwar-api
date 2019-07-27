@@ -6,4 +6,4 @@ $rankingDao = new RankingDao();
 
 $result = $rankingDao->rankingWinners();
 
-echo json_encode($result);
+print json_encode($result);

@@ -5,7 +5,7 @@ $playerDao = new PlayerDao();
 
 if (validate($post)) {
     $player = $playerDao->signIn($post->login, $post->password);
-    echo json_encode($player);
+    print json_encode($player);
 }
 
 function validate($post)
@@ -17,7 +17,7 @@ function validate($post)
         $result = array(
             'msg' => $msg
         );
-        echo json_encode($result);
+        print json_encode($result);
         return false;
     }
     return true;
