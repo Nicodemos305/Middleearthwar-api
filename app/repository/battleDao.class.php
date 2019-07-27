@@ -1,7 +1,7 @@
 <?php
 namespace repository;
-include_once "/var/www/html/entity/Battle.class.php";
-include_once "DataSource.class.php";
+use repository\DataSource;
+use entity\Battle;
 
 class BattleDao extends DataSource{
 

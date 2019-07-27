@@ -1,17 +1,17 @@
- <?php
- namespace repository;
-include_once "DataSource.class.php";
-include_once "/var/www/html/entity/Race.class.php";
+<?php
+namespace repository;
+use repository\DataSource;
+use entity\Race;
 
 class RaceDao extends DataSource {
 
 	function insert(Race $race){
-	     $sql = "insert into race values(null,'".$race->getName()."','".$race->getHp()."','".$race->getMp()."','".$race->getAtk()."','".$race->getDefense()."','".$race->getAgility()."','".$race->getInteligence()."',0)";
+	     $sql = "insert into race values(uuid(),'".$race->getName()."','".$race->getHealthpoint()."','".$race->getMagicPoint()."','".$race->getAtk()."','".$race->getDefense()."','".$race->getAgility()."','".$race->getInteligence()."',0)";
 	     parent::insertEntity($sql);
 	 }
 
 	function update(Race $race){
-		$sql = "update  race set values(null,'".$race->getName()."','".$race->getHp()."','".$race->getMp()."','".$race->getAtk()."','".$race->getDefense()."','".$race->getAgility()."','".$race->getInteligence()."',0)";
+		$sql = "update  race set name = '".$race->getName()."',' hp = ".$race->getHealthpoint()."',' mp =".$race->getMagicPoint()."',' atk = ".$race->getAtk()."',' defense = ".$race->getDefense()."','".$race->getAgility()."','".$race->getInteligence()."',0)";
 		parent::updateEntity($sql);
 	}
 	function findAll(){

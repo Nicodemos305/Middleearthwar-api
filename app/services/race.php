@@ -20,7 +20,7 @@
         break;
     case "PATCH":
         $raceInstance = new Race($post->name, $post->hp, $post->mp, $post->atk, $post->defense, $post->agility, $post->inteligence);
-        $raceDao->update($raceInstance);
+        $raceDao->update($raceInstance, $uuid);
     break;
     case "PUT":
         $raceInstance = new Race($post->name, $post->hp, $post->mp, $post->atk, $post->defense, $post->agility, $post->inteligence);

@@ -1,7 +1,7 @@
 <?php
 namespace repository;
-include_once "DataSource.class.php";
-include_once "/var/www/html/entity/Phase.class.php";
+use repository\DataSource;
+use entity\Phase;
 
 class PhaseDao extends DataSource {
 

@@ -27,7 +27,7 @@ class PlayerDao extends DataSource {
 	}
 
 	function delete($uid){
-		 $sql = "delete from player where id =".$uid;
+		 $sql = "delete from player where uuid ='$uid'";
 		 parent::deleteEntity($sql);
 	}
 

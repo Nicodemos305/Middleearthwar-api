@@ -1,7 +1,7 @@
 <?php
 namespace repository;
-include_once "DataSource.class.php";
-include_once "/var/www/html/entity/World.class.php";
+use entity\World;
+use repository\DataSource;
 
 class WorldDao extends DataSource {
 

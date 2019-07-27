@@ -46,9 +46,9 @@ CREATE TABLE hero
      defense     INT, 
      agility     INT, 
      inteligence INT, 
-     id_player   INT, 
-     id_world    INT, 
-     PRIMARY KEY(id), 
+     id_player   VARCHAR(255), 
+     id_world    VARCHAR(255), 
+     PRIMARY KEY(uuid), 
      FOREIGN KEY (id_player) REFERENCES player(uuid) 
   ); 
 
@@ -69,8 +69,8 @@ CREATE TABLE race
 CREATE TABLE battle 
   ( 
       uuid     VARCHAR(255), 
-     id_hero_one   INT, 
-     id_hero_two   INT, 
+     id_hero_one   VARCHAR(255), 
+     id_hero_two   VARCHAR(255), 
      hp_hero_one   INT, 
      hp_hero_two   INT, 
      status_battle VARCHAR(10), 
