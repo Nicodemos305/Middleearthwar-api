@@ -47,9 +47,8 @@ function validate($post, $msg, $uuid)
     $descriptionIsNull = !isset($post->description) || $post->description == "";
     
     if ($nameIsNull || $descriptionIsNull) {
-        $msg    = $msg . "Os campos name, description são obrigatórios";
         $result = array(
-            'msg' => $msg
+            'msg' => "Os campos name, description são obrigatórios"
         );
         echo json_encode($result);
         return false;
