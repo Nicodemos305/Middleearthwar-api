@@ -15,13 +15,13 @@ class WorldDao extends DataSource {
 	     return parent::findAllEntity($sql);
 	}
 
-	function findOne($id){
-	     $sql = "select * from world where id =".$id;
+	function findOne($uid){
+	     $sql = "select * from world where uid =".$uid;
 	     return parent::findOneEntity($sql);
 	}
 
-	function delete($id){
-		 $sql = "delete from world where id =".$id;
+	function delete($uid){
+		 $sql = "delete from world where uid =".$uid;
 		return parent::deleteEntity($sql);
 	}
 }
