@@ -1,18 +1,22 @@
 <?php
-  include_once "/var/www/html/util/header.php";
-  include_once "/var/www/html/autoload.php";
-  use entity\Adventure;
-  use repository\AdventureDao;
-  $adventureDao = new AdventureDao();
-  $adventure = new Adventure();
-  switch ($request) {
+include_once "/var/www/html/util/header.php";
+include_once "/var/www/html/autoload.php";
+use entity\Adventure;
+use repository\AdventureDao;
+$adventureDao = new AdventureDao();
+$adventure    = new Adventure();
+switch ($request) {
     case "GET":
-        if(isset($uuid) && $uuid != null){
-          $adventures = $adventureDao->findOne($uuid);
-          $result = array ('adventures'=>$adventures);
-        }else{
+        if (isset($uuid) && $uuid != null) {
+            $adventures = $adventureDao->findOne($uuid);
+            $result     = array(
+                'adventures' => $adventures
+            );
+        } else {
             $adventures = $adventureDao->findAll();
-            $result = array ('adventures'=>$adventures);
+            $result     = array(
+                'adventures' => $adventures
+            );
         }
         break;
     case "POST":
@@ -22,15 +26,17 @@
     case "PATCH":
         $adventure->setName($post->name);
         $adventureDao->update($adventure);
-    break;
+        break;
     case "PUT":
         $adventure->setName($post->name, $uuid);
         $adventureDao->update($adventure, $uuid);
-    break;
+        break;
     case "DELETE":
-        if(isset($uuid) && $uuid != null){
-          $msg =  $adventureDao->delete($uuid);
-          $result = array ('msg'=>$msg);
+        if (isset($uuid) && $uuid != null) {
+            $msg    = $adventureDao->delete($uuid);
+            $result = array(
+                'msg' => $msg
+            );
         }
         break;
 }
