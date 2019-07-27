@@ -67,12 +67,10 @@ use PDO;
 	}
 
 	function conectDb(){
-
-
-		$dbuser = getenv('MYSQL_USER', "root");
-		$dbpass = getenv('MYSQL_PASS', "");
-		$endpoint = getenv('DATA_BASE_ENDPOINT',"mysql");
-		$database = getenv('DATA_BASE', "rpgcloud");
+		$dbuser =  $_SERVER['MYSQL_USER'];
+		$dbpass = 	$_SERVER['MYSQL_PASS'];
+		$endpoint = $_SERVER['DATA_BASE_ENDPOINT'];
+		$database = $_SERVER['DATA_BASE'];
 		$conn = null;
 		try {
 			$conn = new PDO("mysql:host=$endpoint;dbname=$database", $dbuser, $dbpass);
