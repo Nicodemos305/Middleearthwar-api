@@ -1,11 +1,12 @@
 <?php
- include_once "/var/www/html/util/header.php";
-include_once "/var/www/html/entity/Battle.class.php";
-include_once "/var/www/html/entity/Phase.class.php";
-include_once "/var/www/html/repository/battleDao.class.php";
-include_once "/var/www/html/repository/heroDao.class.php";
-include_once "/var/www/html/repository/phaseDao.class.php";
-include_once "/var/www/html/services/battle/battleCore.class.php";
+include_once "/var/www/html/util/header.php";
+include_once "/var/www/html/autoload.php";
+use entity\Battle;
+use entity\Phase;
+use repository\BattleDao;
+use repository\PhaseDao;
+use repository\HeroDao;
+use service\BattleCore;
 
 $battleDao = new BattleDao();
 $heroDao = new HeroDao();

@@ -1,4 +1,5 @@
 <?php
+namespace service;
 include_once "/var/www/html/util/header.php";
 include_once "/var/www/html/autoload.php";
 use entity\Battle;
