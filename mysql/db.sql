@@ -4,40 +4,40 @@ USE rpgcloud;
 
 CREATE TABLE player 
   ( 
-     id       INT auto_increment, 
+     uuid     VARCHAR(255), 
      login    VARCHAR(255), 
      password VARCHAR(800), 
      email    VARCHAR(255), 
-     PRIMARY KEY(id) 
+     PRIMARY KEY(uuid) 
   ); 
 
 CREATE TABLE quest 
   ( 
-     id   INT auto_increment, 
+     uuid     VARCHAR(255), 
      name VARCHAR(800), 
-     PRIMARY KEY(id) 
+     PRIMARY KEY(uuid) 
   ); 
 
 CREATE TABLE test 
   ( 
-     id     INT auto_increment, 
+     uuid     VARCHAR(255), 
      name   VARCHAR(255), 
      goal   VARCHAR(10), 
      result INT, 
      test   INT, 
-     PRIMARY KEY(id) 
+     PRIMARY KEY(uuid) 
   ); 
 
 CREATE TABLE adventure 
   ( 
-     id   INT auto_increment, 
+     uuid     VARCHAR(255), 
      name VARCHAR(255), 
-     PRIMARY KEY(id) 
+     PRIMARY KEY(uuid) 
   ); 
 
 CREATE TABLE hero 
   ( 
-     id          INT auto_increment, 
+     uuid     VARCHAR(255), 
      name        VARCHAR(255), 
      race        VARCHAR(255), 
      hp          INT, 
@@ -46,15 +46,15 @@ CREATE TABLE hero
      defense     INT, 
      agility     INT, 
      inteligence INT, 
-     id_player   INT, 
-     id_world    INT, 
-     PRIMARY KEY(id), 
-     FOREIGN KEY (id_player) REFERENCES player(id) 
+     id_player   VARCHAR(255), 
+     id_world    VARCHAR(255), 
+     PRIMARY KEY(uuid), 
+     FOREIGN KEY (id_player) REFERENCES player(uuid) 
   ); 
 
 CREATE TABLE race 
   ( 
-     id          INT auto_increment, 
+     uuid     VARCHAR(255), 
      name        VARCHAR(255), 
      hp          INT, 
      mp          INT, 
@@ -63,35 +63,35 @@ CREATE TABLE race
      agility     INT, 
      inteligence INT, 
      id_world    INT, 
-     PRIMARY KEY(id) 
+     PRIMARY KEY(uuid) 
   ); 
 
 CREATE TABLE battle 
   ( 
-     id            INT auto_increment, 
-     id_hero_one   INT, 
-     id_hero_two   INT, 
+      uuid     VARCHAR(255), 
+     id_hero_one   VARCHAR(255), 
+     id_hero_two   VARCHAR(255), 
      hp_hero_one   INT, 
      hp_hero_two   INT, 
      status_battle VARCHAR(10), 
      win_battle    INT, 
-     PRIMARY KEY(id), 
-     FOREIGN KEY (id_hero_one) REFERENCES hero(id) 
+     PRIMARY KEY(uuid), 
+     FOREIGN KEY (id_hero_one) REFERENCES hero(uuid) 
   ); 
 
 CREATE TABLE phase 
   ( 
-     id          INT auto_increment, 
+     uuid     VARCHAR(255), 
      id_hero_one INT, 
      id_battle   INT, 
      description VARCHAR(400), 
-     PRIMARY KEY(id) 
+     PRIMARY KEY(uuid) 
   ); 
 
 CREATE TABLE world 
   ( 
-     id          INT auto_increment, 
+     uuid     VARCHAR(255), 
      name        VARCHAR(200), 
      description VARCHAR(600), 
-     PRIMARY KEY(id) 
+     PRIMARY KEY(uuid) 
   ); 

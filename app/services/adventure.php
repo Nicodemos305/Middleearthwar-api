@@ -1,34 +1,42 @@
 <?php
-  header('Content-type: application/json');
-  header('Access-Control-Allow-Origin: *');  
-  include_once "/var/www/html/repository/adventureDao.class.php";
-  include_once "/var/www/html/entity/Adventure.class.php";
-
-  $result = "";
-  $adventures = [];
-  $adventureDao = new AdventureDao();
-  $adventure = new Adventure();
-  $json = file_get_contents('php://input');
-  $post = json_decode($json);
-  $id = $_GET['id'];
-  switch ($_SERVER['REQUEST_METHOD']) {
+include_once "/var/www/html/util/header.php";
+include_once "/var/www/html/autoload.php";
+use entity\Adventure;
+use repository\AdventureDao;
+$adventureDao = new AdventureDao();
+$adventure    = new Adventure();
+switch ($request) {
     case "GET":
-        if(isset($id) && $id] != null){
-          $adventures = $adventureDao->findOne($id);
-          $result = array ('adventures'=>$adventures);
-        }else{
+        if (isset($uuid) && $uuid != null) {
+            $adventures = $adventureDao->findOne($uuid);
+            $result     = array(
+                'adventures' => $adventures
+            );
+        } else {
             $adventures = $adventureDao->findAll();
-            $result = array ('adventures'=>$adventures);
+            $result     = array(
+                'adventures' => $adventures
+            );
         }
         break;
     case "POST":
         $adventure->setName($post->name);
         $adventureDao->insert($adventure);
         break;
+    case "PATCH":
+        $adventure->setName($post->name);
+        $adventureDao->update($adventure);
+        break;
+    case "PUT":
+        $adventure->setName($post->name, $uuid);
+        $adventureDao->update($adventure, $uuid);
+        break;
     case "DELETE":
-        if(isset($id) && $id != null){
-          $msg =  $adventureDao->delete($id);
-          $result = array ('msg'=>$msg);
+        if (isset($uuid) && $uuid != null) {
+            $msg    = $adventureDao->delete($uuid);
+            $result = array(
+                'msg' => $msg
+            );
         }
         break;
 }

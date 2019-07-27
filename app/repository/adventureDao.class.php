@@ -1,6 +1,7 @@
 <?php
-include_once "DataSource.class.php";
-include_once "/var/www/html/entity/Adventure.class.php";
+namespace repository;
+use repository\DataSource;
+use entity\Adventure;
 
 class AdventureDao extends DataSource {
 

@@ -1,40 +1,41 @@
-<?php 
-  header('Content-type: application/json');
-  header('Access-Control-Allow-Origin: *');
-
-  include_once "/var/www/html/repository/raceDao.class.php";
-  include_once "/var/www/html/entity/Race.class.php";
-  
-  $json = file_get_contents('php://input');
-  $post = json_decode($json);
-  $result = "";
-  $raceDao = new RaceDao(); 
-  $id = $_GET['id'];
-  switch ($_SERVER['REQUEST_METHOD']) {
+<?php
+include_once "/var/www/html/util/header.php";
+include_once "/var/www/html/autoload.php";
+use entity\Race;
+use repository\RaceDao;
+$raceDao = new RaceDao();
+switch ($request) {
     case "GET":
-        if(isset($id)){
-          $race = $raceDao->findOne($id);
-          $result = array ('race'=>$race);
-        }else{
-            $race = $raceDao->findAll();
-            $result = array ('race'=>$race);
+        if (isset($uuid)) {
+            $race   = $raceDao->findOne($uuid);
+            $result = array(
+                'race' => $race
+            );
+        } else {
+            $race   = $raceDao->findAll();
+            $result = array(
+                'race' => $race
+            );
         }
         break;
     case "POST":
-        $raceInstance = new Race();
-        $raceInstance->setName($post->name);
-        $raceInstance->setHp($post->hp);
-        $raceInstance->setMp($post->mp);
-        $raceInstance->setAtk($post->atk);
-        $raceInstance->setDefense($post->defense);
-        $raceInstance->setAgility($post->agility);
-        $raceInstance->setInteligence($post->inteligence);
+        $raceInstance = new Race($post->name, $post->hp, $post->mp, $post->atk, $post->defense, $post->agility, $post->inteligence);
         $raceDao->insert($raceInstance);
         break;
+    case "PATCH":
+        $raceInstance = new Race($post->name, $post->hp, $post->mp, $post->atk, $post->defense, $post->agility, $post->inteligence);
+        $raceDao->update($raceInstance, $uuid);
+        break;
+    case "PUT":
+        $raceInstance = new Race($post->name, $post->hp, $post->mp, $post->atk, $post->defense, $post->agility, $post->inteligence);
+        $raceDao->update($raceInstance);
+        break;
     case "DELETE":
-        if(isset($id) &&  $id != null){
-          $msg =  $raceDao->delete($id);
-          $result = array ('msg'=>$msg);
+        if (isset($uuid) && $uuid != null) {
+            $msg    = $raceDao->delete($uuid);
+            $result = array(
+                'msg' => $msg
+            );
         }
         break;
 }

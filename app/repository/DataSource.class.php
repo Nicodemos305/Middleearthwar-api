@@ -1,4 +1,7 @@
 <?php
+namespace repository;
+use PDO;
+
  class DataSource{
 
   function findOneEntity($sql){
@@ -11,7 +14,7 @@
 				break;
 			}
 		}catch(PDOException $exception) {
-			echo $exception->getMessage();
+			throw new Exception($exception->getMessage());
 		}
 		$conn = null;
 		return $entity;
@@ -27,7 +30,7 @@
 			}
 		}
 		catch(PDOException $exception) {
-			echo $exception->getMessage();
+			throw new Exception($exception->getMessage());
 		}
 		$conn = null;
 		return $resultado;
@@ -38,44 +41,42 @@
 			$conn = $this->conectDb();
 			$conn->exec($sql);
 		}catch(PDOException $exception){
-			echo $e->getMessage();
+			throw new Exception($exception->getMessage());
 		}
 		$conn = null;
 	}
 	
-
 	function deleteEntity($sql){
 		try {
 			$conn = $this->conectDb();			
 			$conn->exec($sql);
 		}catch(PDOException $exception){
-			echo $exception->getMessage();
+			throw new Exception($exception->getMessage());
 		}
 		$conn = null;
 	}
 
-	function update($sql){
+	function updateEntity($sql){
 		try {
 			$conn = $this->conectDb();
-			$stmt = $conn->prepare($sql);
-			$stmt->execute();
+			$conn->exec($sql);
 		}catch(PDOException $exception){
-			echo $exception->getMessage();
+			throw new Exception($exception->getMessage());
 		}
 		$conn = null;
 	}
 
 	function conectDb(){
-		$dbuser = isset($_ENV['MYSQL_USER']) ? $_ENV['MYSQL_USER'] : "root";
-		$dbpass = isset($_ENV['MYSQL_PASS']) ? $_ENV['MYSQL_PASS'] : "";
-		$endpoint = isset($_ENV['DATA_BASE_ENDPOINT']) ? $_ENV['DATA_BASE_ENDPOINT'] : "localhost";
-		$database = isset($_ENV['DATA_BASE']) ? $_ENV['DATA_BASE'] : "rpgcloud";
+		$dbuser =  $_SERVER['MYSQL_USER'];
+		$dbpass = 	$_SERVER['MYSQL_PASS'];
+		$endpoint = $_SERVER['DATA_BASE_ENDPOINT'];
+		$database = $_SERVER['DATA_BASE'];
 		$conn = null;
 		try {
 			$conn = new PDO("mysql:host=$endpoint;dbname=$database", $dbuser, $dbpass);
 			$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		}catch(PDOException $exception){
-			echo "Connection failed: " . $exception->getMessage();
+			throw new Exception($exception->getMessage());
 		}
 		return $conn;
 	}

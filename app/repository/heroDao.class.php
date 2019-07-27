@@ -1,6 +1,7 @@
- <?php
-include_once "/var/www/html/repository/DataSource.class.php";
-include_once "/var/www/html/entity/Hero.class.php";
+<?php
+namespace repository;
+use repository\DataSource;
+use entity\Hero;
 
 class HeroDao extends DataSource {
 
