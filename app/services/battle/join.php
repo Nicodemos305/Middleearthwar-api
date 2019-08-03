@@ -18,7 +18,7 @@ $battle1->setPlayerTwo($enemy['uuid']);
 $battle1->setHpOne($playerOne['hp']);
 $battle1->setHpTwo($enemy['hp']);
 
-$id = $_GET['uuid'];
+$uuid = $_GET['uuid'];
 
 $battle = $battleDao->myBattleRunning($uuid);
 
