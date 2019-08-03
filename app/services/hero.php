@@ -28,7 +28,6 @@ switch ($request) {
         $hero->setName($name);
         $raceInstance = $raceDao->findByName($race);
         $hero->newHero($raceInstance);
-        $uuid = 1;
         $heroDao->insert($hero, $uuid);
         break;
     case "PATCH":

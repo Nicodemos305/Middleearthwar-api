@@ -1,23 +1,15 @@
 <?php
 namespace entity;
-include_once "/var/www/html/entity/Race.class.php";
+use entity\Race;
 class Hero extends Race
 {
     
     private $race;
-    
-    public function __construct($name, $race, $healthPoint, $magicPoint, $atk, $defense, $agility, $inteligence)
+       
+       public function __construct()
     {
-        $this->name        = $name;
-        $this->race        = $race;
-        $this->healthPoint = $healthPoint;
-        $this->magicPoint  = $magicPoint;
-        $this->atk         = $atk;
-        $this->defense     = $defense;
-        $this->agility     = $agility;
-        $this->inteligence = $inteligence;
+
     }
-    
     public function newHero($race)
     {
         $this->setRace($race['name']);
@@ -27,5 +19,15 @@ class Hero extends Race
         $this->setDefense($race['defense']);
         $this->setAgility($race['agility']);
         $this->setInteligence($race['inteligence']);
+    }
+
+    public function getRace()
+    {
+        return $this->race;
+    }
+    
+    public function setRace($race)
+    {
+        $this->race = $race;
     }
 }

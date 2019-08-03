@@ -26,9 +26,9 @@ $hero_one_win = $battle['hp_hero_two'] <= 0 && $battle['hp_hero_two'] != null;
 $hero_two_win = $battle['hp_hero_one'] <= 0 && $battle['hp_hero_one'] != null;
 
 if ($hero_two_win) {
-    $battleDao->battleEnd($battle['id'], $enemy['id']);
+    $battleDao->battleEnd($battle['uuid'], $enemy['uuid']);
 } else if ($hero_one_win) {
-    $battleDao->battleEnd($battle['id'], $playerOne['id']);
+    $battleDao->battleEnd($battle['uuid'], $playerOne['uuid']);
 }
 
 $result = array(

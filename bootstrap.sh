@@ -8,4 +8,5 @@ curl -d '{"name" : "Elf", "hp" : 100, "mp" : 100, "atk" : 25, "defense" : 25, "a
 curl -d '{"name" : "Orc", "hp" : 100, "mp" : 100, "atk" : 25, "defense" : 25, "agility" : 25, "inteligence" : 25}' http://localhost/services/race.php
 curl -d '{"name" : "Human", "hp" : 100, "mp" : 100, "atk" : 25, "defense" : 25, "agility" : 25, "inteligence" : 25}' http://localhost/services/race.php
 
-curl -d '{"name" : "Aragorn", "race" : 1}' http://localhost/services/hero.php
+curl -d '{"name" : "Aragorn", "race" : "Elf"}' http://localhost/services/hero.php
+curl -d '{"name" : "Aragorn2", "race" : "Elf"}' http://localhost/services/hero.php

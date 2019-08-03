@@ -1,29 +1,28 @@
 <?php
-include_once "/var/www/html/util/header.php";
-include_once "/var/www/html/autoload.php";
+require "/var/www/html/util/header.php";
+require "/var/www/html/autoload.php";
 use entity\Battle;
 use entity\Phase;
-use entity\BattleDao;
-use entity\PhaseDao;
-use service\BattleCore;
+use repository\BattleDao;
+use repository\HeroDao;
+use repository\PhaseDao;
 
 $battleDao  = new BattleDao();
 $heroDao    = new HeroDao();
 $battle1    = new Battle();
-$battleCore = new BattleCore();
 $enemy      = $battleDao->searchEnemy(2);
 $playerOne  = $heroDao->findOne(2);
 
-$battle1->setPlayerOne($playerOne['id']);
-$battle1->setPlayerTwo($enemy['id']);
+$battle1->setPlayerOne($playerOne['uuid']);
+$battle1->setPlayerTwo($enemy['uuid']);
 $battle1->setHpOne($playerOne['hp']);
 $battle1->setHpTwo($enemy['hp']);
 
-$id = $_GET['id'];
+$id = $_GET['uuid'];
 
-$battle = $battleDao->myBattleRunning($id);
+$battle = $battleDao->myBattleRunning($uuid);
 
-if ($battle['id'] == null) {
+if ($battle['uuid'] == null) {
     $battle = $battleDao->battleBegin($battle1);
 } else {
     echo "Heroi em combate";

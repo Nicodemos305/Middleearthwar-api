@@ -1,9 +1,7 @@
 <?php
 namespace service;
-include_once "/var/www/html/util/header.php";
-include_once "/var/www/html/autoload.php";
 use entity\Battle;
-use entity\BattleDao;
+use repository\BattleDao;
 
 
 class BattleCore
@@ -33,7 +31,7 @@ class BattleCore
         if ($isHeroTwo) {
             $random = $this->rollD6($playerOne['atk']);
             $phase  = $this->damage($battleAux, $phase, $random, $enemy, $battleDao);
-            $this->passPhase($phase, $battleAux, $playerOne['id'], $phaseDao);
+            $this->passPhase($phase, $battleAux, $playerOne['uuid'], $phaseDao);
             return;
         }
     }
@@ -45,7 +43,7 @@ class BattleCore
     
     function passPhase($phase, $battle, $player, $phaseDao)
     {
-        $phase->setBattle_id($battle['id']);
+        $phase->setBattle_id($battle['uuid']);
         $phase->setPlayer_id($player);
         $phaseDao->insert($phase);
     }
@@ -64,9 +62,9 @@ class BattleCore
             $battleDao->hpMinusPlayerOne($healthPoints, $battle['id']);
         }
         
-        if ($hero['id'] == $battle['id_hero_two']) {
+        if ($hero['uuid'] == $battle['id_hero_two']) {
             $healthPoints = $battle['hp_hero_two'] - $damage;
-            $battleDao->hpMinusPlayerTwo($healthPoints, $battle['id']);
+            $battleDao->hpMinusPlayerTwo($healthPoints, $battle['uuid']);
         }
         $phase->setDescription("O Herói " . $hero['name'] . " recebeu " . $damage . " de dano crítico.");
         
