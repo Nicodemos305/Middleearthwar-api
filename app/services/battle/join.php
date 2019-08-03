@@ -10,8 +10,8 @@ use repository\PhaseDao;
 $battleDao  = new BattleDao();
 $heroDao    = new HeroDao();
 $battle1    = new Battle();
-$enemy      = $battleDao->searchEnemy(2);
-$playerOne  = $heroDao->findOne(2);
+$enemy      = $battleDao->searchEnemy($uuid);
+$playerOne  = $heroDao->findOne($uuid);
 
 $battle1->setPlayerOne($playerOne['uuid']);
 $battle1->setPlayerTwo($enemy['uuid']);
