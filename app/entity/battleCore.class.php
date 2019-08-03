@@ -1,5 +1,5 @@
 <?php
-namespace service;
+namespace entity;
 use entity\Battle;
 use repository\BattleDao;
 
@@ -8,19 +8,20 @@ class BattleCore
 {
     
     function routePhaseWithCpu($battleAux, $phase, $enemy, $playerOne, $phaseDao, $battleDao)
-    {
-        $recentPhase = is_array($battleAux) ? $phaseDao->findPhase($battleAux['id']) : $phaseDao->findPhase($battleAux);
+    {   
+        $recentPhase = is_array($battleAux) ? $phaseDao->findPhase($battleAux['uuid']) : $phaseDao->findPhase($battleAux);
         
         $isHeroOne    = $recentPhase['id_hero_one'] == $battleAux['id_hero_one'];
         $isHeroTwo    = $recentPhase['id_hero_one'] == $battleAux['id_hero_two'];
         $isFirstPhase = $recentPhase == null && is_array($battleAux);
-        
+
+    
         if ($isFirstPhase) {
             $phase->setDescription("Iniciou o combate entre o heroi " . $playerOne['name'] . " e o Heroi " . $enemy['name']);
             $this->passPhase($phase, $battleAux, $battleAux['id_hero_one'], $phaseDao);
             return;
         }
-        
+
         if ($isHeroOne) {
             $random = $this->rollD6($enemy['atk']);
             $phase  = $this->damage($battleAux, $phase, $random, $playerOne, $battleDao);
@@ -57,9 +58,9 @@ class BattleCore
             return $phase;
         }
         $damage = $this->critical($random);
-        if ($hero['id'] == $battle['id_hero_one']) {
+        if ($hero['uuid'] == $battle['id_hero_one']) {
             $healthPoints = $battle['hp_hero_one'] - $damage;
-            $battleDao->hpMinusPlayerOne($healthPoints, $battle['id']);
+            $battleDao->hpMinusPlayerOne($healthPoints, $battle['uuid']);
         }
         
         if ($hero['uuid'] == $battle['id_hero_two']) {

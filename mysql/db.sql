@@ -82,8 +82,8 @@ CREATE TABLE battle
 CREATE TABLE phase 
   ( 
      uuid     VARCHAR(255), 
-     id_hero_one INT, 
-     id_battle   INT, 
+     id_hero_one VARCHAR(255), 
+     id_battle   VARCHAR(255), 
      description VARCHAR(400), 
      PRIMARY KEY(uuid) 
   ); 

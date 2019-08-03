@@ -11,8 +11,8 @@ class BattleDao extends DataSource{
 	}
 
 	function battleEnd($idBattle,$idWinner){
-  		$sql = "update battle set win_battle = ".$idWinner." where uuid = ".$idBattle;
-	    parent::update($sql);
+  		$sql = "update battle set win_battle = '".$idWinner."'' where uuid = '".$idBattle."'";
+	    parent::updateEntity($sql);
 
 	}
 
@@ -22,7 +22,7 @@ class BattleDao extends DataSource{
 	}
 
 	function battleRunning($id_hero_one,$id_hero_two){
-		$sql = "select * from battle where id_hero_one = '$id_hero_one' and 'id_hero_two = '$id_hero_two' and status_battle = 'RUNING' and win_battle = 0";
+		$sql = "select * from battle where id_hero_one = '$id_hero_one' and id_hero_two = '$id_hero_two' and status_battle = 'RUNING' and win_battle = 0";
 		return parent::findOneEntity($sql);
 	}
 
@@ -32,13 +32,13 @@ class BattleDao extends DataSource{
 	}
 
 	function hpMinusPlayerOne($hp,$id_battle){
-		$sql = "update battle set hp_hero_one = ".$hp." where uuid = ".$id_battle;
-		parent::update($sql);
+		$sql = "update battle set hp_hero_one = ".$hp." where uuid = '".$id_battle."'";
+		parent::updateEntity($sql);
 
 	}
 
 	function hpMinusPlayerTwo($hp,$id_battle){
-		$sql = "update battle set hp_hero_two = ".$hp." where uuid = ".$id_battle;
-		parent::update($sql);
+		$sql = "update battle set hp_hero_two = ".$hp." where uuid = '".$id_battle."'";
+		parent::updateEntity($sql);
 	}
 }
