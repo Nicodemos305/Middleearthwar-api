@@ -32,5 +32,7 @@ services:
       - "3306:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=123.456
+    command:
+            - "--default-authentication-plugin=mysql_native_password"
 volumes:
   db_data:
