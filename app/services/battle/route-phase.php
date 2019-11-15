@@ -6,17 +6,18 @@ use entity\Phase;
 use repository\BattleDao;
 use repository\PhaseDao;
 use repository\HeroDao;
-use service\BattleCore;
+use entity\BattleCore;
 
 $battleDao  = new BattleDao();
 $heroDao    = new HeroDao();
 $phaseDao   = new PhaseDao();
 $phase      = new Phase();
 $battleCore = new BattleCore();
-$enemy      = $battleDao->searchEnemy(2);
-$playerOne  = $heroDao->findOne(2);
+$enemy      = $battleDao->searchEnemy($uuid);
 
-$battle = $battleDao->battleRunning($playerOne['id'], $enemy['id']);
+$playerOne  = $heroDao->findOne($uuid);
+
+$battle = $battleDao->battleRunning($playerOne['uuid'], $enemy['uuid']);
 
 if ($battle['hp_hero_one'] > 0 || $battle['hp_hero_two'] > 0) {
     $battleCore->routePhaseWithCpu($battle, $phase, $enemy, $playerOne, $phaseDao, $battleDao);
@@ -26,9 +27,9 @@ $hero_one_win = $battle['hp_hero_two'] <= 0 && $battle['hp_hero_two'] != null;
 $hero_two_win = $battle['hp_hero_one'] <= 0 && $battle['hp_hero_one'] != null;
 
 if ($hero_two_win) {
-    $battleDao->battleEnd($battle['id'], $enemy['id']);
+    $battleDao->battleEnd($battle['uuid'], $enemy['uuid']);
 } else if ($hero_one_win) {
-    $battleDao->battleEnd($battle['id'], $playerOne['id']);
+    $battleDao->battleEnd($battle['uuid'], $playerOne['uuid']);
 }
 
 $result = array(

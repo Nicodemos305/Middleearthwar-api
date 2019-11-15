@@ -19,15 +19,15 @@ switch ($request) {
         }
         break;
     case "POST":
-        $raceInstance = new Race($post->name, $post->hp, $post->mp, $post->atk, $post->defense, $post->agility, $post->inteligence);
+        $raceInstance = validate($post, $msg, $uuid);
         $raceDao->insert($raceInstance);
         break;
     case "PATCH":
-        $raceInstance = new Race($post->name, $post->hp, $post->mp, $post->atk, $post->defense, $post->agility, $post->inteligence);
-        $raceDao->update($raceInstance, $uuid);
+        $raceInstance = validate($post, $msg, $uuid);
+        $raceDao->update($raceInstance);
         break;
     case "PUT":
-        $raceInstance = new Race($post->name, $post->hp, $post->mp, $post->atk, $post->defense, $post->agility, $post->inteligence);
+        $raceInstance = validate($post, $msg, $uuid);
         $raceDao->update($raceInstance);
         break;
     case "DELETE":
@@ -40,3 +40,19 @@ switch ($request) {
         break;
 }
 print_r(json_encode($result));
+
+function validate($post, $msg, $uuid)
+{
+    $raceIsNull = !isset($post->name) || $post->name == "";
+
+
+    if ($raceIsNull) {
+        $result = array(
+            'msg' => "Todos o campos da raca sao obrigatorios"
+        );
+        echo json_encode($result);
+        return false;
+    }
+    $race = new Race($uuid, $post->name, $post->hp, $post->mp, $post->atk, $post->defense, $post->agility, $post->inteligence);
+    return $race;
+}

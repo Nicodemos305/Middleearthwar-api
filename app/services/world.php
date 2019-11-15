@@ -2,6 +2,7 @@
 include_once "/var/www/html/util/header.php";
 include_once "/var/www/html/autoload.php";
 use repository\WorldDao;
+use entity\World;
 $worldDao = new WorldDao();
 switch ($request) {
     case "GET":
